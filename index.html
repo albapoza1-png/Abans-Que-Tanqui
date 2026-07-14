@@ -196,6 +196,7 @@ nav {
   width: 380px;
   height: auto;
   margin-bottom: 24px;
+  filter: brightness(0) invert(1); /* Això converteix qualsevol color en blanc pur */
 }
 
 .hero-sub {
@@ -314,9 +315,7 @@ section:nth-of-type(3) {
 
 /* ══ CARDS GRID ══ */
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
 }
 
 .card {
@@ -351,7 +350,7 @@ section:nth-of-type(3) {
 }
 
 .card-body {
-  padding: 20px;
+  padding: 16px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -363,11 +362,11 @@ section:nth-of-type(3) {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .card-date {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -381,24 +380,25 @@ section:nth-of-type(3) {
   font-weight: 700;
   color: var(--ink);
   line-height: 1.3;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .card-excerpt {
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--muted);
   flex: 1;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .card-link {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--red);
   border-bottom: 1.5px solid var(--red);
   padding-bottom: 2px;
   width: fit-content;
+  align-self: flex-start;
 }
 
 /* ══ MAPA ══ */
@@ -495,6 +495,7 @@ footer {
 .footer-brand img {
   height: 44px;
   width: auto;
+  filter: brightness(0) invert(1); /* Això el torna blanc */
 }
 
 .footer-desc {
@@ -591,18 +592,17 @@ footer {
   }
 
   .projecte-wrapper {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
   .hero-content {
     margin-left: 20px;
     padding: 40px;
   }
 
   .cards-grid {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
+}
 
   .eixos-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -664,8 +664,8 @@ footer {
     <img src="img/hero-carrer.jpg" alt="Carrer de Barcelona">
   </div>
   <div class="hero-content">
-    <img src="img/logo-aqt-hero-base.png" alt="Abans Que Tanqui" class="hero-logo">
-    <p class="hero-sub">Abans Que Tanqui és un projecte que dona veu als comerços emblemàtics de la ciutat abans que tanquin per sempre.</p>
+    <img src="img/logo-hero.png" alt="Abans Que Tanqui" class="hero-logo">
+    <p class="hero-sub">Abans Que Tanqui és un projecte que neix de la necessitat de protegir el comerç de proximitat i preservar la memòria dels negocis que donen vida als nostres barris..</p>
     <a href="descobreix.html" class="hero-btn">Descobreix les històries</a>
   </div>
 </section>
@@ -761,7 +761,7 @@ footer {
 
    <a class="card" href="articles/cadenes-esborren-forns.html">
   <div class="card-photo">
-    <img src="img/cadenes-forns.jpg" alt="Cadenes i forns artesans">
+    <img src="img/forns-cadenes.jpg" alt="Cadenes i forns artesans">
   </div>
   <div class="card-body">
     <div class="card-kicker-analisi">Anàlisi</div>
@@ -778,7 +778,7 @@ footer {
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-brand"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui"></div>
+      <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui"></div>
       <div class="footer-desc">Projecte de recerca i exploració sobre la transformació del comerç de proximitat. En construcció a Catalunya.</div>
       <div class="footer-social">
         <a href="https://www.instagram.com/abansquetanqui/" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
