@@ -158,12 +158,13 @@ nav {
 /* ══ HERO ══ */
 .hero {
   position: relative;
-  min-height: 620px;
+  min-height: 380px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: var(--white);
+  padding: 0;
 }
 
 .hero-img {
@@ -183,25 +184,46 @@ nav {
 .hero-content {
   position: relative;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   padding: 60px 80px;
-  border-radius: 8px;
-  text-align: center;
-  max-width: 600px;
+  border-radius: 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: 52px;
 }
 
 .hero-logo {
-  width: clamp(200px, 40vw, 400px);
+  width: 280px;
   height: auto;
   margin-bottom: 24px;
   filter: brightness(0) invert(1);
 }
 
 .hero-sub {
-  font-size: 18px;
+  font-size: 15px;
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.02em;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.hero-btn {
+  background: var(--red);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.hero-btn:hover {
+  background: #a63120;
 }
 
 /* ══ SECTIONS ══ */
@@ -209,16 +231,20 @@ section {
   padding: 80px 52px;
 }
 
-section:nth-of-type(even) {
+section:nth-of-type(2) {
   background: var(--beix);
 }
 
-section:nth-of-type(odd) {
+section:nth-of-type(3) {
   background: var(--white);
 }
 
 .section-header {
   margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 52px;
+  align-items: start;
 }
 
 .section-kicker {
@@ -232,7 +258,7 @@ section:nth-of-type(odd) {
 
 .section-title {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   color: var(--ink);
   line-height: 1.1;
@@ -245,116 +271,113 @@ section:nth-of-type(odd) {
 }
 
 .section-desc {
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--ink-mid);
   margin-top: 16px;
-  max-width: 700px;
 }
 
-/* ══ QUÈ ÉS AQT ══ */
-.que-es-grid {
+.section-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 2px;
+  margin-top: 16px;
+  display: inline-block;
+}
+
+/* ══ CARDS GRID ══ */
+.cards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 48px;
-}
-
-.que-es-left h3,
-.que-es-right h3 {
-  font-family: 'Anton', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.que-es-text {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin-bottom: 16px;
-}
-
-.que-es-list {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
 }
 
-.que-es-item {
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+
+.card-photo {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  background: var(--beix);
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 20px;
+  flex: 1;
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  font-size: 14px;
-  color: var(--ink-mid);
-  line-height: 1.6;
+  flex-direction: column;
 }
 
-.que-es-dash {
-  color: var(--red);
+.card-kicker {
+  font-size: 10px;
   font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 2px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
 }
 
-/* ══ MAPA ══ */
-.mapa-header {
-  margin-bottom: 32px;
+.card-date {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
-.mapa-header h2 {
+.card-title {
   font-family: 'Anton', sans-serif;
-  font-size: 32px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--ink);
+  line-height: 1.3;
   margin-bottom: 12px;
 }
 
-.mapa-header p {
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.mapa-llegenda {
-  display: flex;
-  gap: 24px;
-  margin-top: 16px;
-  flex-wrap: wrap;
-}
-
-.mapa-llegenda-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.card-excerpt {
   font-size: 13px;
+  line-height: 1.6;
   color: var(--muted);
+  flex: 1;
+  margin-bottom: 16px;
 }
 
-.mapa-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.card-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  border-bottom: 1.5px solid var(--red);
+  padding-bottom: 2px;
+  width: fit-content;
 }
 
-.mapa-dot.risc {
-  background: var(--red);
-}
-
-.mapa-dot.tancat {
-  background: var(--red);
-}
-
-.mapa-dot.recuperat {
-  background: var(--red);
-}
-
+/* ══ MAPA ══ */
 #mapa-leaflet {
   height: 420px;
   z-index: 1;
@@ -418,133 +441,6 @@ section:nth-of-type(odd) {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.6;
-}
-
-/* ══ ACTUALITAT ══ */
-.actualitat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 48px;
-}
-
-.actualitat-header h2 {
-  font-family: 'Anton', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.actualitat-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--red);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--red);
-  padding-bottom: 2px;
-  white-space: nowrap;
-}
-
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.article-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s;
-}
-
-.article-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-  transform: translateY(-4px);
-}
-
-.article-photo {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-  background: var(--beix);
-}
-
-.article-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.article-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--red);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-
-.article-body {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.article-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 6px;
-}
-
-.article-date {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.article-title {
-  font-family: 'Anton', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.3;
-  margin-bottom: 12px;
-}
-
-.article-excerpt {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--muted);
-  flex: 1;
-  margin-bottom: 16px;
-}
-
-.article-llegir {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--red);
-  border-bottom: 1.5px solid var(--red);
-  padding-bottom: 2px;
-  width: fit-content;
 }
 
 /* ══ FOOTER ══ */
@@ -666,23 +562,22 @@ footer {
     padding: 48px 20px;
   }
 
-  .hero-content {
-    padding: 40px 24px;
-    max-width: 90%;
-  }
-
-  .que-es-grid {
+  .section-header {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 32px;
+  }
+
+  .hero-content {
+    margin-left: 20px;
+    padding: 40px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
   }
 
   .eixos-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .articles-grid {
-    grid-template-columns: 1fr;
   }
 
   .footer-grid {
@@ -700,10 +595,13 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .actualitat-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .hero-content {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .hero-logo {
+    width: 180px;
   }
 }
 </style>
@@ -739,134 +637,112 @@ footer {
   </div>
   <div class="hero-content">
     <img src="img/logo-aqt-hero-base.png" alt="Abans Que Tanqui" class="hero-logo">
-    <p class="hero-sub">El barri no està en venda.</p>
+    <p class="hero-sub">Abans Que Tanqui és un projecte que dona veu als comerços emblemàtics de la ciutat abans que tanquin per sempre.</p>
+    <a href="descobreix.html" class="hero-btn">Descobreix les històries</a>
   </div>
 </section>
 
-<!-- QUÈ ÉS AQT -->
+<!-- PROJECTE SECTION -->
 <section>
   <div class="section-header">
-    <div class="section-kicker">Qui som</div>
-    <h2 class="section-title">No és nostàlgia.<br><em>És comunitat.</em></h2>
-  </div>
-  <div class="que-es-grid">
-    <div class="que-es-left">
-      <h3>Qui som</h3>
-      <p class="que-es-text">Els comerços de barri tanquen. No perquè la gent hagi deixat d'anar-hi, sinó perquè l'especulació immobiliària encareix els lloguers, les administracions no hi posen límits efectius i el petit comerç acaba ofegat.</p>
-      <p class="que-es-text">Abans Que Tanqui és un espai per documentar i denunciar la substitució comercial que afecta el comerç de proximitat, i una eina col·lectiva per donar suport a qui preserva la vida de barri.</p>
+    <div>
+      <div class="section-kicker">El projecte</div>
+      <h2 class="section-title">Per què importa el que està a punt de desaparèixer?</h2>
     </div>
-    <div class="que-es-right">
-      <h3>Què fem</h3>
-      <div class="que-es-list">
-        <div class="que-es-item">
-          <div class="que-es-dash">—</div>
-          <div>Documentació de casos de tancament i substitució comercial</div>
-        </div>
-        <div class="que-es-item">
-          <div class="que-es-dash">—</div>
-          <div>Anàlisi de les dinàmiques econòmiques, urbanes i immobiliàries</div>
-        </div>
-        <div class="que-es-item">
-          <div class="que-es-dash">—</div>
-          <div>Recollida de dades, exemples i experiències locals</div>
-        </div>
-        <div class="que-es-item">
-          <div class="que-es-dash">—</div>
-          <div>Exploració de possibles models col·lectius de gestió</div>
-        </div>
+    <div>
+      <p class="section-desc">Cada dia, negocis amb dècades d'història abaixan la persiana. Amb aquest projecte, volem preservar la seva memòria, denunciar els mecanismes que els expulsen i explorar models col·lectius que els protegeixin.</p>
+      <a href="projecte.html" class="section-link">Més sobre el projecte →</a>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <a class="card" href="articles/ferreteria-camps.html">
+      <div class="card-photo">
+        <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
       </div>
-    </div>
+      <div class="card-body">
+        <div class="card-kicker">Sants-Montjuïc</div>
+        <div class="card-date">15 Març 2024</div>
+        <h3 class="card-title">Ultramarinos Marín: 104 anys d'alimentació de confiança</h3>
+        <p class="card-excerpt">Quatre generacions obrint portes cada matí, qualitat al cor de Sants.</p>
+        <div class="card-link">Llegir història →</div>
+      </div>
+    </a>
+
+    <a class="card" href="articles/kensington.html">
+      <div class="card-photo">
+        <img src="img/kensington.jpg" alt="Cansaladeria Subiriana">
+      </div>
+      <div class="card-body">
+        <div class="card-kicker">Gràcia</div>
+        <div class="card-date">28 Abril 2024</div>
+        <h3 class="card-title">Cansaladeria Subiriana: l'ofici que es resisteix a desaparèixer</h3>
+        <p class="card-excerpt">Des de 1932, una cansaladeria familiar que manté viva la tradició.</p>
+        <div class="card-link">Llegir história →</div>
+      </div>
+    </a>
+
+    <a class="card" href="articles/hombacked.html">
+      <div class="card-photo">
+        <img src="img/hombacked.jpg" alt="La Copisteria Barcelona">
+      </div>
+      <div class="card-body">
+        <div class="card-kicker">Exemple</div>
+        <div class="card-date">10 Abril 2024</div>
+        <h3 class="card-title">La Copisteria Barcelona: més que còpies des de 1980</h3>
+        <p class="card-excerpt">Un negoci familiar que ha evolucionat i s'adapta sense perdre la seva essència.</p>
+        <div class="card-link">Llegir história →</div>
+      </div>
+    </a>
   </div>
 </section>
 
-<!-- MAPA -->
-<section>
-  <div class="mapa-header">
-    <h2>Mapa de casos documentats</h2>
-    <p>Cada punt representa un comerç o local documentat a Barcelona. El mapa creix a mesura que ampliem la recerca.</p>
-    <div class="mapa-llegenda">
-      <div class="mapa-llegenda-item"><div class="mapa-dot risc"></div>En risc de tancament</div>
-      <div class="mapa-llegenda-item"><div class="mapa-dot tancat"></div>Tancat recentment</div>
-      <div class="mapa-llegenda-item"><div class="mapa-dot recuperat"></div>Recuperat per la comunitat</div>
-    </div>
-  </div>
-  <div id="mapa-leaflet"></div>
-  <div class="mapa-footer"><a class="mapa-link" href="descobreix.html">Veure el mapa complet →</a></div>
-</section>
-
-<!-- EIXOS -->
+<!-- ACTUALITAT SECTION -->
 <section>
   <div class="section-header">
-    <div class="section-kicker">El projecte s'organitza en</div>
-    <h2 class="section-title">Quatre espais de treball</h2>
+    <div>
+      <div class="section-kicker">Actualitat</div>
+      <h2 class="section-title">Notícies i reflexions sobre el comerç local</h2>
+    </div>
   </div>
-  <div class="eixos-grid">
-    <a class="eix" href="projecte.html">
-      <div class="eix-label">Model</div>
-      <div class="eix-title">Com funciona</div>
-      <div class="eix-desc">Exploració del sistema cooperatiu de locals en cessió d'ús</div>
-    </a>
-    <a class="eix" href="actualitat.html">
-      <div class="eix-label">Actualitat</div>
-      <div class="eix-title">Articles i reflexions</div>
-      <div class="eix-desc">Anàlisi i casos sobre la transformació del comerç de proximitat</div>
-    </a>
-    <a class="eix" href="recursos.html">
-      <div class="eix-label">Recursos</div>
-      <div class="eix-title">Guies i informació</div>
-      <div class="eix-desc">Eines i orientació per a comerços en risc</div>
-    </a>
-    <a class="eix" href="descobreix.html">
-      <div class="eix-label">Descobreix</div>
-      <div class="eix-title">Casos i mapes</div>
-      <div class="eix-desc">Explora els establiments documentats</div>
-    </a>
-  </div>
-</section>
 
-<!-- ACTUALITAT -->
-<section>
-  <div class="actualitat-header">
-    <h2>Actualitat</h2>
-    <a class="actualitat-link" href="actualitat.html">Veure tots els articles →</a>
-  </div>
-  <div class="articles-grid">
-    <a class="article-card" href="articles/jove-teatre-regina.html">
-      <div class="article-photo">
+  <div class="cards-grid">
+    <a class="card" href="articles/jove-teatre-regina.html">
+      <div class="card-photo">
         <img src="img/jove-teatre-regina.jpg" alt="Jove Teatre Regina">
-        <div class="article-badge">Tanca el 15 de juliol</div>
       </div>
-      <div class="article-body">
-        <div class="article-tag">Cas documentat</div>
-        <div class="article-date">Juny 2026</div>
-        <h3 class="article-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h3>
-        <p class="article-excerpt">El Regina tanca: l'edifici és en venda i no li renoven el lloguer. No és per manca de públic.</p>
-        <div class="article-llegir">Llegir el cas →</div>
+      <div class="card-body">
+        <div class="card-kicker">Cas documentat</div>
+        <div class="card-date">Juny 2026</div>
+        <h3 class="card-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h3>
+        <p class="card-excerpt">El Regina tanca: l'edifici és en venda i no li renoven el lloguer. No és per manca de públic.</p>
+        <div class="card-link">Llegir el cas →</div>
       </div>
     </a>
-    <a class="article-card" href="articles/lloguer-comercial-sense-regulacio.html">
-      <div class="article-photo">
+
+    <a class="card" href="articles/lloguer-comercial-sense-regulacio.html">
+      <div class="card-photo">
         <img src="img/lloguer-comercial.jpg" alt="Local comercial">
       </div>
-      <div class="article-body">
-        <div class="article-tag">Anàlisi</div>
-        <div class="article-date">Abril 2026</div>
-        <h3 class="article-title">El lloguer comercial no té límits. I és legal.</h3>
-        <p class="article-excerpt">L'habitatge té contenció de rendes. El comerç local no té res. La llei tracta la ferreteria igual que un local corporatiu.</p>
-        <div class="article-llegir">Llegir l'article →</div>
+      <div class="card-body">
+        <div class="card-kicker">Anàlisi</div>
+        <div class="card-date">Abril 2026</div>
+        <h3 class="card-title">El lloguer comercial no té límits. I és legal.</h3>
+        <p class="card-excerpt">L'habitatge té contenció de rendes. El comerç local no té res. La llei tracta la ferreteria igual que un local corporatiu.</p>
+        <div class="card-link">Llegir l'article →</div>
       </div>
     </a>
-    <a class="article-card" href="articles/ferreteria-camps.html">
-      <div class="article-photo">
+
+    <a class="card" href="articles/ferreteria-camps.html">
+      <div class="card-photo">
         <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
-        <div class="article-badge">Tancat</div>
       </div>
-      <div class="article-body">
-        <div class="article-tag">Cas documentat</div>
-        <div class="article-date">Febrer 2026</div>
-        <h3 class="article-title">La Ferreteria Camps abaixa la persiana després de 90 anys</h3>
-        <p class="article-excerpt">15.000 € mensuals de lloguer acaben amb un dels comerços més emblemàtics de Gràcia.</p>
-        <div class="article-llegir">Llegir l'article →</div>
+      <div class="card-body">
+        <div class="card-kicker">Cas documentat</div>
+        <div class="card-date">Febrer 2026</div>
+        <h3 class="card-title">La Ferreteria Camps abaixa la persiana després de 90 anys</h3>
+        <p class="card-excerpt">15.000 € mensuals de lloguer acaben amb un dels comerços més emblemàtics de Gràcia.</p>
+        <div class="card-link">Llegir l'article →</div>
       </div>
     </a>
   </div>
@@ -923,52 +799,6 @@ mobileNav.querySelectorAll('a').forEach(a => {
     mobileNav.classList.remove('open');
   });
 });
-
-// Map initialization
-const map = L.map('mapa-leaflet', {
-  center: [41.4035, 2.1544],
-  zoom: 14,
-  zoomControl: true,
-  scrollWheelZoom: false
-});
-
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
-
-function makeIcon(color) {
-  return L.divIcon({
-    className: '',
-    html: `<div style="width:14px;height:14px;background:${color};border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2)"></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
-    popupAnchor: [0, -10]
-  });
-}
-
-const colors = {
-  risc: '#C8392B',
-  tancat: '#C8392B',
-  recuperat: '#C8392B'
-};
-
-fetch('https://api.airtable.com/v0/appGuT1DQskra3f9p/tblImxsEi3bEj3clb?filterByFormula={Actiu}=1', {
-  headers: { Authorization: 'Bearer patnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1' }
-})
-.then(r => r.json())
-.then(data => {
-  data.records.forEach(r => {
-    const f = r.fields;
-    if (!f.Lat || !f.Lng) return;
-    const cat = f.Categoria || 'tancat';
-    const marker = L.marker([f.Lat, f.Lng], { icon: makeIcon(colors[cat]) }).addTo(map);
-    const popup = `<div style="font-family:Montserrat;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C8392B;margin-bottom:4px;">${cat.toUpperCase()}</div><div style="font-weight:700;color:#1A1A18;margin-bottom:4px;">${f.Nom || 'Local'}</div><div style="font-size:13px;color:rgba(26,26,24,0.5);">${f.Barri || ''}</div></div>`;
-    marker.bindPopup(popup);
-  });
-})
-.catch(e => console.error('Error loading map data:', e));
 </script>
 
 </body>
