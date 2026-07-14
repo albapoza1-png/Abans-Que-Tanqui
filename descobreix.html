@@ -64,6 +64,19 @@ nav {
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
+.nav-cta {
+  background: var(--red) !important;
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover {
+  background: var(--red-dark) !important;
+}
 /* ═══════════════════════════════════════════
    LAYOUT PRINCIPAL (Sidebar + Mapa)
 ═══════════════════════════════════════════ */
@@ -239,16 +252,16 @@ nav {
 }
 .grafic-container {
   background: var(--beix-clar);
-  padding: 16px;
+  padding: 12px;  /* Reduït de 16px */
   border-radius: 8px;
+  min-height: 200px;  /* Alçada mínima fixa */
 }
 .grafic-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
-
 /* MAPA */
 #mapa-full { 
   background: var(--beix-clar);
@@ -408,10 +421,12 @@ footer {
     <img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui">
   </a>
   <div class="nav-links">
-    <a href="index.html">Inici</a>
+    <a href="projecte.html">Projecte</a>
     <a href="descobreix.html" class="active">Descobreix</a>
-    <a href="projecte.html">El projecte</a>
-    <a href="actualitat.html">Notícies</a>
+    <a href="actualitat.html">Actualitat</a>
+    <a href="recursos.html">Recursos</a>
+    <a href="contacte.html">Contacte</a>
+    <a class="nav-cta" href="contacte.html">Participa</a>
   </div>
 </nav>
 
@@ -425,7 +440,7 @@ footer {
     <div class="sidebar-header">
       <h1 class="sidebar-title">Descobreix</h1>
       <p class="sidebar-desc">
-        Explora el mapa i descobreix els comerços històrics de Barcelona abans que tanquin.
+        Explora el mapa i descobreix els comerços que estan en risc i els que han hagut de tancar a Barcelona.
       </p>
     </div>
 
@@ -439,6 +454,13 @@ footer {
     </div>
 
     <div class="comptador" id="comptador">0 comerços documentats</div>
+    <!-- AFEGEIX AIXÒ -->
+<div class="filtres-estat" style="display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap;">
+  <button class="filtre-btn active-all" onclick="filtrarEstat(this,'tot')">Tots</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'risc')" style="color:#C47A00;">En risc</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'tancat')" style="color:#C8392B;">Tancats</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'recuperat')" style="color:#2A7A4B;">Recuperats</button>
+</div>
 
     <div class="casos-list" id="casos-list"></div>
 
@@ -449,11 +471,11 @@ footer {
       <div class="grafics-grid">
         <div class="grafic-container">
           <div class="grafic-label">Per any d'obertura</div>
-          <canvas id="chart-anys" height="150"></canvas>
+          <canvas id="chart-anys" height="120"></canvas>
         </div>
         <div class="grafic-container">
           <div class="grafic-label">Per districte</div>
-          <canvas id="chart-districtes" height="150"></canvas>
+          <canvas id="chart-districtes" height="180"></canvas>  <!-- El doughnut necessita més alçada -->
         </div>
       </div>
     </div>
@@ -527,6 +549,20 @@ const labels  = { risc:'En risc', tancat:'Tancat',  recuperat:'Recuperat' };
 let punts   = [];
 let markers = [];
 let filtrActual = 'tot';
+function filtrarEstat(btn, estat) {
+  filtrActual = estat;
+  // Treu la classe active de tots els botons
+  document.querySelectorAll('.filtres-estat .filtre-btn').forEach(b => {
+    b.className = 'filtre-btn';
+  });
+  // Afegeix la classe active al botó clicat
+  btn.className = 'filtre-btn active-all';
+  btn.style.background = 'var(--ink)';
+  btn.style.color = '#fff';
+  btn.style.borderColor = 'var(--ink)';
+  
+  aplicarFiltres();
+}
 let cercaActual = '';
 
 function extreurAny(desc) {
