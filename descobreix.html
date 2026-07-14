@@ -4,168 +4,312 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Descobreix · Abans Que Tanqui</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--text:#1A1A18;--muted:#6B6B67;--border:#E2E1DC;--border-dk:#C8C7C0;--sage:#C8D5B9;--sage-dk:#3A5530;--amber:#C47A00;--cta:#2A7A4B;--cta-lt:#348A58;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
-
-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Anton',sans-serifGeorgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
-.nav-links a:hover,.nav-links a.active{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1100;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;transition:all 0.25s;}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--ink-muted);text-decoration:none;padding:12px 24px;}
-.nav-mobile a:hover{color:var(--ink);background:var(--bg);}
-.nav-mobile .nav-cta{margin:8px 24px 0;background:var(--ink);color:#fff!important;padding:12px 20px;border-radius:4px;text-align:center;font-weight:600;}
-
-.page-header{background:var(--ink);padding:52px 52px 48px;}
-.page-header-kicker{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(157,207,180,0.7);margin-bottom:10px;}
-.page-header h1{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(32px,3.5vw,48px);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:12px;}
-.page-header p{font-size:15px;color:rgba(255,255,255,0.5);max-width:520px;line-height:1.7;}
-
-.mapa-full-wrap{display:grid;grid-template-columns:1fr 360px;min-height:calc(100vh - 64px - 160px);}
-#mapa-full{z-index:1;}
-.mapa-panel{background:var(--white);border-left:1px solid var(--border);overflow-y:auto;max-height:calc(100vh - 64px);}
-.mapa-panel-header{padding:28px 28px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--white);z-index:10;}
-.mapa-panel-title{font-family:'Anton',sans-serifGeorgia,serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;}
-.filtres{display:flex;gap:8px;flex-wrap:wrap;}
-.filtre-btn{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:none;cursor:pointer;color:var(--muted);transition:all 0.15s;}
-.filtre-btn.active-risc{background:rgba(217,119,6,0.1);border-color:var(--amber);color:#B45309;}
-.filtre-btn.active-tancat{background:rgba(196,43,16,0.1);border-color:var(--red);color:var(--red);}
-.filtre-btn.active-recuperat{background:rgba(42,122,75,0.1);border-color:var(--green-ok);color:var(--green-ok);}
-.filtre-btn.active-all{background:var(--ink);border-color:var(--ink);color:#fff;}
-
-.casos-list{padding:0 0 20px;}
-.cas-item{padding:20px 28px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;}
-.cas-item:hover{background:var(--bg);}
-.cas-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;margin-bottom:8px;}
-.cas-badge.risc{background:rgba(217,119,6,0.1);color:#B45309;}
-.cas-badge.tancat{background:rgba(196,43,16,0.1);color:var(--red);}
-.cas-badge.recuperat{background:rgba(42,122,75,0.1);color:var(--green-ok);}
-.cas-nom{font-family:'Anton',sans-serifGeorgia,serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px;}
-.cas-desc{font-size:12.5px;color:var(--muted);line-height:1.5;}
-
-.mapa-stats-bar{background:var(--ink);padding:20px 52px;display:flex;gap:40px;}
-.mapa-stat{display:flex;flex-direction:column;}
-.mapa-stat-num{font-family:'Anton',sans-serifGeorgia,serif;font-size:28px;font-weight:700;color:#fff;line-height:1;}
-.mapa-stat-label{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;}
-
-.leaflet-popup-content-wrapper{border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
-.popup-title{font-weight:700;color:#1A1A17;margin-bottom:4px;}
-.popup-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:6px;}
-.popup-cat.risc{background:rgba(217,119,6,0.12);color:#B45309;}
-.popup-cat.tancat{background:rgba(196,43,16,0.1);color:#C42B10;}
-.popup-cat.recuperat{background:rgba(42,122,75,0.12);color:#2A7A4B;}
-.popup-text{color:#6E786A;line-height:1.5;}
-
-/* FITXA LATERAL */
-.fitxa{display:none;position:fixed;top:64px;right:0;width:360px;height:calc(100vh - 64px);background:var(--white);border-left:1px solid var(--border);z-index:500;overflow-y:auto;box-shadow:-4px 0 20px rgba(0,0,0,0.08);}
-.fitxa.open{display:flex;flex-direction:column;}
-.fitxa-header{padding:24px 24px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;}
-.fitxa-close{background:none;border:none;cursor:pointer;font-size:18px;color:var(--muted);padding:4px;line-height:1;}
-.fitxa-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;margin-bottom:10px;}
-.fitxa-badge.tancat{background:rgba(196,43,16,0.1);color:var(--red);}
-.fitxa-badge.risc{background:rgba(217,119,6,0.1);color:#B45309;}
-.fitxa-nom{font-family:'Anton',sans-serifGeorgia,serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:4px;letter-spacing:-0.01em;}
-.fitxa-adreca{font-size:12px;color:var(--muted);}
-.fitxa-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
-.fitxa-desc{font-size:13.5px;color:var(--ink-mid);line-height:1.75;margin-bottom:20px;}
-.fitxa-meta{display:flex;flex-direction:column;gap:8px;}
-.fitxa-meta-item{display:flex;gap:10px;font-size:12.5px;}
-.fitxa-meta-label{font-weight:600;color:var(--ink);min-width:80px;}
-.fitxa-meta-val{color:var(--muted);}
-
-/* CERCA */
-.cerca-wrap{position:relative;}
-.cerca-input{width:100%;border:1.5px solid var(--border);border-radius:20px;padding:7px 14px 7px 34px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;color:var(--ink);}
-.cerca-input:focus{border-color:var(--ink);}
-.cerca-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;}
-
-/* FILTRES PILLS */
-.filtres-anys{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
-.any-btn{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all 0.15s;}
-.any-btn.active{background:var(--ink);color:#fff;border-color:var(--ink);}
-
-@media(max-width:960px){
-  .fitxa{width:100%;top:auto;bottom:0;height:70vh;border-left:none;border-top:1px solid var(--border);box-shadow:0 -4px 20px rgba(0,0,0,0.1);}
-}
-.grafics-bloc{padding:56px 52px;background:var(--white);border-top:1px solid var(--border);}
-.grafics-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid var(--border);}
-.grafics-kicker{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;}
-.grafics-title{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(20px,2vw,26px);font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
-.grafics-nota{font-size:12px;color:var(--muted);max-width:280px;text-align:right;line-height:1.5;}
-.grafics-inner{width:100%;}
-.grafics-row{display:grid;grid-template-columns:1fr 260px;gap:40px;align-items:center;}
-.grafic-subtitol{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
-.grafic-pie{display:flex;flex-direction:column;align-items:center;}
-.grafic-pie canvas{max-width:240px;max-height:240px;}
-
-footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
-.footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
-.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;}
-.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:14px;}
-.footer-brand-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:20px;}
-.footer-social{display:flex;gap:10px;}
-.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background 0.15s;}
-.footer-social a:hover{background:rgba(255,255,255,0.14);}
-.footer-col-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:9px;transition:color 0.15s;}
-.footer-col a:hover{color:rgba(255,255,255,0.9);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:18px 0;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,0.25);}
-.footer-entity{font-size:11.5px;color:rgba(157,207,180,0.5);font-weight:500;}
-
-@media(max-width:960px){
-  nav{padding:0 20px;}
-  .nav-links{display:none;}
-  .nav-burger{display:flex;}
-  .page-header{padding:36px 20px 32px;}
-  .mapa-full-wrap{grid-template-columns:1fr;grid-template-rows:360px 1fr;}
-  #mapa-full{height:360px;}
-  .mapa-panel{max-height:none;border-left:none;border-top:1px solid var(--border);}
-  .mapa-stats-bar{padding:16px 20px;gap:20px;flex-wrap:wrap;}
-  .grafics-bloc{padding:40px 20px;}
-  .grafics-header{flex-direction:column;align-items:flex-start;gap:8px;}.grafics-nota{text-align:left;max-width:100%;}
-  .grafics-row{grid-template-columns:1fr;gap:32px;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
-  .footer-bottom{flex-direction:column;gap:6px;text-align:center;}
+:root {
+  --beix: #f5efe6;
+  --beix-clar: #faf6f1;
+  --white: #FFFFFF;
+  --ink: #1A1A18;
+  --red: #C8392B;
+  --red-dark: #a63120;
+  --ink-mid: rgba(26,26,24,0.72);
+  --ink-muted: rgba(26,26,24,0.50);
+  --border: rgba(26,26,24,0.12);
+  --muted: rgba(26,26,24,0.50);
+  --amber: #C47A00;
+  --green: #2A7A4B;
 }
 
-/* ══ CAPCALERA INTERIOR UNIFICADA ══ */
-.hero,.page-header{background:var(--white)!important;padding:72px 52px 64px!important;
-  border-bottom:2px solid var(--ink)!important;min-height:auto!important;}
-.hero h1,.page-header h1{font-family:'Anton',sans-serif!important;font-weight:400!important;
-  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
-  color:var(--ink)!important;margin-bottom:18px!important;}
-.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;font-weight:600!important;
-  font-size:11px!important;letter-spacing:0.14em!important;text-transform:uppercase!important;
-  color:var(--red)!important;margin-bottom:14px!important;}
-.hero-sub,.page-header p{font-family:'Montserrat',sans-serif!important;font-size:16px!important;
-  line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px!important;}
-@media(max-width:768px){.hero,.page-header{padding:44px 22px 40px!important;}}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═ NAVIGATION ══ */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 40px; width: auto; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--ink-muted);
+  text-decoration: none; transition: color 0.15s; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a.active::after {
+  content: ''; position: absolute; bottom: -24px; left: 0; right: 0;
+  height: 2px; background: var(--red);
+}
+.nav-cta {
+  background: var(--red) !important; color: #fff !important;
+  padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+/* ══ HEADER ══ */
+.page-header {
+  background: var(--white);
+  padding: 64px 52px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.page-header-kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--ink);
+  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.page-header p {
+  font-size: 15px; color: var(--ink-mid); max-width: 600px; line-height: 1.7;
+}
+
+/* ══ MAPA AMB SIDEBAR ══ */
+.mapa-full-wrap {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  min-height: calc(100vh - 72px - 200px);
+}
+
+/* Sidebar */
+.mapa-panel {
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mapa-panel-header {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.mapa-panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 16px;
+}
+
+/* Cerca */
+.cerca-wrap { position: relative; margin-bottom: 16px; }
+.cerca-input {
+  width: 100%; border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 8px 14px 8px 36px; font-size: 12px; font-family: inherit;
+  outline: none; color: var(--ink);
+}
+.cerca-input:focus { border-color: var(--ink); }
+.cerca-ico {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; width: 14px; height: 14px; stroke: var(--ink-muted);
+}
+
+/* Filtres */
+.filtres { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.filtre-btn {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  background: #fff; cursor: pointer; color: var(--muted); transition: all 0.15s;
+}
+.filtre-btn:hover { border-color: var(--ink); color: var(--ink); }
+.filtre-btn.active-risc { background: rgba(196,122,0,0.1); border-color: var(--amber); color: var(--amber); }
+.filtre-btn.active-tancat { background: rgba(200,57,43,0.1); border-color: var(--red); color: var(--red); }
+.filtre-btn.active-recuperat { background: rgba(42,122,75,0.1); border-color: var(--green); color: var(--green); }
+.filtre-btn.active-all { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+.filtres-anys { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+.filtres-anys > span { font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+.any-btn {
+  font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+  border: 1.5px solid var(--border); background: #fff; color: var(--muted);
+  cursor: pointer; transition: all 0.15s;
+}
+.any-btn:hover { border-color: var(--ink); color: var(--ink); }
+.any-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+/* Llista */
+.casos-list { flex: 1; overflow-y: auto; }
+.cas-item {
+  padding: 18px 28px; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+}
+.cas-item:hover { background: var(--beix-clar); }
+.cas-badge {
+  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-bottom: 8px;
+}
+.cas-badge.risc { background: rgba(196,122,0,0.12); color: var(--amber); }
+.cas-badge.tancat { background: rgba(200,57,43,0.12); color: var(--red); }
+.cas-badge.recuperat { background: rgba(42,122,75,0.12); color: var(--green); }
+.cas-nom {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+}
+.cas-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* Mapa */
+#mapa-full { background: var(--beix-clar); }
+
+/* Stats Bar */
+.mapa-stats-bar {
+  background: var(--ink); padding: 20px 52px; display: flex; gap: 40px;
+}
+.mapa-stat { display: flex; flex-direction: column; }
+.mapa-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: #fff; line-height: 1;
+}
+.mapa-stat-label {
+  font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-top: 4px;
+}
+
+/* Fitxa */
+.fitxa {
+  display: none; position: fixed; top: 72px; right: 0;
+  width: 380px; height: calc(100vh - 72px); background: var(--white);
+  border-left: 1px solid var(--border); z-index: 500; overflow-y: auto;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+}
+.fitxa.open { display: flex; flex-direction: column; }
+.fitxa-header {
+  padding: 24px; border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.fitxa-close {
+  background: none; border: none; cursor: pointer; font-size: 20px;
+  color: var(--muted); padding: 4px;
+}
+.fitxa-badge {
+  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px;
+}
+.fitxa-badge.tancat { background: rgba(200,57,43,0.1); color: var(--red); }
+.fitxa-badge.risc { background: rgba(196,122,0,0.1); color: var(--amber); }
+.fitxa-badge.recuperat { background: rgba(42,122,75,0.1); color: var(--green); }
+.fitxa-nom {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+}
+.fitxa-adreca { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+.fitxa-body { padding: 24px; }
+.fitxa-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 20px; }
+.fitxa-meta { display: flex; flex-direction: column; gap: 8px; }
+.fitxa-meta-item { display: flex; gap: 10px; font-size: 12.5px; }
+.fitxa-meta-label { font-weight: 600; color: var(--ink); min-width: 80px; }
+.fitxa-meta-val { color: var(--muted); }
+
+/* ═ GRÀFICS ══ */
+.grafics-bloc {
+  padding: 64px 52px; background: var(--white); border-top: 1px solid var(--border);
+}
+.grafics-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.grafics-kicker {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 6px;
+}
+.grafics-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.grafics-nota { font-size: 12px; color: var(--muted); max-width: 300px; text-align: right; }
+
+.grafics-inner { max-width: 1200px; margin: 0 auto; }
+.grafics-row { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: center; }
+.grafic-subtitol {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+
+/* ══ CALCULADORA ══ */
+.calculadora-bloc {
+  background: var(--beix);
+  padding: 64px 52px;
+  border-top: 1px solid var(--border);
+}
+.calculadora-inner {
+  max-width: 800px;
+}
+.calculadora-kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--red); margin-bottom: 10px;
+}
+.calculadora-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--ink);
+  margin-bottom: 12px; letter-spacing: -0.02em;
+}
+.calculadora-desc {
+  font-size: 15px; color: var(--ink-mid); line-height: 1.7;
+  margin-bottom: 28px; max-width: 600px;
+}
+.calculadora-btn {
+  display: inline-block; background: var(--red); color: #fff;
+  padding: 14px 28px; border-radius: 4px; font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: background 0.2s;
+}
+.calculadora-btn:hover { background: var(--red-dark); }
+
+/* ══ FOOTER ══ */
+footer {
+  background: #111110; padding: 48px 52px 24px; color: rgba(255,255,255,0.6);
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700;
+  color: #fff; display: flex; align-items: center; gap: 9px; margin-bottom: 12px;
+}
+.footer-brand img { height: 44px; width: auto; filter: brightness(0) invert(1); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11.5px; color: rgba(255,255,255,0.2);
+}
+
+/* ══ RESPONSIVE ═ */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .page-header { padding: 48px 20px 40px; }
+  .mapa-full-wrap { grid-template-columns: 1fr; grid-template-rows: 400px 1fr; }
+  .mapa-panel { border-right: none; border-top: 1px solid var(--border); }
+  .fitxa { width: 100%; top: auto; bottom: 0; height: 60vh; border-left: none; border-top: 1px solid var(--border); }
+  .mapa-stats-bar { padding: 16px 20px; gap: 24px; flex-wrap: wrap; }
+  .grafics-bloc { padding: 48px 20px; }
+  .grafics-row { grid-template-columns: 1fr; gap: 32px; }
+  .calculadora-bloc { padding: 48px 20px; }
+  footer { padding: 40px 20px 20px; }
+}
 </style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
+  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui"></a>
   <div class="nav-links">
     <a href="projecte.html">Projecte</a>
     <a href="descobreix.html" class="active">Descobreix</a>
@@ -174,30 +318,53 @@ footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-b
     <a href="contacte.html">Contacte</a>
     <a class="nav-cta" href="contacte.html">Suma't</a>
   </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
 
-
+<!-- HEADER -->
 <div class="page-header">
   <div class="page-header-kicker">Descobreix</div>
   <h1>Comerços en risc a Barcelona.</h1>
   <p>Cada punt representa un comerç documentat. El mapa s'actualitza a mesura que treballem sobre el terreny.</p>
 </div>
 
+<!-- STATS BAR -->
 <div class="mapa-stats-bar">
-  <div class="mapa-stat"><span class="mapa-stat-num">—</span><div class="mapa-stat-label">En risc</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num">—</span><div class="mapa-stat-label">Tancats</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num">—</span><div class="mapa-stat-label">Recuperats</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num">—</span><div class="mapa-stat-label">Total documentats</div></div>
+  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-risc">—</span><div class="mapa-stat-label">En risc</div></div>
+  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-tancat">—</span><div class="mapa-stat-label">Tancats</div></div>
+  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-recuperat">—</span><div class="mapa-stat-label">Recuperats</div></div>
+  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-total">—</span><div class="mapa-stat-label">Total documentats</div></div>
 </div>
 
+<!-- MAPA AMB SIDEBAR -->
+<div class="mapa-full-wrap">
+  <div class="mapa-panel">
+    <div class="mapa-panel-header">
+      <div class="mapa-panel-title">Casos documentats</div>
+      
+      <div class="cerca-wrap">
+        <svg class="cerca-ico" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="cerca-input" id="cerca-input" placeholder="Cerca un comerç..." oninput="cercar(this.value)">
+      </div>
+
+      <div class="filtres">
+        <button class="filtre-btn active-all" data-filtre="tot" onclick="filtrar(this,'tot')">Tots</button>
+        <button class="filtre-btn" data-filtre="risc" onclick="filtrar(this,'risc')">En risc</button>
+        <button class="filtre-btn" data-filtre="tancat" onclick="filtrar(this,'tancat')">Tancats</button>
+        <button class="filtre-btn" data-filtre="recuperat" onclick="filtrar(this,'recuperat')">Recuperats</button>
+      </div>
+
+      <div class="filtres-anys" id="filtres-anys">
+        <span>Any:</span>
+        <button class="any-btn active" data-any="tot" onclick="filtrarAny(this,'tot')">Tots</button>
+      </div>
+    </div>
+    <div class="casos-list" id="casos-list"></div>
+  </div>
+  
+  <div id="mapa-full"></div>
+</div>
+
+<!-- FITXA -->
 <div class="fitxa" id="fitxa">
   <div class="fitxa-header">
     <div>
@@ -213,30 +380,7 @@ footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-b
   </div>
 </div>
 
-<div class="mapa-full-wrap">
-  <div id="mapa-full"></div>
-  <div class="mapa-panel">
-    <div class="mapa-panel-header">
-      <div class="mapa-panel-title">Casos documentats</div>
-      <div class="filtres">
-        <button class="filtre-btn active-all" data-filtre="tot" onclick="filtrar(this,'tot')">Tots</button>
-        <button class="filtre-btn" data-filtre="risc" onclick="filtrar(this,'risc')">En risc</button>
-        <button class="filtre-btn" data-filtre="tancat" onclick="filtrar(this,'tancat')">Tancats</button>
-        <button class="filtre-btn" data-filtre="recuperat" onclick="filtrar(this,'recuperat')">Recuperats</button>
-      </div>
-      <div class="filtres-anys" id="filtres-anys">
-        <span style="font-size:11px;font-weight:600;color:var(--muted);align-self:center;">Any:</span>
-        <button class="any-btn active" data-any="tot" onclick="filtrarAny(this,'tot')">Tots</button>
-      </div>
-      <div class="cerca-wrap" style="margin-top:10px;">
-        <svg class="cerca-ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C8C7C0" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input class="cerca-input" id="cerca-input" placeholder="Cerca un comerç..." oninput="cercar(this.value)">
-      </div>
-    </div>
-    <div class="casos-list" id="casos-list"></div>
-  </div>
-</div>
-
+<!-- GRÀFICS -->
 <section class="grafics-bloc">
   <div class="grafics-header">
     <div>
@@ -247,39 +391,42 @@ footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-b
   </div>
   <div class="grafics-inner">
     <div class="grafics-row">
-      <div class="grafic-timeline">
+      <div>
         <div class="grafic-subtitol">Per any</div>
         <canvas id="chart-anys" height="100"></canvas>
       </div>
-      <div class="grafic-pie">
+      <div>
         <div class="grafic-subtitol">Per districte</div>
-        <canvas id="chart-districtes" height="240" width="240"></canvas>
+        <canvas id="chart-districtes" height="260" width="260"></canvas>
       </div>
     </div>
   </div>
 </section>
 
-
-<section style="background:var(--bg-warm);border-top:1px solid var(--border);padding:56px 52px;">
-  <div style="max-width:760px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Eina</div>
-    <div style="font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;">És possible? Calcula-ho.</div>
-    <p style="font-size:15px;color:var(--ink-mid);line-height:1.75;margin-bottom:28px;max-width:580px;">Quant costaria treure un local del mercat i cedir-lo a preu de cost? Explora-ho amb un cas real de Gràcia.</p>
-    <a href="calculadora.html" style="display:inline-block;background:var(--red);color:#fff;padding:13px 24px;border-radius:3px;font-size:14px;font-weight:700;text-decoration:none;">Obrir la calculadora →</a>
+<!-- CALCULADORA -->
+<section class="calculadora-bloc">
+  <div class="calculadora-inner">
+    <div class="calculadora-kicker">Eina</div>
+    <div class="calculadora-title">És possible? Calcula-ho.</div>
+    <p class="calculadora-desc">Quant costaria treure un local del mercat i cedir-lo a preu de cost? Explora-ho amb un cas real de Gràcia.</p>
+    <a href="calculadora.html" class="calculadora-btn">Obrir la calculadora →</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Barcelona</div>
+  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui"></div>
+  <div class="footer-bottom">
+    <span>© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
+    <span>En fase de constitució · 2026</span>
+  </div>
 </footer>
 
 <script>
-// ── CONFIGURACIÓ AIRTABLE ─────────────────────────────────────────────────────
-const AIRTABLE_TOKEN  = 'patnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1';   // <-- enganxa aquí el teu token
+// ── CONFIGURACIÓ AIRTABLE ──
+const AIRTABLE_TOKEN  = 'patnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1';
 const AIRTABLE_BASE   = 'appGuT1DQskra3f9p';
 const AIRTABLE_TABLE  = 'tblImxsEi3bEj3clb';
-// ─────────────────────────────────────────────────────────────────────────────
 
 const colors = { risc:'#C47A00', tancat:'#C8392B', recuperat:'#2A7A4B' };
 const labels  = { risc:'En risc', tancat:'Tancat',  recuperat:'Recuperat' };
@@ -303,111 +450,74 @@ function puntVisible(p) {
 }
 
 // Mapa
-const map = L.map('mapa-full', { center:[41.4035,2.1544], zoom:15, scrollWheelZoom:false });
+const map = L.map('mapa-full', { center:[41.4035,2.1544], zoom:14, scrollWheelZoom:true });
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-  attribution:'&copy; <a href="https://carto.com/">CARTO</a>', subdomains:'abcd', maxZoom:19
+  attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19
 }).addTo(map);
 
 function makeIcon(color){
   return L.divIcon({
     className:'',
     html:`<div style="width:14px;height:14px;background:${color};border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.25)"></div>`,
-    iconSize:[14,14], iconAnchor:[7,7], popupAnchor:[0,-10]
+    iconSize:[14,14], iconAnchor:[7,7]
   });
 }
 
-// Carrega dades d'Airtable
 async function carregarDades() {
-  document.getElementById('casos-list').innerHTML =
-    '<div style="padding:28px;color:var(--muted);font-size:13px;">Carregant comerços...</div>';
-
   try {
     let tots = [];
     let offset = '';
-
-    // Airtable pagina de 100 en 100 — fem totes les pàgines
     do {
-      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}`
-        + `?filterByFormula={Actiu}=1`
-        + (offset ? `&offset=${offset}` : '');
-
-      const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` }
-      });
-
-      if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}` + `?filterByFormula={Actiu}=1` + (offset ? `&offset=${offset}` : '');
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
+      if (!res.ok) throw new Error(`Error ${res.status}`);
       const data = await res.json();
-
       tots = tots.concat(data.records);
       offset = data.offset || '';
     } while (offset);
 
-    // Convertim els registres al format intern
-    punts = tots
-      .map(r => ({
-        nom:  r.fields['Nom']       || '',
-        addr: r.fields['Adreça']    || r.fields['Adreca'] || '',
-        lat:  parseFloat(r.fields['Lat'])  || null,
-        lng:  parseFloat(r.fields['Lng'])  || null,
-        cat:  (r.fields['Categoria'] || 'risc').toLowerCase(),
-        desc: r.fields['Descripció'] || '',
-        any:  r.fields['Any'] ? String(r.fields['Any']) : extreurAny(r.fields['Descripció'] || ''),
-      }))
-      .filter(p => p.lat && p.lng && p.nom); // descartem els que falten coordenades
+    punts = tots.map(r => ({
+      nom:  r.fields['Nom'] || '',
+      addr: r.fields['Adreça'] || r.fields['Adreca'] || '',
+      lat:  parseFloat(r.fields['Lat']) || null,
+      lng:  parseFloat(r.fields['Lng']) || null,
+      cat:  (r.fields['Categoria'] || 'risc').toLowerCase(),
+      desc: r.fields['Descripció'] || '',
+      any:  r.fields['Any'] ? String(r.fields['Any']) : extreurAny(r.fields['Descripció'] || ''),
+    })).filter(p => p.lat && p.lng && p.nom);
 
     pintarMarcadors();
     actualitzarStats();
     renderAnys();
     renderLlista();
     renderGrafic();
-
   } catch (err) {
-    console.error('Error Airtable:', err);
-    document.getElementById('casos-list').innerHTML =
-      `<div style="padding:28px;color:var(--red);font-size:13px;">
-        Error carregant les dades.<br>
-        <span style="color:var(--muted);font-size:12px;">${err.message}</span>
-      </div>`;
+    console.error('Error:', err);
+    document.getElementById('casos-list').innerHTML = '<div style="padding:28px;color:var(--red);">Error carregant dades</div>';
   }
 }
 
 function pintarMarcadors() {
-  // Neteja marcadors anteriors
   markers.forEach(m => map.removeLayer(m.marker));
   markers = [];
-
   punts.forEach(p => {
     const color = colors[p.cat] || colors.risc;
-    const m = L.marker([p.lat, p.lng], { icon: makeIcon(color) })
-      .addTo(map)
-      .bindPopup(
-        `<div class="popup-cat ${p.cat}">${labels[p.cat] || p.cat}</div>` +
-        `<div class="popup-title">${p.nom}</div>` +
-        (p.addr ? `<div class="popup-text" style="margin-bottom:4px">${p.addr}</div>` : '') +
-        (p.desc ? `<div class="popup-text">${p.desc}</div>` : '')
-      );
+    const m = L.marker([p.lat, p.lng], { icon: makeIcon(color) }).addTo(map);
+    m.on('click', () => obrirFitxa(p));
     markers.push({ marker: m, data: p });
   });
 }
 
 function actualitzarStats() {
-  const risc      = punts.filter(p => p.cat === 'risc').length;
-  const tancat    = punts.filter(p => p.cat === 'tancat').length;
-  const recuperat = punts.filter(p => p.cat === 'recuperat').length;
-  const total     = punts.length;
-
-  // Actualitza la barra d'estadístiques
-  const nums = document.querySelectorAll('.mapa-stat-num');
-  if (nums[0]) nums[0].textContent = risc;
-  if (nums[1]) nums[1].textContent = tancat;
-  if (nums[2]) nums[2].textContent = recuperat;
-  if (nums[3]) nums[3].textContent = total;
+  document.getElementById('stat-risc').textContent = punts.filter(p => p.cat === 'risc').length;
+  document.getElementById('stat-tancat').textContent = punts.filter(p => p.cat === 'tancat').length;
+  document.getElementById('stat-recuperat').textContent = punts.filter(p => p.cat === 'recuperat').length;
+  document.getElementById('stat-total').textContent = punts.length;
 }
 
 function renderAnys() {
   const anys = [...new Set(punts.map(p => p.any).filter(Boolean))].sort();
   const wrap = document.getElementById('filtres-anys');
-  // Mantenir el botó "Tots"
   const totsBtn = wrap.querySelector('[data-any="tot"]');
   wrap.innerHTML = '';
   wrap.appendChild(totsBtn);
@@ -426,21 +536,17 @@ function renderLlista() {
   list.innerHTML = '';
   const filtrats = punts.filter(puntVisible);
   if (filtrats.length === 0) {
-    list.innerHTML = '<div style="padding:28px;color:var(--muted);font-size:13px;">Cap comerç amb aquests filtres.</div>';
+    list.innerHTML = '<div style="padding:28px;color:var(--muted);font-size:13px;">Cap resultat</div>';
     return;
   }
   filtrats.forEach(p => {
     const div = document.createElement('div');
     div.className = 'cas-item';
     div.innerHTML =
-      `<div class="cas-badge ${p.cat}">${labels[p.cat] || p.cat}${p.any ? ' · ' + p.any : ''}</div>` +
+      `<div class="cas-badge ${p.cat}">${labels[p.cat]}${p.any ? ' · ' + p.any : ''}</div>` +
       `<div class="cas-nom">${p.nom}</div>` +
-      (p.addr ? `<div class="cas-desc" style="margin-bottom:2px">${p.addr}</div>` : '');
-    div.addEventListener('click', () => {
-      map.setView([p.lat, p.lng], 17);
-      markers.find(m => m.data.nom === p.nom)?.marker.openPopup();
-      obrirFitxa(p);
-    });
+      (p.addr ? `<div class="cas-desc">${p.addr}</div>` : '');
+    div.onclick = () => { map.setView([p.lat, p.lng], 16); obrirFitxa(p); };
     list.appendChild(div);
   });
 }
@@ -473,14 +579,14 @@ function cercar(val) {
 }
 
 function obrirFitxa(p) {
-  document.getElementById('fitxa-badge').textContent = labels[p.cat] || p.cat;
+  document.getElementById('fitxa-badge').textContent = labels[p.cat];
   document.getElementById('fitxa-badge').className = 'fitxa-badge ' + p.cat;
   document.getElementById('fitxa-nom').textContent = p.nom;
   document.getElementById('fitxa-adreca').textContent = p.addr || '';
   document.getElementById('fitxa-desc').textContent = p.desc || '';
   const meta = document.getElementById('fitxa-meta');
   meta.innerHTML = '';
-  if (p.any) meta.innerHTML += `<div class="fitxa-meta-item"><span class="fitxa-meta-label">Any</span><span class="fitxa-meta-val">${p.any}</span></div>`;
+  if (p.any) meta.innerHTML += `<div class="fitxa-meta-item"><span class="fitxa-meta-label">Any</span><span>${p.any}</span></div>`;
   document.getElementById('fitxa').classList.add('open');
 }
 
@@ -488,132 +594,59 @@ function tancarFitxa() {
   document.getElementById('fitxa').classList.remove('open');
 }
 
-// Arrenca
-carregarDades();
-
-// Nav burger
-const burger = document.getElementById('nav-burger');
-const mobileNav = document.getElementById('nav-mobile');
-burger.addEventListener('click', () => { burger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mobileNav.classList.remove('open'); }));
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script>
+// Gràfics
 function getDistricte(p) {
   const a = (p.addr + ' ' + p.desc).toLowerCase();
-  // Gràcia
-  if(a.includes('gràcia') || a.includes('gracia') || a.includes('gran de gràcia') ||
-     a.includes('travessera de gràcia') || a.includes('llibertat') ||
-     a.includes('santa eugènia') || a.includes('mercat de la llibertat') ||
-     a.includes('vila de gràcia')) return 'Gràcia';
-  // Ciutat Vella (Gòtic, Raval, Ribera, Barceloneta)
-  if(a.includes('gòtic') || a.includes('gothic') || a.includes('petritxol') ||
-     a.includes('call') || a.includes('escudellers') || a.includes('palla') ||
-     a.includes('portaferrissa') || a.includes('canuda') || a.includes('comtal') ||
-     a.includes('ferran') || a.includes('barri gòtic') ||
-     a.includes('raval') || a.includes('tallers') || a.includes('vicenç martorell') ||
-     a.includes('sant pere') || a.includes('ribera') ||
-     a.includes('barceloneta') || a.includes('la barceloneta') ||
-     a.includes('cera')) return 'Ciutat Vella';
-  // Eixample (inclou Sant Antoni)
-  if(a.includes('eixample') || a.includes('roger de llúria') ||
-     a.includes('passeig de gràcia') || a.includes('rambla de catalunya') ||
-     a.includes('sant joan') || a.includes('passeig sant joan') ||
-     a.includes('sant antoni') || a.includes('tamarit') || a.includes('parlament') ||
-     a.includes('comte borrell') || a.includes('muntaner') || a.includes('aribau') ||
-     a.includes('consell de cent') || a.includes('provença') || a.includes('aragó') ||
-     a.includes('diagonal') || a.includes('francesc macià')) return 'Eixample';
-  // Sants-Montjuïc / Les Corts
-  if(a.includes('sants') || a.includes('esplugues') || a.includes('carrer de sants') ||
-     a.includes('les corts') || a.includes('corts')) return 'Sants-Montjuïc';
-  // Sarrià-Sant Gervasi
-  if(a.includes('sarrià') || a.includes('sarria') || a.includes('sant gervasi') ||
-     a.includes('lesseps') || a.includes('farró')) return 'Sarrià-Sant Gervasi';
-  // Sant Andreu
-  if(a.includes('sant andreu') || a.includes('versalles') ||
-     a.includes('gran de sant andreu')) return 'Sant Andreu';
-  // Horta-Guinardó
+  if(a.includes('gràcia')) return 'Gràcia';
+  if(a.includes('gòtic') || a.includes('raval') || a.includes('barceloneta')) return 'Ciutat Vella';
+  if(a.includes('eixample')) return 'Eixample';
+  if(a.includes('sants') || a.includes('corts')) return 'Sants-Montjuïc';
+  if(a.includes('sarrià') || a.includes('sant gervasi')) return 'Sarrià-Sant Gervasi';
+  if(a.includes('sant andreu')) return 'Sant Andreu';
   if(a.includes('horta') || a.includes('guinardó')) return 'Horta-Guinardó';
-  // Sant Martí / Poblenou
-  if(a.includes('clot') || a.includes('muntanya') || a.includes('poblenou') ||
-     a.includes('sant martí') || a.includes('rambla del poblenou')) return 'Sant Martí';
-  // Nou Barris
-  if(a.includes('nou barris') || a.includes('roquetes') || a.includes('verdun')) return 'Nou Barris';
+  if(a.includes('clot') || a.includes('poblenou')) return 'Sant Martí';
   return 'Altres';
 }
 
 function renderGrafic() {
   const anys = {};
   punts.forEach(p => {
-    const match = p.desc.match(/\b(202[0-9])\b/);
-    const any = match ? match[1] : null;
+    const any = p.any || (p.desc.match(/\b(202[0-9])\b/) || [])[1];
     if(!any) return;
     anys[any] = (anys[any] || 0) + 1;
   });
 
   const labelsAnys = Object.keys(anys).sort();
-  const valorsAnys = labelsAnys.map(a => anys[a]);
-
-  const ctxAnys = document.getElementById('chart-anys');
-  if(ctxAnys) {
-    new Chart(ctxAnys, {
-      type: 'bar',
-      data: {
-        labels: labelsAnys,
-        datasets: [{
-          label: 'Tancaments',
-          data: valorsAnys,
-          backgroundColor: '#C8392B',
-          borderRadius: 4,
-          borderSkipped: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' cas' + (c.parsed.y !== 1 ? 'os' : '') } } },
-        scales: {
-          y: { beginAtZero: true, ticks: { stepSize: 1, font: { family: 'DM Sans', size: 12 }, color: '#6B6B67' }, grid: { color: '#E2E1DC' }, border: { display: false } },
-          x: { ticks: { font: { family: 'DM Sans', size: 13, weight: '600' }, color: '#1A1A18' }, grid: { display: false }, border: { display: false } }
-        }
+  new Chart(document.getElementById('chart-anys'), {
+    type: 'bar',
+    data: {
+      labels: labelsAnys,
+      datasets: [{ data: labelsAnys.map(a => anys[a]), backgroundColor: '#C8392B', borderRadius: 4 }]
+    },
+    options: {
+      responsive: true, plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1, font: { family: 'Montserrat', size: 11 } }, grid: { color: '#E2E1DC' }, border: { display: false } },
+        x: { ticks: { font: { family: 'Montserrat', size: 12, weight: '600' } }, grid: { display: false }, border: { display: false } }
       }
-    });
-  }
-
-  const districtes = {};
-  punts.forEach(p => {
-    const d = getDistricte(p);
-    districtes[d] = (districtes[d] || 0) + 1;
+    }
   });
 
+  const districtes = {};
+  punts.forEach(p => { const d = getDistricte(p); districtes[d] = (districtes[d] || 0) + 1; });
   const labelsD = Object.keys(districtes).sort((a,b) => districtes[b] - districtes[a]);
-  const valorsD = labelsD.map(d => districtes[d]);
-  const colors = ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A','#5A6B3A','#3A5A6B'];
+  
+  new Chart(document.getElementById('chart-districtes'), {
+    type: 'doughnut',
+    data: {
+      labels: labelsD,
+      datasets: [{ data: labelsD.map(d => districtes[d]), backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: { responsive: true, maintainAspectRatio: true, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { font: { family: 'Montserrat', size: 11 }, padding: 12 } } } }
+  });
 
-  const ctxD = document.getElementById('chart-districtes');
-  if(ctxD) {
-    new Chart(ctxD, {
-      type: 'doughnut',
-      data: {
-        labels: labelsD,
-        datasets: [{
-          data: valorsD,
-          backgroundColor: colors.slice(0, labelsD.length),
-          borderWidth: 2,
-          borderColor: '#fff',
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        cutout: '60%',
-        plugins: {
-          legend: { position: 'bottom', labels: { font: { family: 'DM Sans', size: 11 }, color: '#6B6B67', padding: 10, boxWidth: 12 } },
-          tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + ' casos' } }
-        }
-      }
-    });
-  }
-}
+
+carregarDades();
 </script>
 </body>
 </html>
