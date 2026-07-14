@@ -4,167 +4,120 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Actualitat · Abans Que Tanqui</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta name="description" content="Casos documentats, anàlisis i context sobre la pèrdua del comerç local a Barcelona.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--beix:#DACDC5;--white:#FFFFFF;--ink:#1A1A18;--red:#C8392B;--paper:#F7F1EE;--gris:#F1EFEE;--gris-dk:#E6E3E1;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#C8392B;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#C8392B;--cta:#C8392B;--cta-lt:#A63120;--card2:#F7F1EE;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --beix:#f5efe6;--beix-clar:#faf6f1;--white:#FFFFFF;--ink:#1A1A18;
+  --red:#C8392B;--red-dark:#a63120;
+  --ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);
+  --border:rgba(26,26,24,0.12);--muted:rgba(26,26,24,0.50);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:0.005em;}
+a{color:inherit;}
 
-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Anton',sans-serifGeorgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
+/* NAV — identic al de Projecte */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;
+  display:flex;align-items:center;justify-content:space-between;height:64px;
+  position:sticky;top:0;z-index:1000;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:32px;width:auto;}
+.nav-links{display:flex;gap:26px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color .15s;}
 .nav-links a:hover,.nav-links a.active{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1100;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;transition:all 0.25s;}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--ink-muted);text-decoration:none;padding:12px 24px;}
-.nav-mobile .nav-cta{margin:8px 24px 0;background:var(--ink);color:#fff!important;padding:12px 20px;border-radius:4px;text-align:center;font-weight:600;}
+.nav-cta{background:var(--ink)!important;color:#fff!important;padding:9px 18px;border-radius:3px;font-weight:600;}
+#nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1100;}
+#nav-burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s;}
+#nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+#nav-burger.open span:nth-child(2){opacity:0;}
+#nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-.page-header{background:var(--white);padding:72px 52px 64px;border-bottom:2px solid var(--ink);}
-.page-header-kicker{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
-.page-header h1{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(40px,5vw,64px);font-weight:700;color:var(--ink);letter-spacing:-0.03em;line-height:1.05;margin-bottom:16px;}
-.page-header p{font-size:16px;color:var(--ink-mid);max-width:600px;line-height:1.8;}
+/* HERO — blanc, com les altres pàgines interiors */
+.hero{background:var(--white);padding:72px 52px 56px;border-bottom:2px solid var(--ink);}
+.hero-inner{max-width:1400px;margin:0 auto;}
+.hero-kicker{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+.hero h1{font-size:clamp(34px,4.6vw,56px);line-height:1.05;color:var(--ink);margin-bottom:18px;}
+.hero h1 em{color:var(--red);font-style:normal;}
+.hero p{font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.75;color:var(--ink-mid);max-width:560px;}
 
-.articles-wrap{max-width:1000px;margin:0 auto;padding:64px 52px;}
+/* CAS DESTACAT — franja beix */
+.destacat{background:var(--beix);padding:64px 52px;}
+.destacat-inner{max-width:1400px;margin:0 auto;}
+.destacat-card{background:var(--white);border:1px solid var(--border);border-radius:6px;
+  padding:44px 48px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;}
+.destacat-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:14px;}
+.destacat-date{font-size:12px;color:var(--ink-muted);font-weight:600;margin-bottom:10px;}
+.destacat-title{font-size:clamp(22px,2.6vw,32px);line-height:1.12;color:var(--ink);margin-bottom:16px;}
+.destacat-text{font-family:'Montserrat',sans-serif;font-size:14px;line-height:1.75;color:var(--ink-mid);max-width:620px;}
+.destacat-link{font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);
+  text-decoration:none;border-bottom:1.5px solid var(--red);padding-bottom:2px;white-space:nowrap;}
 
-.article-featured{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-bottom:52px;border-bottom:2px solid var(--border);margin-bottom:52px;}
-.article-featured-photo{height:260px;background:var(--card2);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.article-featured-photo-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 7px,rgba(26,26,24,0.05) 7px,rgba(26,26,24,0.05) 8px);}
-.article-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-bottom:12px;background:rgba(196,43,16,0.1);color:var(--red);}
-.article-tag.analisi{background:rgba(202,62,39,0.10);color:var(--ink-muted);}
-.article-tag.cas{background:rgba(217,119,6,0.1);color:#B45309;}
-.article-date{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.article-title{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(20px,2vw,26px);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:14px;letter-spacing:-0.01em;}
-.article-excerpt{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
-.article-link{font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;transition:color 0.15s;}
-.article-link:hover{color:var(--cta-lt);}
+/* ARTICLES RECENTS — franja blanca, 3 targetes */
+.recents{background:var(--white);padding:80px 52px;border-top:1px solid var(--border);}
+.recents-inner{max-width:1400px;margin:0 auto;}
+.section-kicker{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.section-title{font-size:clamp(22px,2.5vw,30px);color:var(--ink);margin-bottom:40px;}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.art-card{background:var(--beix-clar);border:1px solid var(--border);border-radius:6px;
+  padding:26px 26px 28px;display:flex;flex-direction:column;text-decoration:none;
+  transition:box-shadow .2s,transform .2s;}
+.art-card:hover{box-shadow:0 8px 26px rgba(26,26,24,.10);transform:translateY(-2px);}
+.art-tag{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.art-date{font-size:11px;color:var(--ink-muted);font-weight:600;margin-bottom:12px;}
+.art-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);margin-bottom:12px;}
+.art-text{font-family:'Montserrat',sans-serif;font-size:13px;line-height:1.65;color:var(--ink-mid);flex-grow:1;margin-bottom:18px;}
+.art-cta{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--red);}
 
-.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:52px;}
-.article-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;}
-.article-card:hover{box-shadow:0 8px 32px rgba(26,26,24,0.08);transform:translateY(-2px);}
-.article-card-photo{height:140px;background:var(--card2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.article-card-photo-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 7px,rgba(26,26,24,0.05) 7px,rgba(26,26,24,0.05) 8px);}
-.article-card-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
-.article-card .article-title{font-size:17px;margin-bottom:10px;}
-.article-card .article-excerpt{font-size:13px;flex:1;margin-bottom:16px;}
+/* ARXIU — franja beix, llista compacta */
+.arxiu{background:var(--beix);padding:72px 52px;}
+.arxiu-inner{max-width:1400px;margin:0 auto;}
+.arxiu-list{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.arxiu-item{display:grid;grid-template-columns:130px 1fr auto;gap:24px;align-items:center;
+  padding:22px 28px;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s;}
+.arxiu-item:last-child{border-bottom:none;}
+.arxiu-item:hover{background:var(--beix-clar);}
+.arxiu-date{font-size:12px;color:var(--ink-muted);font-weight:600;}
+.arxiu-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--ink);margin-bottom:4px;}
+.arxiu-text{font-family:'Montserrat',sans-serif;font-size:12.5px;color:var(--ink-mid);line-height:1.5;}
+.arxiu-cta{font-size:12px;font-weight:700;color:var(--red);white-space:nowrap;}
 
-.articles-llista{border-top:1px solid var(--border);}
-.article-row{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--border);}
-.article-row-photo{height:80px;background:var(--card2);border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0;}
-.article-row-photo-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent,transparent 7px,rgba(26,26,24,0.05) 7px,rgba(26,26,24,0.05) 8px);}
-.article-row .article-title{font-size:16px;margin-bottom:6px;}
-.article-row .article-excerpt{font-size:13px;margin-bottom:10px;}
+/* CTA FINAL */
+.cta-final{background:var(--white);padding:56px 52px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;text-align:center;}
+.cta-final p{font-family:'Montserrat',sans-serif;font-size:15px;color:var(--ink-mid);}
+.cta-final a{background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:13px;
+  padding:12px 26px;border-radius:4px;}
 
-.section-title-bar{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;border-bottom:2px solid var(--border);margin-bottom:32px;}
-.section-kicker{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(22px,2.5vw,32px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:4px;}
-.section-title{font-size:13px;font-weight:500;color:var(--ink-muted);}
-
-footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
-.footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
-.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;}
-.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:14px;}
-.footer-brand-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:20px;}
-.footer-social{display:flex;gap:10px;}
-.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;}
-.footer-col-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:9px;transition:color 0.15s;}
-.footer-col a:hover{color:rgba(255,255,255,0.9);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:18px 0;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,0.25);}
-.footer-entity{font-size:11.5px;color:rgba(157,207,180,0.5);font-weight:500;}
+footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
+  text-align:center;font-size:12px;font-family:'Montserrat',sans-serif;}
 
 @media(max-width:960px){
   nav{padding:0 20px;}
-  .nav-links{display:none;}
-  .nav-burger{display:flex;}
-  .page-header{padding:36px 20px 32px;}
-  .articles-wrap{padding:40px 20px;}
-  .article-featured{grid-template-columns:1fr;}
-  .article-featured-photo{height:200px;}
+  #nav-burger{display:flex!important;}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);
+    flex-direction:column;padding:8px 0 20px;border-top:1px solid var(--border);
+    box-shadow:0 8px 24px rgba(26,26,24,.10);z-index:999;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:14px 24px;font-size:15px;}
+  .hero,.destacat,.recents,.arxiu{padding:44px 20px;}
+  .destacat-card{grid-template-columns:1fr;padding:28px 24px;}
   .articles-grid{grid-template-columns:1fr;}
-  footer{padding:40px 20px 0;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
-  .footer-bottom{flex-direction:column;gap:6px;text-align:center;}
+  .arxiu-item{grid-template-columns:1fr;gap:8px;}
 }
-
-/* ══ TIPOGRAFIA: Anton (titulars) + Montserrat (text) ══ */
-body{font-family:'Montserrat',system-ui,sans-serif;}
-.hero-title,.titol-gran{font-family:'Anton',sans-serif;font-weight:400;
-  font-size:clamp(34px,4.4vw,54px);line-height:1.05;letter-spacing:0.005em;color:var(--ink);}
-.seccio-title,.section-kicker,h2{font-family:'Anton',sans-serif;font-weight:400;
-  font-size:clamp(24px,2.8vw,36px);line-height:1.12;letter-spacing:0.005em;color:var(--ink);}
-.titol,.article-title,.guia-title,.assessorament-nom,.nivell-nom,h3{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);}
-.kicker,.hero-kicker,.eix-label,.seccio-kicker,.que-es-kicker,.article-tag,.guia-tag{
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--red);}
-.text,.hero-sub,.seccio-desc,.article-excerpt,.guia-desc,.assessorament-desc,
-.que-es-item-text,.eix-desc{font-family:'Montserrat',sans-serif;font-weight:400;
-  font-size:15px;line-height:1.7;color:var(--ink-mid);}
-.taula-val,.cicle-text,.nivell-item,.eco-text,.article-date{font-size:14px;line-height:1.65;color:var(--ink-mid);}
-.taula-label{font-size:14px;font-weight:700;color:var(--ink);}
-
-/* ══ EL BLANC MANA. El beix, nomes un respir ══ */
-.hero{background:var(--white)!important;padding:72px 52px 56px!important;
-  border-bottom:1px solid var(--border);}
-.hero-kicker{color:var(--red)!important;}
-.hero-title{color:var(--ink)!important;}
-.hero-sub{color:var(--ink-mid)!important;max-width:640px;}
-.hero em,.hero i,.hero-title em{color:var(--red)!important;font-style:normal;}
-.seccio{background:var(--white);}
-.seccio-inner{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 34px;}
-
-/* ══ CORRECCIO: els titols son h1, no .hero-title ══ */
-.hero h1,.page-header h1,.hero-title,.titol-gran{
-  font-family:'Anton',sans-serif!important;font-weight:400!important;
-  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
-  letter-spacing:0.005em!important;color:var(--ink)!important;}
-.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero p,.page-header p,.hero-sub{font-family:'Montserrat',sans-serif!important;
-  font-size:16px!important;line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;
-  font-weight:600!important;font-size:11px!important;letter-spacing:0.14em!important;
-  text-transform:uppercase!important;color:var(--red)!important;}
-.hero,.page-header{background:var(--white)!important;}
-
-/* ══ RITME: el gris calid separa seccions ══ */
-.eixos,.que-es,.mapa-bloc,.actualitat-bloc,.seccio:nth-of-type(even),
-.recursos-seccio:nth-of-type(even){background:var(--gris)!important;}
-.seccio-inner,.que-es-grid{background:var(--white);border:1px solid var(--border);
-  border-radius:6px;padding:32px 34px;}
-
-/* ══ CAPCALERA INTERIOR UNIFICADA ══ */
-.hero,.page-header{background:var(--white)!important;padding:72px 52px 64px!important;
-  border-bottom:2px solid var(--ink)!important;min-height:auto!important;}
-.hero h1,.page-header h1{font-family:'Anton',sans-serif!important;font-weight:400!important;
-  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
-  color:var(--ink)!important;margin-bottom:18px!important;}
-.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;font-weight:600!important;
-  font-size:11px!important;letter-spacing:0.14em!important;text-transform:uppercase!important;
-  color:var(--red)!important;margin-bottom:14px!important;}
-.hero-sub,.page-header p{font-family:'Montserrat',sans-serif!important;font-size:16px!important;
-  line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px!important;}
-@media(max-width:768px){.hero,.page-header{padding:44px 22px 40px!important;}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
+  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui"></a>
+  <button id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
   <div class="nav-links">
+    <a href="index.html">Inici</a>
     <a href="projecte.html">Projecte</a>
     <a href="descobreix.html">Descobreix</a>
     <a href="actualitat.html" class="active">Actualitat</a>
@@ -172,187 +125,119 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
     <a href="contacte.html">Contacte</a>
     <a class="nav-cta" href="contacte.html">Suma't</a>
   </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
 
-
-<div class="page-header">
-  <div class="page-header-kicker">Actualitat</div>
-  <h1>El que passa<br>als barris.</h1>
-  <p>Casos documentats, anàlisis i context sobre la pèrdua del comerç local a Barcelona.</p>
-</div>
-
-<div class="articles-wrap">
-
-  <!-- Article destacat -->
-  <div class="article-featured">
-    <div class="article-featured-photo">
-      <img src="img/jove-teatre-regina.jpg" alt="Façana del Jove Teatre Regina amb la persiana mig abaixada" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;">
-    </div>
-    <div>
-      <div class="article-tag">Cas documentat</div>
-      <div class="article-date">Juny 2026</div>
-      <div class="article-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</div>
-      <div class="article-excerpt">El Jove Teatre Regina tanca el 15 de juliol. No per fallida ni per manca de públic: l'edifici està en venda i no els renoven el lloguer. I la comunitat que ha omplert les butaques durant quatre dècades ni tan sols pot seure a la taula.</div>
-      <a class="article-link" href="articles/jove-teatre-regina.html">Llegir el cas complet →</a>
-    </div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Actualitat</div>
+    <h1>El que passa <em>als barris.</em></h1>
+    <p>Casos documentats, anàlisis i context sobre la pèrdua del comerç local a Barcelona.</p>
   </div>
+</section>
 
-  <!-- Grid articles recents -->
-  <div class="section-title-bar">
-    <div>
-      <div class="section-kicker">Anàlisis</div>
-      <div class="section-title">Articles recents</div>
-    </div>
-  </div>
-  <div class="articles-grid" id="articles-grid">
-    <div class="article-card article-item">
-      <div class="article-card-photo">
-        <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="article-card-body">
-        <div class="article-tag">Cas documentat</div>
-        <div class="article-date">Febrer 2026</div>
-        <div class="article-title">La Ferreteria Camps abaixa la persiana després de 90 anys</div>
-        <div class="article-excerpt">Un lloguer de 15.000 € mensuals i la caiguda de clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia. La seva història ha impulsat la creació d'AQT.</div>
-        <a class="article-link" href="articles/ferreteria-camps.html">Llegir el cas complet →</a>
-      </div>
-    </div>
-    
-    <div class="article-card article-item">
-      <div class="article-card-photo">
-        <img src="img/lloguer-comercial.jpg" alt="Local comercial buit disponible" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="article-card-body">
-        <div class="article-tag analisi">Anàlisi</div>
-        <div class="article-date">Abril 2026</div>
-        <div class="article-title">El lloguer comercial no té límits. I és legal.</div>
-        <div class="article-excerpt">L'habitatge té índexs de contenció i zones tensades. El comerç local no té res d'això. La llei tracta la ferreteria centenària igual que un local d'oficines.</div>
-        <a class="article-link" href="articles/lloguer-comercial-sense-regulacio.html">Llegir l'article →</a>
-      </div>
-    </div>
-    <div class="article-card article-item">
-      <div class="article-card-photo">
-        <img src="img/dumping-comerc.jpg" alt="Comerç tradicional" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="article-card-body">
-        <div class="article-tag analisi">Anàlisi</div>
-        <div class="article-date">Febrer 2026</div>
-        <div class="article-title">Què és el dumping i com afecta el comerç local?</div>
-        <div class="article-excerpt">Darrere de molts tancaments hi ha una estratègia concreta i poc visible. Entendre-la és el primer pas per no normalitzar-la.</div>
-        <a class="article-link" href="articles/dumping-comerc-local.html">Llegir l'article →</a>
-      </div>
-    </div>
-    <div class="article-card article-item">
-      <div class="article-card-photo">
-        <img src="img/forns-cadenes.jpg" alt="Forn artesà" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="article-card-body">
-        <div class="article-tag analisi">Anàlisi</div>
-        <div class="article-date">Febrer 2026</div>
-        <div class="article-title">Cinc grans grups, 300 establiments: com les cadenes esborren els forns</div>
-        <div class="article-excerpt">Un model de negoci que expulsa progressivament els forns artesans amb un buit legal que els afavoreix.</div>
-        <a class="article-link" href="articles/forns-cadenes.html">Llegir l'article →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Llista articles més antics -->
-  <div class="section-title-bar" style="margin-top:52px;">
-    <div>
-      <div class="section-kicker">Arxiu</div>
-      <div class="section-title">Més articles</div>
-    </div>
-  </div>
-  <div class="articles-llista" id="articles-llista">
-    <div class="article-row article-item">
-      <div class="article-row-photo">
-        <img src="img/homebaked.jpg" alt="Homebaked Community Bakery" style="width:100%;height:100%;object-fit:cover;">
-      </div>
+<section class="destacat">
+  <div class="destacat-inner">
+    <div class="destacat-card">
       <div>
-        <div class="article-date">Desembre 2025</div>
-        <div class="article-title">El model Homebaked: recuperar un forn des de la comunitat</div>
-        <div class="article-excerpt">Una cooperativa a Liverpool que porta 10 anys demostrant que un altre model és possible.</div>
-        <a class="article-link" href="articles/hombacked.html">Llegir →</a>
+        <span class="destacat-tag">Cas documentat</span>
+        <div class="destacat-date">Juny 2026</div>
+        <h2 class="destacat-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h2>
+        <p class="destacat-text">El Jove Teatre Regina tanca el 15 de juliol. No per fallida ni per manca de públic: l'edifici està en venda i no els renoven el lloguer. I la comunitat que ha omplert les butaques durant quatre dècades ni tan sols pot seure a la taula.</p>
       </div>
-    </div>
-    <div class="article-row article-item">
-      <div class="article-row-photo">
-        <img src="img/kensington-avenue.jpg" alt="Kensington Avenue Philadelphia" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-      </div>
-      <div>
-        <div class="article-date">Novembre 2025</div>
-        <div class="article-title">Com funciona el Kensington Corridor Trust a Philadelphia</div>
-        <div class="article-excerpt">Un trust comunitari que ha adquirit locals comercials per protegir el comerç local davant la gentrificació.</div>
-        <a class="article-link" href="articles/kensington.html">Llegir →</a>
-      </div>
-    </div>
-    <div class="article-row article-item">
-      <div class="article-row-photo">
-        <div class="article-row-photo-bg"></div>
-        <svg style="position:relative;z-index:1;opacity:0.2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A1A18" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <div>
-        <div class="article-date">Octubre 2025</div>
-        <div class="article-title">Cooperatives de treball al sector comercial: marc legal a Catalunya</div>
-        <div class="article-excerpt">Guia bàsica sobre les formes jurídiques disponibles per a cooperatives que volen gestionar comerços a Catalunya.</div>
-        <a class="article-link" href="articles/Cooperatives-treball-Cat.html">Llegir →</a>
-      </div>
+      <a class="destacat-link" href="#">Llegir el cas complet →</a>
     </div>
   </div>
+</section>
 
-  <!-- Paginació -->
-  <div id="paginacio" style="display:flex;justify-content:center;gap:8px;margin:48px 0 0;"></div>
+<section class="recents">
+  <div class="recents-inner">
+    <div class="section-kicker">Anàlisis</div>
+    <h2 class="section-title">Articles recents</h2>
+    <div class="articles-grid">
+      <a class="art-card" href="#">
+        <div class="art-tag">Cas documentat</div>
+        <div class="art-date">Febrer 2026</div>
+        <div class="art-title">La Ferreteria Camps abaixa la persiana després de 90 anys</div>
+        <div class="art-text">Un lloguer de 15.000 € mensuals i la caiguda de clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia. La seva història ha impulsat la creació d'AQT.</div>
+        <div class="art-cta">Llegir el cas complet →</div>
+      </a>
+      <a class="art-card" href="#">
+        <div class="art-tag">Anàlisi</div>
+        <div class="art-date">Abril 2026</div>
+        <div class="art-title">El lloguer comercial no té límits. I és legal.</div>
+        <div class="art-text">L'habitatge té índexs de contenció i zones tensades. El comerç local no té res d'això. La llei tracta la ferreteria centenària igual que un local d'oficines.</div>
+        <div class="art-cta">Llegir l'article →</div>
+      </a>
+      <a class="art-card" href="#">
+        <div class="art-tag">Anàlisi</div>
+        <div class="art-date">Febrer 2026</div>
+        <div class="art-title">Què és el dumping i com afecta el comerç local?</div>
+        <div class="art-text">Darrere de molts tancaments hi ha una estratègia concreta i poc visible. Entendre-la és el primer pas per no normalitzar-la.</div>
+        <div class="art-cta">Llegir l'article →</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-</div>
+<section class="arxiu">
+  <div class="arxiu-inner">
+    <div class="section-kicker">Arxiu</div>
+    <h2 class="section-title">Més articles</h2>
+    <div class="arxiu-list">
+      <a class="arxiu-item" href="#">
+        <div class="arxiu-date">Febrer 2026</div>
+        <div>
+          <div class="arxiu-title">Cinc grans grups, 300 establiments: com les cadenes esborren els forns</div>
+          <div class="arxiu-text">Un model de negoci que expulsa progressivament els forns artesans amb un buit legal que els afavoreix.</div>
+        </div>
+        <div class="arxiu-cta">Llegir →</div>
+      </a>
+      <a class="arxiu-item" href="#">
+        <div class="arxiu-date">Desembre 2025</div>
+        <div>
+          <div class="arxiu-title">El model Homebaked: recuperar un forn des de la comunitat</div>
+          <div class="arxiu-text">Una cooperativa a Liverpool que porta 10 anys demostrant que un altre model és possible.</div>
+        </div>
+        <div class="arxiu-cta">Llegir →</div>
+      </a>
+      <a class="arxiu-item" href="#">
+        <div class="arxiu-date">Novembre 2025</div>
+        <div>
+          <div class="arxiu-title">Com funciona el Kensington Corridor Trust a Philadelphia</div>
+          <div class="arxiu-text">Un trust comunitari que ha adquirit locals comercials per protegir el comerç local davant la gentrificació.</div>
+        </div>
+        <div class="arxiu-cta">Llegir →</div>
+      </a>
+      <a class="arxiu-item" href="#">
+        <div class="arxiu-date">Octubre 2025</div>
+        <div>
+          <div class="arxiu-title">Cooperatives de treball al sector comercial: marc legal a Catalunya</div>
+          <div class="arxiu-text">Guia bàsica sobre les formes jurídiques disponibles per a cooperatives que volen gestionar comerços a Catalunya.</div>
+        </div>
+        <div class="arxiu-cta">Llegir →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <p>Coneixes un comerç en risc de tancar?</p>
+  <a href="contacte.html">Explica'ns el cas →</a>
+</section>
+
+<footer>© 2026 Abans Que Tanqui · En construcció · Barcelona</footer>
 
 <script>
-const ARTICLES_PER_PAGINA = 4;
-const tots = document.querySelectorAll('.article-item');
-let paginaActual = 1;
-const totalPagines = Math.ceil(tots.length / ARTICLES_PER_PAGINA);
-
-function mostrarPagina(p) {
-  paginaActual = p;
-  tots.forEach((el, i) => {
-    el.style.display = (i >= (p-1)*ARTICLES_PER_PAGINA && i < p*ARTICLES_PER_PAGINA) ? '' : 'none';
-  });
-  renderPaginacio();
-  window.scrollTo({top: document.getElementById('articles-grid').offsetTop - 80, behavior: 'smooth'});
-}
-
-function renderPaginacio() {
-  const div = document.getElementById('paginacio');
-  if (totalPagines <= 1) { div.style.display = 'none'; return; }
-  div.innerHTML = '';
-  for (let i = 1; i <= totalPagines; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i;
-    btn.style.cssText = 'width:36px;height:36px;border-radius:4px;border:1px solid ' + (i===paginaActual ? '#1A1A18' : 'rgba(26,26,24,0.12)') + ';background:' + (i===paginaActual ? '#1A1A18' : '#fff') + ';color:' + (i===paginaActual ? '#fff' : 'rgba(26,26,24,0.50)') + ';font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;';
-    btn.onclick = () => mostrarPagina(i);
-    div.appendChild(btn);
+document.addEventListener('DOMContentLoaded', function(){
+  var burger = document.getElementById('nav-burger');
+  var links  = document.querySelector('.nav-links');
+  if (burger && links) {
+    burger.addEventListener('click', function(){
+      links.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
   }
-}
-
-mostrarPagina(1);
-</script>
-
-<footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Barcelona</div>
-</footer>
-
-<script>
-const burger=document.getElementById('nav-burger'),mobileNav=document.getElementById('nav-mobile');
-burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');}));
+});
 </script>
 </body>
 </html>
