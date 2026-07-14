@@ -464,7 +464,7 @@ footer {
 
     <div class="casos-list" id="casos-list"></div>
 
-    <a href="#" class="veure-tots" onclick="veureTots(event)">Veure tots els comerços →</a>
+    <<a href="#" class="veure-tots" onclick="mostrarTotsComercos(event)">Veure tots els comerços →</a>
 
     <div class="estadistiques">
       <h3 class="estadistiques-title">Estadístiques</h3>
@@ -603,21 +603,22 @@ async function carregarDades() {
       offset = data.offset || '';
     } while (offset);
 
+    // AQUI ÉS ON S'AGAFEN LES DADES (inclòs la Descripció)
     punts = tots.map(r => ({
       nom:  r.fields['Nom'] || '',
       addr: r.fields['Adreça'] || r.fields['Adreca'] || '',
       lat:  parseFloat(r.fields['Lat']) || null,
       lng:  parseFloat(r.fields['Lng']) || null,
       cat:  (r.fields['Categoria'] || 'risc').toLowerCase(),
-      desc: r.fields['Descripció'] || '',
+      desc: r.fields['Descripció'] || r.fields['Descripcio'] || '', // ← AIXÒ ÉS CLAU
       any:  r.fields['Any'] ? String(r.fields['Any']) : extreurAny(r.fields['Descripció'] || ''),
       foto: r.fields['Foto'] || null,
-      categoria: r.fields['Tipus'] || 'Comerç',
+      categoria: r.fields['Tipus'] || r.fields['Categoria'] || 'Comerç',
       barri: r.fields['Barri'] || ''
     })).filter(p => p.lat && p.lng && p.nom);
 
     pintarMarcadors();
-    renderLlista();
+    renderLlista();      // Això en mostra només 5 al principi
     renderGrafic();
     actualitzarComptador();
   } catch (err) {
@@ -669,7 +670,86 @@ function renderLlista() {
     list.appendChild(div);
   });
 }
+function obrirFitxa(p) {
+  const fitxa = document.getElementById('fitxa-lateral');
+  const overlay = document.getElementById('fitxa-overlay');
+  
+  document.getElementById('fitxa-nom').textContent = p.nom;
+  document.getElementById('fitxa-any').textContent = p.any ? `Any: ${p.any}` : '';
+  document.getElementById('fitxa-adreca').textContent = p.addr || 'Adreça no disponible';
+  document.getElementById('fitxa-categoria').textContent = p.categoria || 'Comerç';
+  document.getElementById('fitxa-desc').textContent = p.desc || 'Sense descripció disponible';
+  
+  const imgEl = document.getElementById('fitxa-img');
+  if (p.foto) {
+    imgEl.src = p.foto;
+    imgEl.style.display = 'block';
+  } else {
+    imgEl.style.display = 'none';
+  }
+  
+  const badge = document.getElementById('fitxa-badge');
+  badge.textContent = labels[p.cat] || p.cat;
+  badge.className = 'fitxa-badge ' + p.cat;
+  
+  fitxa.dataset.lat = p.lat;
+  fitxa.dataset.lng = p.lng;
+  
+  fitxa.classList.add('open');
+  overlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
 
+function tancarFitxa(event) {
+  if (event && event.target !== event.currentTarget && event.target.className !== 'fitxa-close') return;
+  
+  const fitxa = document.getElementById('fitxa-lateral');
+  const overlay = document.getElementById('fitxa-overlay');
+  
+  fitxa.classList.remove('open');
+  overlay.classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+function centrarAlComerc(event) {
+  event.preventDefault();
+  const fitxa = document.getElementById('fitxa-lateral');
+  const lat = parseFloat(fitxa.dataset.lat);
+  const lng = parseFloat(fitxa.dataset.lng);
+  
+  if (lat && lng) {
+    map.setView([lat, lng], 17);
+    tancarFitxa();
+  }
+}
+
+// ... codi anterior ...
+
+function mostrarTotsComercos(e) {
+  e.preventDefault();
+  const list = document.getElementById('casos-list');
+  list.innerHTML = '';
+  const tots = punts.filter(puntVisible); 
+  
+  if (tots.length === 0) {
+    list.innerHTML = '<div style="padding:20px;color:var(--muted);text-align:center;">Cap resultat</div>';
+    return;
+  }
+  
+  tots.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'cas-item';
+    const fotoUrl = p.foto || 'data:image/svg+xml,...'; // (deixa el teu codi de la imatge)
+    
+    div.innerHTML = `... (el teu codi HTML del cas-item) ...`;
+    div.onclick = () => { map.setView([p.lat, p.lng], 16); obrirFitxa(p); };
+    list.appendChild(div);
+  });
+  
+  list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ... codi posterior ...
 function aplicarFiltres() {
   markers.forEach(({ marker, data }) => {
     if (puntVisible(data)) marker.addTo(map);
