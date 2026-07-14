@@ -77,7 +77,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .arxiu{background:var(--beix);padding:72px 52px;}
 .arxiu-inner{max-width:1400px;margin:0 auto;}
 .arxiu-list{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.arxiu-item{display:grid;grid-template-columns:130px 1fr auto;gap:24px;align-items:center;
+.arxiu-item{display:grid;grid-template-columns:56px 130px 1fr auto;gap:20px;align-items:center;
   padding:22px 28px;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s;}
 .arxiu-item:last-child{border-bottom:none;}
 .arxiu-item:hover{background:var(--beix-clar);}
@@ -109,6 +109,14 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
   .articles-grid{grid-template-columns:1fr;}
   .arxiu-item{grid-template-columns:1fr;gap:8px;}
 }
+
+.destacat-img{width:100%;height:220px;object-fit:cover;border-radius:5px;margin-bottom:22px;display:block;}
+.art-img{width:100%;height:150px;object-fit:cover;border-radius:5px;margin-bottom:16px;display:block;}
+.arxiu-thumb{width:56px;height:56px;object-fit:cover;border-radius:4px;flex-shrink:0;background:var(--beix-clar);}
+@media(max-width:960px){
+  .arxiu-item{grid-template-columns:48px 1fr!important;}
+  .arxiu-date{display:none;}
+}
 </style>
 </head>
 <body>
@@ -137,15 +145,16 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
 
 <section class="destacat">
   <div class="destacat-inner">
-    <div class="destacat-card">
+    <a class="destacat-card" href="articles/jove-teatre-regina.html" style="text-decoration:none;color:inherit;">
       <div>
+        <img class="destacat-img" src="img/jove-teatre-regina.jpg" alt="Jove Teatre Regina">
         <span class="destacat-tag">Cas documentat</span>
         <div class="destacat-date">Juny 2026</div>
         <h2 class="destacat-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h2>
         <p class="destacat-text">El Jove Teatre Regina tanca el 15 de juliol. No per fallida ni per manca de públic: l'edifici està en venda i no els renoven el lloguer. I la comunitat que ha omplert les butaques durant quatre dècades ni tan sols pot seure a la taula.</p>
       </div>
-      <a class="destacat-link" href="#">Llegir el cas complet →</a>
-    </div>
+      <span class="destacat-link">Llegir el cas complet →</span>
+    </a>
   </div>
 </section>
 
@@ -154,21 +163,24 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
     <div class="section-kicker">Anàlisis</div>
     <h2 class="section-title">Articles recents</h2>
     <div class="articles-grid">
-      <a class="art-card" href="#">
+      <a class="art-card" href="articles/ferreteria-camps.html">
+        <img class="art-img" src="img/ferreteria-camps.jpg" alt="La Ferreteria Camps abaixa la persiana després de 90 anys">
         <div class="art-tag">Cas documentat</div>
         <div class="art-date">Febrer 2026</div>
         <div class="art-title">La Ferreteria Camps abaixa la persiana després de 90 anys</div>
         <div class="art-text">Un lloguer de 15.000 € mensuals i la caiguda de clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia. La seva història ha impulsat la creació d'AQT.</div>
         <div class="art-cta">Llegir el cas complet →</div>
       </a>
-      <a class="art-card" href="#">
+      <a class="art-card" href="articles/lloguer-comercial-sense-regulacio.html">
+        <img class="art-img" src="img/lloguer-comercial.jpg" alt="El lloguer comercial no té límits. I és legal.">
         <div class="art-tag">Anàlisi</div>
         <div class="art-date">Abril 2026</div>
         <div class="art-title">El lloguer comercial no té límits. I és legal.</div>
         <div class="art-text">L'habitatge té índexs de contenció i zones tensades. El comerç local no té res d'això. La llei tracta la ferreteria centenària igual que un local d'oficines.</div>
         <div class="art-cta">Llegir l'article →</div>
       </a>
-      <a class="art-card" href="#">
+      <a class="art-card" href="articles/dumping-comerc-local.html">
+        <img class="art-img" src="img/dumping-comerc.jpg" alt="Què és el dumping i com afecta el comerç local?">
         <div class="art-tag">Anàlisi</div>
         <div class="art-date">Febrer 2026</div>
         <div class="art-title">Què és el dumping i com afecta el comerç local?</div>
@@ -184,7 +196,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
     <div class="section-kicker">Arxiu</div>
     <h2 class="section-title">Més articles</h2>
     <div class="arxiu-list">
-      <a class="arxiu-item" href="#">
+      <a class="arxiu-item" href="articles/forns-cadenes.html">
+        <img class="arxiu-thumb" src="img/forns-cadenes.jpg" alt="">
         <div class="arxiu-date">Febrer 2026</div>
         <div>
           <div class="arxiu-title">Cinc grans grups, 300 establiments: com les cadenes esborren els forns</div>
@@ -192,7 +205,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
         </div>
         <div class="arxiu-cta">Llegir →</div>
       </a>
-      <a class="arxiu-item" href="#">
+      <a class="arxiu-item" href="articles/hombacked.html">
+        <img class="arxiu-thumb" src="img/homebaked.jpg" alt="">
         <div class="arxiu-date">Desembre 2025</div>
         <div>
           <div class="arxiu-title">El model Homebaked: recuperar un forn des de la comunitat</div>
@@ -200,7 +214,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
         </div>
         <div class="arxiu-cta">Llegir →</div>
       </a>
-      <a class="arxiu-item" href="#">
+      <a class="arxiu-item" href="articles/kensington.html">
+        <img class="arxiu-thumb" src="img/kensington-avenue.jpg" alt="">
         <div class="arxiu-date">Novembre 2025</div>
         <div>
           <div class="arxiu-title">Com funciona el Kensington Corridor Trust a Philadelphia</div>
@@ -208,7 +223,8 @@ footer{background:var(--ink);color:rgba(255,255,255,0.55);padding:28px 52px;
         </div>
         <div class="arxiu-cta">Llegir →</div>
       </a>
-      <a class="arxiu-item" href="#">
+      <a class="arxiu-item" href="articles/Cooperatives-treball-Cat.html">
+        <div class="arxiu-thumb"></div>
         <div class="arxiu-date">Octubre 2025</div>
         <div>
           <div class="arxiu-title">Cooperatives de treball al sector comercial: marc legal a Catalunya</div>
