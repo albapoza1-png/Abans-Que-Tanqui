@@ -3,376 +3,719 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Model · Abans Que Tanqui</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<title>Projecte · Abans Que Tanqui</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--beix:#DACDC5;--white:#FFFFFF;--ink:#1A1A18;--red:#C8392B;--paper:#F7F1EE;--gris:#F1EFEE;--gris-dk:#E6E3E1;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#C8392B;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#CA3E27;--cta:#CA3E27;--cta-lt:#A63120;--card2:#F7F1EE;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-
-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Anton',sans-serifGeorgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;}
-.nav-links a:hover,.nav-links a.active{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;padding:12px 24px;}
-
-/* HERO */
-.hero{background:var(--ink);padding:56px 52px;}
-.hero-kicker{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;}
-.hero h1{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.03em;margin-bottom:12px;}
-.hero h1 em{font-style:italic;color:#F7F1EE;}
-.hero-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:560px;}
-
-/* SECCIONS GENERALS */
-.seccio{padding:48px 52px;border-bottom:1px solid var(--border);}
-.seccio-inner{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
-.seccio-left{}
-.kicker{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
-.titol{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-0.02em;}
-.titol em{font-style:italic;color:var(--red);}
-.seccio-right{}
-.text{font-size:15px;line-height:1.85;color:var(--ink-mid);}
-.text+.text{margin-top:10px;}
-
-/* IDEA CENTRAL */
-.idea-central{padding:40px 52px;border-bottom:1px solid var(--border);background:var(--white);}
-.idea-inner{border-left:4px solid var(--red);padding-left:28px;max-width:760px;}
-.idea-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
-.idea-text{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(16px,2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;letter-spacing:-0.01em;}
-
-/* LLISTA TAULA */
-.taula{margin-top:20px;display:flex;flex-direction:column;border-top:1px solid var(--border);}
-.taula-fila{padding:12px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:160px 1fr;gap:16px;}
-.taula-label{font-size:13px;font-weight:700;color:var(--ink);}
-.taula-val{font-size:13px;color:var(--ink-mid);line-height:1.6;}
-
-/* NIVELLS */
-.nivells{display:flex;flex-direction:column;gap:10px;}
-.nivell{border:1px solid var(--border);border-top:3px solid var(--red);border-radius:0 0 4px 4px;padding:18px 20px;background:var(--white);}
-.nivell-cap{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border);}
-.nivell-num{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--red);}
-.nivell-nom{font-size:14px;font-weight:700;color:var(--ink);}
-.nivell-items{display:flex;flex-direction:column;gap:5px;}
-.nivell-item{font-size:13px;color:var(--ink-mid);padding-left:14px;position:relative;}
-.nivell-item::before{content:'—';position:absolute;left:0;color:var(--red);opacity:0.4;}
-.nivell-nota{margin-top:10px;font-size:12px;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:8px;}
-
-/* CICLE */
-.cicle{display:flex;flex-direction:column;border-top:1px solid var(--border);margin-top:4px;}
-.cicle-pas{padding:11px 0;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:baseline;padding-right:16px;}
-.cicle-n{font-size:11px;font-weight:700;color:var(--red);flex-shrink:0;min-width:22px;}
-.cicle-text{font-size:13px;color:var(--ink-mid);}
-
-/* CRITERIS */
-.criteris-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
-.criteri{border:1px solid var(--border);border-radius:4px;padding:14px 16px;}
-.criteri-nom{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;}
-.criteri-desc{font-size:12px;color:var(--muted);line-height:1.5;}
-
-/* ECO */
-.eco-items{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);margin-top:16px;}
-.eco-item{padding:11px 0;border-bottom:1px solid var(--border);display:flex;gap:12px;}
-.eco-dash{color:var(--red);font-weight:700;flex-shrink:0;}
-.eco-text{font-size:13px;color:var(--ink-mid);line-height:1.6;}
-
-/* NOTA ESTAT */
-.nota-estat{padding:32px 52px;border-bottom:1px solid var(--border);}
-.nota-estat-inner{border-left:3px solid var(--amber);padding:14px 18px;background:#FEFBF5;border-radius:0 4px 4px 0;max-width:680px;}
-.nota-estat-text{font-size:13px;color:var(--ink-mid);line-height:1.7;}
-
-/* CTA */
-.cta-final{background:var(--ink);padding:56px 52px;text-align:center;}
-.cta-final h2{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(20px,3vw,32px);font-weight:700;color:#fff;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;}
-.cta-final p{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:24px;max-width:380px;margin-left:auto;margin-right:auto;}
-.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.btn-p{background:var(--red);color:#fff;padding:11px 22px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;}
-.btn-s{background:transparent;color:rgba(255,255,255,0.55);padding:11px 22px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.15);}
-
-footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
-.footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
-
-@media(max-width:960px){
-  nav{padding:0 20px;}.nav-links{display:none;}.nav-burger{display:flex;}
-  .hero{padding:40px 20px;}
-  .idea-central{padding:32px 20px;}
-  .seccio{padding:36px 20px;}
-  .seccio-inner{grid-template-columns:1fr;gap:24px;}
-  .cicle{grid-template-columns:1fr;}
-  .criteris-grid{grid-template-columns:1fr 1fr;}
-  .taula-fila{grid-template-columns:1fr;gap:4px;}
-  .nota-estat{padding:24px 20px;}
-  .cta-final{padding:48px 20px;}
-  footer{padding:24px 20px;flex-direction:column;gap:10px;text-align:center;}
+:root {
+  --beix: #f5efe6;
+  --beix-clar: #faf6f1;
+  --white: #FFFFFF;
+  --ink: #1A1A18;
+  --red: #C8392B;
+  --red-dark: #a63120;
+  --ink-mid: rgba(26,26,24,0.72);
+  --ink-muted: rgba(26,26,24,0.50);
+  --border: rgba(26,26,24,0.12);
+  --muted: rgba(26,26,24,0.50);
 }
 
-/* ══ TIPOGRAFIA: Anton (titulars) + Montserrat (text) ══ */
-body{font-family:'Montserrat',system-ui,sans-serif;}
-.hero-title,.titol-gran{font-family:'Anton',sans-serif;font-weight:400;
-  font-size:clamp(34px,4.4vw,54px);line-height:1.05;letter-spacing:0.005em;color:var(--ink);}
-.seccio-title,.section-kicker,h2{font-family:'Anton',sans-serif;font-weight:400;
-  font-size:clamp(24px,2.8vw,36px);line-height:1.12;letter-spacing:0.005em;color:var(--ink);}
-.titol,.article-title,.guia-title,.assessorament-nom,.nivell-nom,h3{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);}
-.kicker,.hero-kicker,.eix-label,.seccio-kicker,.que-es-kicker,.article-tag,.guia-tag{
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--red);}
-.text,.hero-sub,.seccio-desc,.article-excerpt,.guia-desc,.assessorament-desc,
-.que-es-item-text,.eix-desc{font-family:'Montserrat',sans-serif;font-weight:400;
-  font-size:15px;line-height:1.7;color:var(--ink-mid);}
-.taula-val,.cicle-text,.nivell-item,.eco-text,.article-date{font-size:14px;line-height:1.65;color:var(--ink-mid);}
-.taula-label{font-size:14px;font-weight:700;color:var(--ink);}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* ══ EL BLANC MANA. El beix, nomes un respir ══ */
-.hero{background:var(--white)!important;padding:72px 52px 56px!important;
-  border-bottom:1px solid var(--border);}
-.hero-kicker{color:var(--red)!important;}
-.hero-title{color:var(--ink)!important;}
-.hero-sub{color:var(--ink-mid)!important;max-width:640px;}
-.hero em,.hero i,.hero-title em{color:var(--red)!important;font-style:normal;}
-.seccio{background:var(--white);}
-.seccio-inner{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 34px;}
+/* ══ NAVIGATION ══ */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 40px; width: auto; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  position: relative;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--red);
+}
+.nav-cta {
+  background: var(--red) !important;
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark) !important; }
 
-/* ══ CORRECCIO: els titols son h1, no .hero-title ══ */
-.hero h1,.page-header h1,.hero-title,.titol-gran{
-  font-family:'Anton',sans-serif!important;font-weight:400!important;
-  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
-  letter-spacing:0.005em!important;color:var(--ink)!important;}
-.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero p,.page-header p,.hero-sub{font-family:'Montserrat',sans-serif!important;
-  font-size:16px!important;line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;
-  font-weight:600!important;font-size:11px!important;letter-spacing:0.14em!important;
-  text-transform:uppercase!important;color:var(--red)!important;}
-.hero,.page-header{background:var(--white)!important;}
+/* ══ HERO PROJECTE ══ */
+.projecte-hero {
+  padding: 72px 52px 80px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-/* ══ RITME: el gris calid separa seccions ══ */
-.eixos,.que-es,.mapa-bloc,.actualitat-bloc,.seccio:nth-of-type(even),
-.recursos-seccio:nth-of-type(even){background:var(--gris)!important;}
-.seccio-inner,.que-es-grid{background:var(--white);border:1px solid var(--border);
-  border-radius:6px;padding:32px 34px;}
+.projecte-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+  display: inline-block;
+  border-bottom: 3px solid var(--red);
+  padding-bottom: 6px;
+}
 
-/* ══ CAPCALERA INTERIOR UNIFICADA ══ */
-.hero,.page-header{background:var(--white)!important;padding:72px 52px 64px!important;
-  border-bottom:2px solid var(--ink)!important;min-height:auto!important;}
-.hero h1,.page-header h1{font-family:'Anton',sans-serif!important;font-weight:400!important;
-  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
-  color:var(--ink)!important;margin-bottom:18px!important;}
-.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;font-weight:600!important;
-  font-size:11px!important;letter-spacing:0.14em!important;text-transform:uppercase!important;
-  color:var(--red)!important;margin-bottom:14px!important;}
-.hero-sub,.page-header p{font-family:'Montserrat',sans-serif!important;font-size:16px!important;
-  line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px!important;}
-@media(max-width:768px){.hero,.page-header{padding:44px 22px 40px!important;}}
+.projecte-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.projecte-hero-text {
+  padding-top: 8px;
+}
+.projecte-hero-text p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 16px;
+}
+.projecte-hero-text strong {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ══ DUES VIES ═ */
+.dues-vies {
+  background: var(--beix);
+  padding: 80px 52px;
+}
+.dues-vies-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dues-vies-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.dues-vies-sub {
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-mid);
+  margin-bottom: 56px;
+}
+.dues-vies-sub strong { color: var(--red); font-weight: 600; }
+
+.vies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  position: relative;
+}
+
+.vies-grid::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  bottom: 0;
+  width: 1px;
+  background: rgba(26,26,24,0.15);
+  transform: translateX(-50%);
+}
+
+.via {
+  text-align: center;
+}
+
+.via-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 16px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.via h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.via-desc {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.via-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.via-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 110px;
+}
+
+.via-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid rgba(26,26,24,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+}
+.via-step:hover .via-icon {
+  border-color: var(--red);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(200,57,43,0.12);
+}
+.via-icon svg {
+  width: 34px;
+  height: 34px;
+  stroke: var(--ink);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.via-step-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.via-step-desc {
+  font-size: 11px;
+  color: var(--ink-muted);
+  line-height: 1.4;
+  max-width: 110px;
+}
+
+.via-arrow {
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ══ VALORS ══ */
+.valors {
+  background: var(--white);
+  padding: 72px 52px;
+  border-top: 1px solid var(--border);
+}
+.valors-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.valors-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+
+.valor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.valor-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.valor-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--red);
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.valor-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.valor-desc {
+  font-size: 12px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+
+/* ══ CTA FINAL ══ */
+.cta-final {
+  background: var(--beix);
+  padding: 48px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--red);
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--red);
+}
+
+.cta-text {
+  font-size: 14px;
+  color: var(--ink-mid);
+}
+
+.cta-btn {
+  background: var(--red);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background 0.2s;
+}
+.cta-btn:hover { background: var(--red-dark); }
+
+/* ═ FOOTER ══ */
+footer {
+  background: #111110;
+  padding: 56px 52px 0;
+  color: rgba(255,255,255,0.6);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+.footer-brand img { height: 44px; width: auto; filter: brightness(0) invert(1); }
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.35);
+  max-width: 240px;
+  margin-bottom: 18px;
+}
+.footer-social { display: flex; gap: 8px; }
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.footer-social a:hover { background: rgba(255,255,255,0.12); }
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  margin-bottom: 9px;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.2); }
+.footer-entity { font-size: 11.5px; color: rgba(255,255,255,0.35); font-weight: 500; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .projecte-hero {
+    grid-template-columns: 1fr;
+    padding: 48px 20px;
+    gap: 32px;
+  }
+  .dues-vies { padding: 56px 20px; }
+  .vies-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .vies-grid::before { display: none; }
+  .valors { padding: 56px 20px; }
+  .valors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .cta-final { padding: 40px 20px; flex-direction: column; text-align: center; }
+  footer { padding: 48px 20px 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 480px) {
+  .valors-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .via-flow { flex-direction: column; }
+  .via-arrow { transform: rotate(90deg); }
+}
 </style>
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
+  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui"></a>
   <div class="nav-links">
+    <a href="index.html">Inici</a>
     <a href="projecte.html" class="active">Projecte</a>
-    <a href="descobreix.html">Descobreix</a>
+    <a href="descobreix.html">Espais</a>
     <a href="actualitat.html">Actualitat</a>
     <a href="recursos.html">Recursos</a>
+    <a href="contacte.html">Sobre nosaltres</a>
     <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Suma't</a>
+    <a class="nav-cta" href="contacte.html">Vull participar</a>
   </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-kicker">El model</div>
-  <h1>Locals comercials en cessió d'ús.<br><em>Fora del mercat. Per sempre.</em></h1>
-  <p class="hero-sub">AQT explora un model de propietat col·lectiva dels locals comercials: la comunitat n'és la propietària, el comerç en té l'ús a preu de cost, i el local no torna mai més al mercat especulatiu.</p>
-</div>
-
-<!-- IDEA CENTRAL -->
-<div class="idea-central">
-  <div class="idea-inner">
-    <div class="idea-label">Idea central</div>
-    <div class="idea-text">Substituir la lògica especulativa del sòl comercial per una lògica de propietat col·lectiva, on l'ús dels locals respon a les necessitats del barri i no a la rendibilitat immobiliària.</div>
+<!-- HERO PROJECTE -->
+<section class="projecte-hero">
+  <div>
+    <div class="projecte-kicker">Projecte</div>
+    <h1>Un nou model per mantenir vius els comerços de Barcelona</h1>
   </div>
-</div>
-
-<!-- 1. ON SOM ARA -->
-<div class="seccio">
-  <div class="seccio-inner">
-    <div class="seccio-left">
-      <div class="kicker">Estat del projecte</div>
-      <div class="titol">Un projecte en construcció.<br><em>I ho diem tal qual.</em></div>
-      <div class="text" style="margin-top:16px;">AQT va néixer l'octubre del 2025 com a projecte de recerca. Encara no comprem locals ni tenim una entitat constituïda: aquest model és una exploració en fase de disseny, i la seva aplicació depèn de factors legals, econòmics i institucionals que estem treballant per resoldre.</div>
-      <div class="text">El que sí que fem, cada dia, és el treball que ho ha de fer possible:</div>
-    </div>
-    <div class="seccio-right">
-      <div class="kicker">Què fem avui</div>
-      <div class="taula">
-        <div class="taula-fila">
-          <div class="taula-label">Documentem</div>
-          <div class="taula-val">Prop de 40 casos de comerços tancats, en risc o recuperats al mapa — cada un verificat amb fonts.</div>
-        </div>
-        <div class="taula-fila">
-          <div class="taula-label">Analitzem</div>
-          <div class="taula-val">Articles de fons sobre les causes: lloguers sense topall, especulació, substitució comercial.</div>
-        </div>
-        <div class="taula-fila">
-          <div class="taula-label">Escoltem</div>
-          <div class="taula-val">Converses amb comerciants, veïnat i entitats del territori per entendre el problema des de dins.</div>
-        </div>
-        <div class="taula-fila">
-          <div class="taula-label">Aprenem</div>
-          <div class="taula-val">Del cooperativisme d'habitatge en cessió d'ús, que fa anys que demostra que aquest model funciona.</div>
-        </div>
-      </div>
-    </div>
+  <div class="projecte-hero-text">
+    <p>Abans Que Tanqui impulsa un <strong>model cooperatiu i comunitari</strong> per evitar que els locals comercials buidin els barris.</p>
+    <p>Treballem per garantir que els espais es quedin a mans de qui hi fa vida: les persones que hi emprenen, hi treballen i hi compren cada dia.</p>
   </div>
-</div>
+</section>
 
-<!-- 2. CAP A ON ANEM: LES DUES VIES -->
-<div class="seccio" style="background:var(--bg-warm);">
-  <div class="seccio-inner">
-    <div class="seccio-left">
-      <div class="kicker">Cap a on anem</div>
-      <div class="titol">Locals que no es venen.<br><em>Mai.</em></div>
-      <div class="text" style="margin-top:16px;">Quan un local entra al model, surt del mercat per sempre: la propietat és col·lectiva i no es revèn. El que canvia és qui l'usa i com.</div>
-      <div class="text">Hi ha dues vies, i la primera és la que dona nom al projecte.</div>
-    </div>
-    <div class="seccio-right">
-      <div class="nivells">
-        <div class="nivell">
-          <div class="nivell-cap">
-            <div class="nivell-num">Via 1 · Suport als comerços</div>
-            <div class="nivell-nom">Detectar, analitzar, assessorar, actuar</div>
+<!-- DUES VIES -->
+<section class="dues-vies">
+  <div class="dues-vies-inner">
+    <h2 class="dues-vies-title">Dues vies, un mateix objectiu</h2>
+    <p class="dues-vies-sub">Oferim <strong>dues vies complementàries</strong> per adquirir i gestionar espais comercials mitjançant la cooperativa.</p>
+
+    <div class="vies-grid">
+
+      <!-- VIA 1 -->
+      <div class="via">
+        <div class="via-badge">VIA 1</div>
+        <h3>Compra col·lectiva del local</h3>
+        <p class="via-desc">La cooperativa adquireix el local i el cedeix en ús a projectes seleccionats.</p>
+
+        <div class="via-flow">
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="9" r="2.5"/><path d="M21 21v-1.5a3 3 0 0 0-2-2.83"/></svg>
+            </div>
+            <div class="via-step-title">Sòcies</div>
+            <div class="via-step-desc">Aportacions al capital social</div>
           </div>
-          <div class="nivell-items">
-            <div class="nivell-item"><strong>Detectar:</strong> Identificar comerços en risc de tancament per pujada de lloguer o canvi de propietat</div>
-            <div class="nivell-item"><strong>Analitzar:</strong> Estudiar la situació econòmica, legal i immobiliària del local i el negoci</div>
-            <div class="nivell-item"><strong>Assessorar:</strong> Oferir orientació legal, financera i estratègica per negociar amb propietaris</div>
-            <div class="nivell-item"><strong>Actuar:</strong> Facilitar la compra col·lectiva del local per preservar el comerç a preu de cost</div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h1"/><path d="M14 9h1"/><path d="M9 13h1"/><path d="M14 13h1"/></svg>
+            </div>
+            <div class="via-step-title">Cooperativa</div>
+            <div class="via-step-desc">Compra del local</div>
           </div>
-          <div class="nivell-nota">Protegir el comerç de proximitat que està en risc.</div>
-        </div>
-        <div class="nivell">
-          <div class="nivell-cap">
-            <div class="nivell-num">Via 2 · Compra col·lectiva</div>
-            <div class="nivell-nom">Locals en cessió d'ús</div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+            </div>
+            <div class="via-step-title">Cessió d'ús</div>
+            <div class="via-step-desc">A projectes seleccionats</div>
           </div>
-          <div class="nivell-items">
-            <div class="nivell-item">Compra col·lectiva de locals comercials per a cessió d'ús a preu de cost</div>
-            <div class="nivell-item">La comunitat és propietària, el comerç en té l'ús permanent i estable</div>
-            <div class="nivell-item">Selecció de projectes segons criteris col·lectius: arrelament, necessitat, viabilitat, impacte</div>
-            <div class="nivell-item">Els locals surten del mercat especulatiu per sempre</div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="via-step-title">Impacte</div>
+            <div class="via-step-desc">Comerços arrelats i barris vius</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- D'ON VENIM -->
-<div class="idea-central">
-  <div class="idea-inner">
-    <div class="idea-label">D'on venim</div>
-    <div class="idea-text">La cessió d'ús no és cap invent nostre: cooperatives com Sostre Cívic fa anys que demostren que funciona a l'habitatge. AQT explora com portar-la als locals comercials.</div>
-  </div>
-</div>
+      <!-- VIA 2 -->
+      <div class="via">
+        <div class="via-badge">VIA 2</div>
+        <h3>Suport a l'emprenedoria</h3>
+        <p class="via-desc">Donem suport a projectes que volen tirar endavant en un local ja existent mitjançant finançament i acompanyament.</p>
 
-<!-- 4. QUI DECIDEIX -->
-<div class="seccio" style="background:var(--bg-warm);">
-  <div class="seccio-inner">
-    <div class="seccio-left">
-      <div class="kicker">Governança</div>
-      <div class="titol">No guanya qui paga més.<br><em>Guanya el que el barri necessita.</em></div>
-      <div class="text" style="margin-top:16px;">Les decisions — quin local, quin projecte, quins criteris — es prenen col·lectivament: una persona, un vot.</div>
-      <div class="text">Per escollir projectes nous, la pregunta no és quant poden pagar, sinó què aporten.</div>
-    </div>
-    <div class="seccio-right">
-      <div class="kicker">Criteris de selecció</div>
-      <div class="criteris-grid">
-        <div class="criteri">
-          <div class="criteri-nom">Arrelament</div>
-          <div class="criteri-desc">Vincle real amb el barri i la seva gent.</div>
-        </div>
-        <div class="criteri">
-          <div class="criteri-nom">Necessitat</div>
-          <div class="criteri-desc">Cobrir usos que el mercat no cobreix.</div>
-        </div>
-        <div class="criteri">
-          <div class="criteri-nom">Viabilitat</div>
-          <div class="criteri-desc">Un projecte sostenible econòmicament.</div>
-        </div>
-        <div class="criteri">
-          <div class="criteri-nom">Impacte</div>
-          <div class="criteri-desc">Què aporta al carrer i a la vida de barri.</div>
+        <div class="via-flow">
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <div class="via-step-title">Emprenedores</div>
+            <div class="via-step-desc">Projectes amb impacte social</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="via-step-title">Cooperativa</div>
+            <div class="via-step-desc">Finançament i suport</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="via-step-title">Local existent</div>
+            <div class="via-step-desc">Sostenim el que ja és viu</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="via-step-title">Impacte</div>
+            <div class="via-step-desc">Més oportunitats, més comunitat</div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- 5. ELS NÚMEROS -->
-<div class="seccio">
-  <div class="seccio-inner">
-    <div class="seccio-left">
-      <div class="kicker">Sistema econòmic</div>
-      <div class="titol">Cost real.<br><em>Sense especulació.</em></div>
-      <p class="text" style="margin-top:16px;">Les quotes d'ús cobreixen exactament els costos — ningú no distribueix beneficis.</p>
-      <div class="eco-items">
-        <div class="eco-item"><div class="eco-dash">—</div><div class="eco-text">Retorn del finançament de la compra</div></div>
-        <div class="eco-item"><div class="eco-dash">—</div><div class="eco-text">Manteniment i gestió del local</div></div>
-        <div class="eco-item"><div class="eco-dash">—</div><div class="eco-text">Fons de reserva per a imprevistos</div></div>
-        <div class="eco-item"><div class="eco-dash">—</div><div class="eco-text">Excedents → el següent local</div></div>
+<!-- VALORS -->
+<section class="valors">
+  <div class="valors-inner">
+    <div class="valors-grid">
+
+      <div class="valor">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="valor-title">Propietat col·lectiva</div>
+        <div class="valor-desc">Els espais són de la cooperativa, no d'especuladors.</div>
       </div>
-    </div>
-    <div class="seccio-right">
-      <div class="kicker">Què és per al comerç</div>
-      <div class="titol">Ni lloguer ni compra.<br><em>Una tercera via.</em></div>
-      <p class="text" style="margin-top:16px;">La cessió d'ús no és un lloguer — el comerç té estabilitat garantida i el local no es revèn mai — ni una compra: no cal endeutar-se ni ser-ne propietari.</p>
-      <p class="text">Funciona amb una <strong>aportació inicial retornable</strong> — la quantitat depèn del capital que el projecte necessiti, i es retorna si un dia decideixes marxar — i una <strong>quota mensual</strong> calculada sobre el cost real, estable en el temps.</p>
-      <p class="text">A l'hora de fer números, la comparació justa és amb el que un comerç paga avui: el lloguer de mercat. Amb un cas real de Gràcia, la quota surt entre un 37% i un 54% per sota.</p>
-      <p class="text"><a href="calculadora.html" style="color:var(--red);font-weight:600;">Comprova-ho amb la calculadora de viabilitat →</a></p>
+
+      <div class="valor">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="valor-title">Ús social i sostenible</div>
+        <div class="valor-desc">Prioritzem projectes amb impacte positiu al barri.</div>
+      </div>
+
+      <div class="valor">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 11l-5-5-5 5"/><path d="M17 18l-5-5-5 5"/><path d="M7 3v4"/><path d="M17 3v4"/><path d="M3 7h4"/><path d="M3 17h4"/><path d="M17 7h4"/><path d="M17 17h4"/></svg>
+        </div>
+        <div class="valor-title">Democràcia econòmica</div>
+        <div class="valor-desc">Les sòcies decideixen de manera participativa.</div>
+      </div>
+
+      <div class="valor">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        </div>
+        <div class="valor-title">Arrelament al territori</div>
+        <div class="valor-desc">Enfortim el teixit local i l'economia de proximitat.</div>
+      </div>
+
+      <div class="valor">
+        <div class="valor-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="valor-title">Barris vius</div>
+        <div class="valor-desc">Cuidem el que ens fa ciutat, ara i per al futur.</div>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<div class="cta-final">
-  <h2>Vols sumar-te<br>o tens un comerç en risc?</h2>
-  <p>Estem construint AQT des de zero. Necessitem veïnes, comerciants i persones que hi creguin.</p>
-  <div class="cta-btns">
-    <a class="btn-p" href="contacte.html">Escriu-nos</a>
-    <a class="btn-s" href="descobreix.html">Veure el mapa →</a>
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="cta-icon">
+    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
   </div>
-</div>
+  <div class="cta-title">Forma part del canvi</div>
+  <div class="cta-text">Fes-te sòcia, dona suport o proposa un projecte.</div>
+  <a class="cta-btn" href="contacte.html">Vull participar</a>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Barcelona</div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui"></div>
+      <div class="footer-desc">Projecte de recerca i exploració sobre la transformació del comerç de proximitat. En construcció a Catalunya.</div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/abansquetanqui/" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="contacte.html" title="Correu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Projecte</div>
+      <a href="projecte.html">Projecte</a>
+      <a href="projecte.html">Com funciona</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Participa</div>
+      <a href="contacte.html">Suma't</a>
+      <a href="contacte.html">Tens un comerç?</a>
+      <a href="contacte.html">Contacte</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Més</div>
+      <a href="descobreix.html">Mapa de casos</a>
+      <a href="actualitat.html">Actualitat</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="descobreix.html">Descobreix</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
+    <span class="footer-entity">En fase de constitució · 2026</span>
+  </div>
 </footer>
 
-<script>
-document.getElementById('nav-burger').addEventListener('click', function(){
-  this.classList.toggle('open');
-  document.getElementById('nav-mobile').classList.toggle('open');
-});
-</script>
 </body>
 </html>
