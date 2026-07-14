@@ -270,6 +270,31 @@ section:nth-of-type(3) {
   font-style: normal;
 }
 
+.section-title-large {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.projecte-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 52px;
+  align-items: start;
+}
+
+.projecte-left {
+  flex: 0 0 auto;
+}
+
+.projecte-right {
+  flex: 1;
+}
+
 .section-desc {
   font-size: 14px;
   line-height: 1.7;
@@ -567,6 +592,11 @@ footer {
     gap: 32px;
   }
 
+  .projecte-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .hero-content {
     margin-left: 20px;
     padding: 40px;
@@ -644,18 +674,15 @@ footer {
 
 <!-- PROJECTE SECTION -->
 <section>
-  <div class="section-header">
-    <div>
+  <div class="projecte-wrapper">
+    <div class="projecte-left">
       <div class="section-kicker">El projecte</div>
-      <h2 class="section-title">Per què importa el que està a punt de desaparèixer?</h2>
-    </div>
-    <div>
+      <h2 class="section-title-large">Per què importa el que està a punt de desaparèixer?</h2>
       <p class="section-desc">Cada dia, negocis amb dècades d'història abaixan la persiana. Amb aquest projecte, volem preservar la seva memòria, denunciar els mecanismes que els expulsen i explorar models col·lectius que els protegeixin.</p>
       <a href="projecte.html" class="section-link">Més sobre el projecte →</a>
     </div>
-  </div>
-
-  <div class="cards-grid">
+    <div class="projecte-right">
+      <div class="cards-grid">
     <a class="card" href="articles/ferreteria-camps.html">
       <div class="card-photo">
         <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
@@ -694,6 +721,8 @@ footer {
         <div class="card-link">Llegir história →</div>
       </div>
     </a>
+      </div>
+    </div>
   </div>
 </section>
 
