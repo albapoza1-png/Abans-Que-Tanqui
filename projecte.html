@@ -79,10 +79,10 @@ nav {
 
 /* ══ HERO PROJECTE ══ */
 .projecte-hero {
-  padding: 72px 52px 80px;
+  padding: 80px 52px 90px;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
   align-items: start;
   max-width: 1400px;
   margin: 0 auto;
@@ -102,16 +102,16 @@ nav {
 
 .projecte-hero h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
   color: var(--ink);
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 .projecte-hero-text {
-  padding-top: 8px;
+  padding-top: 4px;
 }
 .projecte-hero-text p {
   font-size: 15px;
@@ -124,10 +124,10 @@ nav {
   font-weight: 600;
 }
 
-/* ══ DUES VIES ═ */
+/* ═ DUES VIES ═ */
 .dues-vies {
   background: var(--beix);
-  padding: 80px 52px;
+  padding: 90px 52px;
 }
 .dues-vies-inner {
   max-width: 1400px;
@@ -149,14 +149,14 @@ nav {
   text-align: center;
   font-size: 14px;
   color: var(--ink-mid);
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 .dues-vies-sub strong { color: var(--red); font-weight: 600; }
 
 .vies-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 64px;
   position: relative;
 }
 
@@ -164,8 +164,8 @@ nav {
   content: '';
   position: absolute;
   left: 50%;
-  top: 80px;
-  bottom: 0;
+  top: 100px;
+  bottom: 40px;
   width: 1px;
   background: rgba(26,26,24,0.15);
   transform: translateX(-50%);
@@ -184,7 +184,7 @@ nav {
   letter-spacing: 0.12em;
   padding: 6px 16px;
   border-radius: 3px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .via h3 {
@@ -193,7 +193,7 @@ nav {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--ink);
 }
 
@@ -201,8 +201,8 @@ nav {
   font-size: 13px;
   color: var(--ink-mid);
   line-height: 1.6;
-  margin-bottom: 40px;
-  max-width: 340px;
+  margin-bottom: 48px;
+  max-width: 360px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -211,7 +211,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -219,33 +219,34 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
-  min-width: 110px;
+  min-width: 120px;
 }
 
 .via-icon {
-  width: 72px;
-  height: 72px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   background: var(--white);
-  border: 1.5px solid rgba(26,26,24,0.15);
+  border: 2px solid rgba(26,26,24,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s;
+  transition: all 0.3s;
+  padding: 16px;
 }
 .via-step:hover .via-icon {
   border-color: var(--red);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(200,57,43,0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(200,57,43,0.15);
 }
 .via-icon svg {
-  width: 34px;
-  height: 34px;
+  width: 100%;
+  height: 100%;
   stroke: var(--ink);
   fill: none;
-  stroke-width: 1.6;
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -267,15 +268,16 @@ nav {
 
 .via-arrow {
   color: var(--red);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   flex-shrink: 0;
+  opacity: 0.6;
 }
 
-/* ══ VALORS ══ */
+/* ══ VALORS ═ */
 .valors {
   background: var(--white);
-  padding: 72px 52px;
+  padding: 80px 52px;
   border-top: 1px solid var(--border);
 }
 .valors-inner {
@@ -286,29 +288,29 @@ nav {
 .valors-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 32px;
+  gap: 40px;
 }
 
 .valor {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
 }
 
 .valor-icon {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .valor-icon svg {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   stroke: var(--red);
   fill: none;
-  stroke-width: 1.4;
+  stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -331,7 +333,7 @@ nav {
 /* ══ CTA FINAL ══ */
 .cta-final {
   background: var(--beix);
-  padding: 48px 52px;
+  padding: 56px 52px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -340,18 +342,18 @@ nav {
 }
 
 .cta-icon {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .cta-icon svg {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   stroke: var(--red);
   fill: none;
-  stroke-width: 1.4;
+  stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -460,21 +462,21 @@ footer {
   .nav-links { display: none; }
   .projecte-hero {
     grid-template-columns: 1fr;
-    padding: 48px 20px;
-    gap: 32px;
-  }
-  .dues-vies { padding: 56px 20px; }
-  .vies-grid {
-    grid-template-columns: 1fr;
+    padding: 56px 20px 64px;
     gap: 40px;
   }
+  .dues-vies { padding: 64px 20px; }
+  .vies-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
   .vies-grid::before { display: none; }
-  .valors { padding: 56px 20px; }
+  .valors { padding: 64px 20px; }
   .valors-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
-  .cta-final { padding: 40px 20px; flex-direction: column; text-align: center; }
+  .cta-final { padding: 48px 20px; flex-direction: column; text-align: center; }
   footer { padding: 48px 20px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
 }
@@ -512,7 +514,7 @@ footer {
   </div>
   <div class="projecte-hero-text">
     <p>Abans Que Tanqui impulsa un <strong>model cooperatiu i comunitari</strong> per evitar que els locals comercials buidin els barris.</p>
-    <p>Treballem per garantir que els espais es quedin a mans de qui hi fa vida: les persones que hi emprenen, hi treballen i hi compren cada dia.</p>
+    <p>Treballem per garantir que els espais es queden a mans de qui hi fa vida: les persones que hi emprenen, hi treballen i hi compren cada dia.</p>
   </div>
 </section>
 
@@ -524,16 +526,93 @@ footer {
 
     <div class="vies-grid">
 
-      <!-- VIA 1 -->
+      <!-- VIA 1: SUPORT AL COMERÇ -->
       <div class="via">
         <div class="via-badge">VIA 1</div>
+        <h3>Suport al comerç</h3>
+        <p class="via-desc">Acompanyem els comerços de proximitat des de la detecció fins a la derivació a recursos i solucions col·lectives.</p>
+
+        <div class="via-flow">
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+                <path d="M21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="3" stroke-width="1.5"/>
+                <path d="M8 11h6M11 8v6" stroke-width="1.5" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="via-step-title">Detectar</div>
+            <div class="via-step-desc">Identifiquem comerços en risc</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="1.5"/>
+                <path d="M14 2v6h6" stroke-width="1.5"/>
+                <path d="M16 13H8" stroke-width="1.3"/>
+                <path d="M16 17H8" stroke-width="1.3"/>
+                <path d="M10 9H8" stroke-width="1.3"/>
+                <rect x="8" y="12" width="3" height="3" fill="#C8392B" stroke="none"/>
+              </svg>
+            </div>
+            <div class="via-step-title">Documentar</div>
+            <div class="via-step-desc">Recollim històries i dades</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a3 3 0 0 0-3 3v2H7a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-3-3z" stroke-width="1.5"/>
+                <path d="M9 7h6" stroke-width="1.3"/>
+                <path d="M12 12v4" stroke-width="1.5"/>
+                <path d="M10 14h4" stroke-width="1.3"/>
+                <circle cx="12" cy="9" r="1.5" fill="#C8392B" stroke="none"/>
+              </svg>
+            </div>
+            <div class="via-step-title">Acompanyar</div>
+            <div class="via-step-desc">Donem suport personalitzat</div>
+          </div>
+
+          <div class="via-arrow">→</div>
+
+          <div class="via-step">
+            <div class="via-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2v20M2 12h20" stroke-width="1" opacity="0.3"/>
+                <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
+                <path d="M12 7v5l3 3" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="2" fill="#C8392B" stroke="none"/>
+              </svg>
+            </div>
+            <div class="via-step-title">Derivar</div>
+            <div class="via-step-desc">Connectem amb solucions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIA 2: COMPRA COL·LECTIVA -->
+      <div class="via">
+        <div class="via-badge">VIA 2</div>
         <h3>Compra col·lectiva del local</h3>
         <p class="via-desc">La cooperativa adquireix el local i el cedeix en ús a projectes seleccionats.</p>
 
         <div class="via-flow">
           <div class="via-step">
             <div class="via-icon">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="9" r="2.5"/><path d="M21 21v-1.5a3 3 0 0 0-2-2.83"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="1.5"/>
+                <circle cx="9" cy="7" r="3" stroke-width="1.5"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="1.5"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="1.5"/>
+                <circle cx="9" cy="7" r="1.5" fill="#C8392B" stroke="none"/>
+                <circle cx="17" cy="9" r="1.2" fill="#C8392B" stroke="none"/>
+              </svg>
             </div>
             <div class="via-step-title">Sòcies</div>
             <div class="via-step-desc">Aportacions al capital social</div>
@@ -543,7 +622,15 @@ footer {
 
           <div class="via-step">
             <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h1"/><path d="M14 9h1"/><path d="M9 13h1"/><path d="M14 13h1"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M3 21h18" stroke-width="1.5"/>
+                <path d="M5 21V7l7-4 7 4v14" stroke-width="1.5"/>
+                <path d="M9 21v-6h6v6" stroke-width="1.5"/>
+                <rect x="9" y="9" width="1.5" height="1.5" fill="#C8392B" stroke="none"/>
+                <rect x="13.5" y="9" width="1.5" height="1.5" fill="#C8392B" stroke="none"/>
+                <rect x="9" y="13" width="1.5" height="1.5" fill="#C8392B" stroke="none"/>
+                <rect x="13.5" y="13" width="1.5" height="1.5" fill="#C8392B" stroke="none"/>
+              </svg>
             </div>
             <div class="via-step-title">Cooperativa</div>
             <div class="via-step-desc">Compra del local</div>
@@ -553,7 +640,11 @@ footer {
 
           <div class="via-step">
             <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" stroke-width="1.5"/>
+                <circle cx="12" cy="12" r="2" fill="#C8392B" stroke="none"/>
+                <path d="M7 17l-2 2" stroke-width="1.2" opacity="0.6"/>
+              </svg>
             </div>
             <div class="via-step-title">Cessió d'ús</div>
             <div class="via-step-desc">A projectes seleccionats</div>
@@ -563,57 +654,14 @@ footer {
 
           <div class="via-step">
             <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="1.5"/>
+                <path d="M12 8v6M9 11l3 3 3-3" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="2" fill="#C8392B" stroke="none"/>
+              </svg>
             </div>
             <div class="via-step-title">Impacte</div>
             <div class="via-step-desc">Comerços arrelats i barris vius</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VIA 2 -->
-      <div class="via">
-        <div class="via-badge">VIA 2</div>
-        <h3>Suport a l'emprenedoria</h3>
-        <p class="via-desc">Donem suport a projectes que volen tirar endavant en un local ja existent mitjançant finançament i acompanyament.</p>
-
-        <div class="via-flow">
-          <div class="via-step">
-            <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            </div>
-            <div class="via-step-title">Emprenedores</div>
-            <div class="via-step-desc">Projectes amb impacte social</div>
-          </div>
-
-          <div class="via-arrow">→</div>
-
-          <div class="via-step">
-            <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <div class="via-step-title">Cooperativa</div>
-            <div class="via-step-desc">Finançament i suport</div>
-          </div>
-
-          <div class="via-arrow">→</div>
-
-          <div class="via-step">
-            <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div class="via-step-title">Local existent</div>
-            <div class="via-step-desc">Sostenim el que ja és viu</div>
-          </div>
-
-          <div class="via-arrow">→</div>
-
-          <div class="via-step">
-            <div class="via-icon">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div class="via-step-title">Impacte</div>
-            <div class="via-step-desc">Més oportunitats, més comunitat</div>
           </div>
         </div>
       </div>
@@ -629,7 +677,13 @@ footer {
 
       <div class="valor">
         <div class="valor-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="1.5"/>
+            <circle cx="9" cy="7" r="3" stroke-width="1.5"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="1.5"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="1.5"/>
+            <circle cx="9" cy="7" r="1.2" fill="#C8392B" stroke="none"/>
+          </svg>
         </div>
         <div class="valor-title">Propietat col·lectiva</div>
         <div class="valor-desc">Els espais són de la cooperativa, no d'especuladors.</div>
@@ -637,7 +691,11 @@ footer {
 
       <div class="valor">
         <div class="valor-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5"/>
+            <path d="M9 12l2 2 4-4" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="2" fill="#C8392B" stroke="none"/>
+          </svg>
         </div>
         <div class="valor-title">Ús social i sostenible</div>
         <div class="valor-desc">Prioritzem projectes amb impacte positiu al barri.</div>
@@ -645,7 +703,16 @@ footer {
 
       <div class="valor">
         <div class="valor-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 11l-5-5-5 5"/><path d="M17 18l-5-5-5 5"/><path d="M7 3v4"/><path d="M17 3v4"/><path d="M3 7h4"/><path d="M3 17h4"/><path d="M17 7h4"/><path d="M17 17h4"/></svg>
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1" stroke-width="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1" stroke-width="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1" stroke-width="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1" stroke-width="1.5"/>
+            <circle cx="6.5" cy="6.5" r="1" fill="#C8392B" stroke="none"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="#C8392B" stroke="none"/>
+            <circle cx="17.5" cy="17.5" r="1" fill="#C8392B" stroke="none"/>
+            <circle cx="6.5" cy="17.5" r="1" fill="#C8392B" stroke="none"/>
+          </svg>
         </div>
         <div class="valor-title">Democràcia econòmica</div>
         <div class="valor-desc">Les sòcies decideixen de manera participativa.</div>
@@ -653,7 +720,12 @@ footer {
 
       <div class="valor">
         <div class="valor-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.3"/>
+            <path d="M12 8v8M8 12h8" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="12" cy="12" r="2.5" fill="#C8392B" stroke="none"/>
+            <path d="M12 2v3M12 19v3" stroke-width="1.2"/>
+          </svg>
         </div>
         <div class="valor-title">Arrelament al territori</div>
         <div class="valor-desc">Enfortim el teixit local i l'economia de proximitat.</div>
@@ -661,7 +733,11 @@ footer {
 
       <div class="valor">
         <div class="valor-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke-width="1.5"/>
+            <path d="M12 8v6M9 11l3 3 3-3" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="2" fill="#C8392B" stroke="none"/>
+          </svg>
         </div>
         <div class="valor-title">Barris vius</div>
         <div class="valor-desc">Cuidem el que ens fa ciutat, ara i per al futur.</div>
@@ -674,7 +750,13 @@ footer {
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="cta-icon">
-    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="1.5"/>
+      <circle cx="9" cy="7" r="3" stroke-width="1.5"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="1.5"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="1.5"/>
+      <circle cx="9" cy="7" r="1.2" fill="#C8392B" stroke="none"/>
+    </svg>
   </div>
   <div class="cta-title">Forma part del canvi</div>
   <div class="cta-text">Fes-te sòcia, dona suport o proposa un projecte.</div>
