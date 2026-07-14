@@ -387,7 +387,16 @@ footer {
 ═══════════════════════════════════════════ */
 @media (max-width: 960px) {
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
+  #nav-burger { display: flex !important; }
+  .nav-links {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: var(--white); flex-direction: column;
+    padding: 8px 0 20px; border-top: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(26,26,24,0.10); z-index: 999;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 14px 24px; font-size: 15px; }
   
   .descobreix-layout {
     grid-template-columns: 1fr;
@@ -408,6 +417,11 @@ footer {
   .footer-inner { flex-direction: column; gap: 24px; }
   footer { padding: 32px 20px 16px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* GRAFICS: apilats en comptes d'esprémuts a 2 columnes */
+  .grafics-grid { grid-template-columns: 1fr; gap: 20px; }
+  .grafic-container { min-height: 220px; padding: 14px; }
+  #chart-districtes { max-height: 220px; }
 }
 
 /* ══════════════════════════════════════════
@@ -474,6 +488,15 @@ footer {
   .fitxa-img-wrap{height:200px;}
   .fitxa-body{padding:22px 20px 32px;}
 }
+
+#nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:8px;z-index:1100;}
+#nav-burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;
+  transition:all .25s;}
+#nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+#nav-burger.open span:nth-child(2){opacity:0;}
+#nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){#nav-burger{display:flex!important;}}
 </style>
 </head>
 <body>
@@ -483,8 +506,9 @@ footer {
 ═══════════════════════════════════════════ -->
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui">
+    <img src="img/logo-aqt.png" alt="Abans Que Tanqui">
   </a>
+  <button id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
   <div class="nav-links">
     <a href="projecte.html">Projecte</a>
     <a href="descobreix.html" class="active">Descobreix</a>
@@ -515,16 +539,14 @@ footer {
         <path d="M21 21l-4.35-4.35"/>
       </svg>
       <input class="cerca-input" id="cerca-input" placeholder="Cerca un comerç o adreça..." oninput="cercar(this.value)">
-      <button class="filtre-btn" onclick="filtrar(this,'tot')">Tots</button>
-    </div>
+        </div>
 
     <div class="comptador" id="comptador">0 comerços documentats</div>
-    <!-- AFEGEIX AIXÒ -->
 <div class="filtres-estat" style="display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap;">
   <button class="filtre-btn active-all" onclick="filtrarEstat(this,'tot')">Tots</button>
-  <button class="filtre-btn" onclick="filtrarEstat(this,'risc')" style="color:#C47A00;">En risc</button>
-  <button class="filtre-btn" onclick="filtrarEstat(this,'tancat')" style="color:#C8392B;">Tancats</button>
-  <button class="filtre-btn" onclick="filtrarEstat(this,'recuperat')" style="color:#2A7A4B;">Recuperats</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'risc')" style="color:#C47A00;" data-color="#C47A00">En risc</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'tancat')" style="color:#C8392B;" data-color="#C8392B">Tancats</button>
+  <button class="filtre-btn" onclick="filtrarEstat(this,'recuperat')" style="color:#2A7A4B;" data-color="#2A7A4B">Recuperats</button>
 </div>
 
     <div class="casos-list" id="casos-list"></div>
@@ -619,8 +641,11 @@ function filtrarEstat(btn, estat) {
   // Treu la classe active de tots els botons
   document.querySelectorAll('.filtres-estat .filtre-btn').forEach(b => {
     b.className = 'filtre-btn';
+    b.style.background = '';
+    b.style.color = b.dataset.color || '';
+    b.style.borderColor = '';
   });
-  // Afegeix la classe active al botó clicat
+  // Afegeix la classe active NOMES al boto clicat
   btn.className = 'filtre-btn active-all';
   btn.style.background = 'var(--ink)';
   btn.style.color = '#fff';
@@ -920,5 +945,18 @@ carregarDades();
     <div class="fitxa-desc" id="fitxa-desc"></div>
   </div>
 </aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var burger = document.getElementById('nav-burger');
+  var links  = document.querySelector('.nav-links');
+  if (burger && links) {
+    burger.addEventListener('click', function(){
+      links.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+  }
+});
+</script>
 </body>
 </html>
