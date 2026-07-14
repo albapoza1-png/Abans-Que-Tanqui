@@ -409,6 +409,71 @@ footer {
   footer { padding: 32px 20px 16px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+/* ══════════════════════════════════════════
+   FITXA LATERAL (panell de detall del comerç)
+═══════════════════════════════════════════ */
+.fitxa-overlay{
+  position:fixed;inset:0;background:rgba(26,26,24,0.45);
+  opacity:0;visibility:hidden;transition:opacity .25s ease;z-index:2000;
+}
+.fitxa-overlay.visible{opacity:1;visibility:visible;}
+
+.fitxa-lateral{
+  position:fixed;top:0;right:0;height:100%;width:420px;max-width:92vw;
+  background:var(--white);box-shadow:-8px 0 32px rgba(26,26,24,0.18);
+  transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+  z-index:2001;overflow-y:auto;
+}
+.fitxa-lateral.open{transform:translateX(0);}
+
+.fitxa-close{
+  position:absolute;top:18px;right:18px;width:36px;height:36px;
+  border-radius:50%;background:var(--beix-clar);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  font-size:20px;line-height:1;color:var(--ink-mid);z-index:5;transition:background .15s;
+}
+.fitxa-close:hover{background:var(--beix);}
+
+.fitxa-img-wrap{width:100%;height:240px;background:var(--beix-clar);overflow:hidden;position:relative;}
+.fitxa-img-wrap img{width:100%;height:100%;object-fit:cover;display:none;}
+
+.fitxa-badge{
+  position:absolute;bottom:16px;left:20px;display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  padding:6px 13px;border-radius:20px;color:#fff;
+}
+.fitxa-badge.risc{background:var(--amber);}
+.fitxa-badge.tancat{background:var(--red);}
+.fitxa-badge.recuperat{background:var(--green);}
+
+.fitxa-body{padding:28px 28px 40px;}
+.fitxa-categoria{
+  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--red);margin-bottom:8px;
+}
+.fitxa-nom{
+  font-size:24px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:6px;
+}
+.fitxa-any{font-size:13px;color:var(--ink-muted);margin-bottom:20px;}
+
+.fitxa-linia{
+  display:flex;gap:10px;align-items:flex-start;padding:12px 0;
+  border-top:1px solid var(--border);font-size:14px;color:var(--ink-mid);line-height:1.5;
+}
+.fitxa-linia:first-of-type{border-top:none;}
+.fitxa-linia svg{flex-shrink:0;margin-top:2px;}
+
+.fitxa-desc{
+  font-size:14px;line-height:1.7;color:var(--ink-mid);
+  margin-top:20px;padding-top:20px;border-top:1px solid var(--border);
+}
+
+@media (max-width:640px){
+  .fitxa-lateral{width:100%;max-width:100%;}
+  .fitxa-img-wrap{height:200px;}
+  .fitxa-body{padding:22px 20px 32px;}
+}
 </style>
 </head>
 <body>
@@ -666,7 +731,7 @@ function renderLlista() {
         (p.barri ? `<div class="cas-barri">📍 ${p.barri}</div>` : '') +
       `</div>` +
       `<div class="cas-arrow">›</div>`;
-    div.onclick = () => { map.setView([p.lat, p.lng], 16); };
+    div.onclick = () => { map.setView([p.lat, p.lng], 16); obrirFitxa(p); };
     list.appendChild(div);
   });
 }
@@ -831,5 +896,29 @@ function renderGrafic() {
 
 carregarDades();
 </script>
+
+<!-- ═══════════════════════════════════════════
+     FITXA LATERAL (detall del comerç)
+═══════════════════════════════════════════ -->
+<div class="fitxa-overlay" id="fitxa-overlay" onclick="tancarFitxa(event)"></div>
+<aside class="fitxa-lateral" id="fitxa-lateral">
+  <button class="fitxa-close" onclick="tancarFitxa(event)">&times;</button>
+  <div class="fitxa-img-wrap">
+    <img id="fitxa-img" src="" alt="">
+    <span class="fitxa-badge" id="fitxa-badge"></span>
+  </div>
+  <div class="fitxa-body">
+    <div class="fitxa-categoria" id="fitxa-categoria"></div>
+    <div class="fitxa-nom" id="fitxa-nom"></div>
+    <div class="fitxa-any" id="fitxa-any"></div>
+
+    <div class="fitxa-linia">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span id="fitxa-adreca"></span>
+    </div>
+
+    <div class="fitxa-desc" id="fitxa-desc"></div>
+  </div>
+</aside>
 </body>
 </html>
