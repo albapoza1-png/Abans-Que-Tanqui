@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Descobreix · Abans Que Tanqui</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -28,403 +28,316 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Montserrat', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background: var(--white);
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ═ NAVIGATION ══ */
+/* NAV */
 nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 0 52px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 64px;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo img { height: 40px; width: auto; }
+.nav-logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--red);
+}
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
-  font-size: 13px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; transition: color 0.15s; position: relative;
+  font-size: 14px; font-weight: 500; color: var(--ink-muted);
+  text-decoration: none; transition: color 0.15s;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
-.nav-links a.active::after {
-  content: ''; position: absolute; bottom: -24px; left: 0; right: 0;
-  height: 2px; background: var(--red);
-}
-.nav-cta {
-  background: var(--red) !important; color: #fff !important;
-  padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 600;
-  text-decoration: none; transition: background 0.2s;
-}
-.nav-cta:hover { background: var(--red-dark) !important; }
 
-/* ══ HEADER ══ */
-.page-header {
-  background: var(--white);
-  padding: 64px 52px 48px;
-  border-bottom: 1px solid var(--border);
-}
-.page-header-kicker {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 12px;
-}
-.page-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--ink);
-  line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;
-}
-.page-header p {
-  font-size: 15px; color: var(--ink-mid); max-width: 600px; line-height: 1.7;
-}
-
-/* ══ MAPA AMB SIDEBAR ══ */
-.mapa-full-wrap {
+/* LAYOUT PRINCIPAL */
+.descobreix-layout {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  min-height: calc(100vh - 72px - 200px);
+  grid-template-columns: 450px 1fr;
+  min-height: calc(100vh - 64px);
 }
 
-/* Sidebar */
-.mapa-panel {
+/* SIDEBAR ESQUERRA */
+.sidebar {
   background: var(--white);
   border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-.mapa-panel-header {
-  padding: 28px 28px 20px;
-  border-bottom: 1px solid var(--border);
-  background: var(--white);
-}
-.mapa-panel-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 64px);
+  padding: 32px;
 }
 
-/* Cerca */
-.cerca-wrap { position: relative; margin-bottom: 16px; }
+.sidebar-header { margin-bottom: 24px; }
+.sidebar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; color: var(--ink);
+  margin-bottom: 8px;
+}
+.sidebar-desc {
+  font-size: 14px; color: var(--ink-mid); line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* CERCA */
+.cerca-wrap { 
+  position: relative; 
+  margin-bottom: 24px;
+  display: flex;
+  gap: 8px;
+}
 .cerca-input {
-  width: 100%; border: 1.5px solid var(--border); border-radius: 20px;
-  padding: 8px 14px 8px 36px; font-size: 12px; font-family: inherit;
-  outline: none; color: var(--ink);
+  flex: 1;
+  border: 1.5px solid var(--border); 
+  border-radius: 8px;
+  padding: 10px 14px 10px 40px; 
+  font-size: 14px; 
+  font-family: inherit;
+  outline: none; 
+  color: var(--ink);
+  transition: border-color 0.15s;
 }
 .cerca-input:focus { border-color: var(--ink); }
 .cerca-ico {
-  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-  pointer-events: none; width: 14px; height: 14px; stroke: var(--ink-muted);
+  position: absolute; 
+  left: 12px; 
+  top: 50%; 
+  transform: translateY(-50%);
+  pointer-events: none; 
+  width: 16px; 
+  height: 16px; 
+  stroke: var(--ink-muted);
 }
-
-/* Filtres */
-.filtres { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
 .filtre-btn {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border);
-  background: #fff; cursor: pointer; color: var(--muted); transition: all 0.15s;
+  padding: 10px 16px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
 }
-.filtre-btn:hover { border-color: var(--ink); color: var(--ink); }
-.filtre-btn.active-risc { background: rgba(196,122,0,0.1); border-color: var(--amber); color: var(--amber); }
-.filtre-btn.active-tancat { background: rgba(200,57,43,0.1); border-color: var(--red); color: var(--red); }
-.filtre-btn.active-recuperat { background: rgba(42,122,75,0.1); border-color: var(--green); color: var(--green); }
-.filtre-btn.active-all { background: var(--ink); border-color: var(--ink); color: #fff; }
+.filtre-btn:hover { border-color: var(--ink); }
 
-.filtres-anys { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
-.filtres-anys > span { font-size: 11px; font-weight: 600; color: var(--muted); margin-right: 4px; }
-.any-btn {
-  font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
-  border: 1.5px solid var(--border); background: #fff; color: var(--muted);
-  cursor: pointer; transition: all 0.15s;
+/* COMPTADOR */
+.comptador {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 16px;
 }
-.any-btn:hover { border-color: var(--ink); color: var(--ink); }
-.any-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 
-/* Llista */
-.casos-list { flex: 1; overflow-y: auto; }
+/* LLISTA COMERÇOS */
+.casos-list { margin-bottom: 32px; }
 .cas-item {
-  padding: 18px 28px; border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background 0.15s;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--white);
 }
-.cas-item:hover { background: var(--beix-clar); }
-.cas-badge {
-  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-bottom: 8px;
+.cas-item:hover { 
+  background: var(--beix-clar);
+  border-color: var(--ink);
 }
-.cas-badge.risc { background: rgba(196,122,0,0.12); color: var(--amber); }
-.cas-badge.tancat { background: rgba(200,57,43,0.12); color: var(--red); }
-.cas-badge.recuperat { background: rgba(42,122,75,0.12); color: var(--green); }
+.cas-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--beix);
+  flex-shrink: 0;
+}
+.cas-info { flex: 1; min-width: 0; }
 .cas-nom {
   font-family: 'Playfair Display', serif;
-  font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+  font-size: 16px; 
+  font-weight: 600; 
+  color: var(--ink); 
+  margin-bottom: 4px;
 }
-.cas-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-/* Mapa */
-#mapa-full { background: var(--beix-clar); }
-
-/* Stats Bar */
-.mapa-stats-bar {
-  background: var(--ink); padding: 20px 52px; display: flex; gap: 40px;
+.cas-any {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
 }
-.mapa-stat { display: flex; flex-direction: column; }
-.mapa-stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 700; color: #fff; line-height: 1;
+.cas-categoria {
+  font-size: 13px;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
 }
-.mapa-stat-label {
-  font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em;
-  text-transform: uppercase; margin-top: 4px;
+.cas-barri {
+  font-size: 12px;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-
-/* Fitxa */
-.fitxa {
-  display: none; position: fixed; top: 72px; right: 0;
-  width: 380px; height: calc(100vh - 72px); background: var(--white);
-  border-left: 1px solid var(--border); z-index: 500; overflow-y: auto;
-  box-shadow: -4px 0 24px rgba(0,0,0,0.08);
-}
-.fitxa.open { display: flex; flex-direction: column; }
-.fitxa-header {
-  padding: 24px; border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: flex-start;
-}
-.fitxa-close {
-  background: none; border: none; cursor: pointer; font-size: 20px;
-  color: var(--muted); padding: 4px;
-}
-.fitxa-badge {
-  display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px;
-}
-.fitxa-badge.tancat { background: rgba(200,57,43,0.1); color: var(--red); }
-.fitxa-badge.risc { background: rgba(196,122,0,0.1); color: var(--amber); }
-.fitxa-badge.recuperat { background: rgba(42,122,75,0.1); color: var(--green); }
-.fitxa-nom {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
-}
-.fitxa-adreca { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
-.fitxa-body { padding: 24px; }
-.fitxa-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 20px; }
-.fitxa-meta { display: flex; flex-direction: column; gap: 8px; }
-.fitxa-meta-item { display: flex; gap: 10px; font-size: 12.5px; }
-.fitxa-meta-label { font-weight: 600; color: var(--ink); min-width: 80px; }
-.fitxa-meta-val { color: var(--muted); }
-
-/* ═ GRÀFICS ══ */
-.grafics-bloc {
-  padding: 64px 52px; background: var(--white); border-top: 1px solid var(--border);
-}
-.grafics-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
-}
-.grafics-kicker {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--amber); margin-bottom: 6px;
-}
-.grafics-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--ink);
-  letter-spacing: -0.02em;
-}
-.grafics-nota { font-size: 12px; color: var(--muted); max-width: 300px; text-align: right; }
-
-.grafics-inner { max-width: 1200px; margin: 0 auto; }
-.grafics-row { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: center; }
-.grafic-subtitol {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+.cas-arrow {
+  align-self: center;
+  color: var(--ink-muted);
+  font-size: 18px;
 }
 
-/* ══ CALCULADORA ══ */
-.calculadora-bloc {
-  background: var(--beix);
-  padding: 64px 52px;
+.veure-tots {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.veure-tots:hover {
+  background: var(--beix-clar);
+  border-color: var(--ink);
+}
+
+/* ESTADÍSTIQUES */
+.estadistiques {
+  margin-top: 32px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
 }
-.calculadora-inner {
-  max-width: 800px;
-}
-.calculadora-kicker {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 10px;
-}
-.calculadora-title {
+.estadistiques-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--ink);
-  margin-bottom: 12px; letter-spacing: -0.02em;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 20px;
 }
-.calculadora-desc {
-  font-size: 15px; color: var(--ink-mid); line-height: 1.7;
-  margin-bottom: 28px; max-width: 600px;
+.grafics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
-.calculadora-btn {
-  display: inline-block; background: var(--red); color: #fff;
-  padding: 14px 28px; border-radius: 4px; font-size: 13px; font-weight: 700;
-  text-decoration: none; transition: background 0.2s;
+.grafic-container {
+  background: var(--beix-clar);
+  padding: 16px;
+  border-radius: 8px;
 }
-.calculadora-btn:hover { background: var(--red-dark); }
-
-/* ══ FOOTER ══ */
-footer {
-  background: #111110; padding: 48px 52px 24px; color: rgba(255,255,255,0.6);
-}
-.footer-brand {
-  font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700;
-  color: #fff; display: flex; align-items: center; gap: 9px; margin-bottom: 12px;
-}
-.footer-brand img { height: 44px; width: auto; filter: brightness(0) invert(1); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-top: 32px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 11.5px; color: rgba(255,255,255,0.2);
+.grafic-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
 }
 
-/* ══ RESPONSIVE ═ */
+/* MAPA */
+#mapa-full { 
+  background: var(--beix-clar);
+  height: 100%;
+  min-height: calc(100vh - 64px);
+}
+
+/* RESPONSIVE */
 @media (max-width: 960px) {
+  .descobreix-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 400px;
+  }
+  .sidebar {
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  #mapa-full {
+    min-height: 400px;
+  }
   nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .page-header { padding: 48px 20px 40px; }
-  .mapa-full-wrap { grid-template-columns: 1fr; grid-template-rows: 400px 1fr; }
-  .mapa-panel { border-right: none; border-top: 1px solid var(--border); }
-  .fitxa { width: 100%; top: auto; bottom: 0; height: 60vh; border-left: none; border-top: 1px solid var(--border); }
-  .mapa-stats-bar { padding: 16px 20px; gap: 24px; flex-wrap: wrap; }
-  .grafics-bloc { padding: 48px 20px; }
-  .grafics-row { grid-template-columns: 1fr; gap: 32px; }
-  .calculadora-bloc { padding: 48px 20px; }
-  footer { padding: 40px 20px 20px; }
+  .sidebar { padding: 24px 20px; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui"></a>
+  <a class="nav-logo" href="index.html">AQT</a>
   <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
+    <a href="index.html">Inici</a>
     <a href="descobreix.html" class="active">Descobreix</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html">Recursos</a>
-    <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Suma't</a>
+    <a href="projecte.html">El projecte</a>
+    <a href="actualitat.html">Notícies</a>
   </div>
 </nav>
 
-<!-- HEADER -->
-<div class="page-header">
-  <div class="page-header-kicker">Descobreix</div>
-  <h1>Comerços en risc a Barcelona.</h1>
-  <p>Cada punt representa un comerç documentat. El mapa s'actualitza a mesura que treballem sobre el terreny.</p>
-</div>
+<!-- LAYOUT PRINCIPAL -->
+<div class="descobreix-layout">
+  
+  <!-- SIDEBAR ESQUERRA -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">Descobreix</h1>
+      <p class="sidebar-desc">
+        Explora el mapa i descobreix els comerços històrics de Barcelona abans que tanquin.
+      </p>
+    </div>
 
-<!-- STATS BAR -->
-<div class="mapa-stats-bar">
-  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-risc">—</span><div class="mapa-stat-label">En risc</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-tancat">—</span><div class="mapa-stat-label">Tancats</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-recuperat">—</span><div class="mapa-stat-label">Recuperats</div></div>
-  <div class="mapa-stat"><span class="mapa-stat-num" id="stat-total">—</span><div class="mapa-stat-label">Total documentats</div></div>
-</div>
+    <div class="cerca-wrap">
+      <svg class="cerca-ico" viewBox="0 0 24 24" fill="none" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input class="cerca-input" id="cerca-input" placeholder="Cerca un comerç o adreça..." oninput="cercar(this.value)">
+      <button class="filtre-btn" onclick="filtrar(this,'tot')">Tots</button>
+    </div>
 
-<!-- MAPA AMB SIDEBAR -->
-<div class="mapa-full-wrap">
-  <div class="mapa-panel">
-    <div class="mapa-panel-header">
-      <div class="mapa-panel-title">Casos documentats</div>
-      
-      <div class="cerca-wrap">
-        <svg class="cerca-ico" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input class="cerca-input" id="cerca-input" placeholder="Cerca un comerç..." oninput="cercar(this.value)">
-      </div>
+    <div class="comptador" id="comptador">0 comerços documentats</div>
 
-      <div class="filtres">
-        <button class="filtre-btn active-all" data-filtre="tot" onclick="filtrar(this,'tot')">Tots</button>
-        <button class="filtre-btn" data-filtre="risc" onclick="filtrar(this,'risc')">En risc</button>
-        <button class="filtre-btn" data-filtre="tancat" onclick="filtrar(this,'tancat')">Tancats</button>
-        <button class="filtre-btn" data-filtre="recuperat" onclick="filtrar(this,'recuperat')">Recuperats</button>
-      </div>
+    <div class="casos-list" id="casos-list">
+      <!-- Els comerços es carregaran aquí -->
+    </div>
 
-      <div class="filtres-anys" id="filtres-anys">
-        <span>Any:</span>
-        <button class="any-btn active" data-any="tot" onclick="filtrarAny(this,'tot')">Tots</button>
+    <a href="#" class="veure-tots" onclick="veureTots(event)">Veure tots els comerços →</a>
+
+    <div class="estadistiques">
+      <h3 class="estadistiques-title">Estadístiques</h3>
+      <div class="grafics-grid">
+        <div class="grafic-container">
+          <div class="grafic-label">Per any d'obertura</div>
+          <canvas id="chart-anys" height="150"></canvas>
+        </div>
+        <div class="grafic-container">
+          <div class="grafic-label">Per districte</div>
+          <canvas id="chart-districtes" height="150"></canvas>
+        </div>
       </div>
     </div>
-    <div class="casos-list" id="casos-list"></div>
   </div>
-  
+
+  <!-- MAPA A LA DRETA -->
   <div id="mapa-full"></div>
 </div>
 
-<!-- FITXA -->
-<div class="fitxa" id="fitxa">
-  <div class="fitxa-header">
-    <div>
-      <div class="fitxa-badge" id="fitxa-badge">Tancat</div>
-      <div class="fitxa-nom" id="fitxa-nom">Nom del comerç</div>
-      <div class="fitxa-adreca" id="fitxa-adreca">Adreça</div>
-    </div>
-    <button class="fitxa-close" onclick="tancarFitxa()">✕</button>
-  </div>
-  <div class="fitxa-body">
-    <div class="fitxa-desc" id="fitxa-desc"></div>
-    <div class="fitxa-meta" id="fitxa-meta"></div>
-  </div>
-</div>
-
-<!-- GRÀFICS -->
-<section class="grafics-bloc">
-  <div class="grafics-header">
-    <div>
-      <div class="grafics-kicker">Dades en construcció</div>
-      <div class="grafics-title">Tancaments documentats</div>
-    </div>
-    <div class="grafics-nota">Mostra els casos verificats que tenim fins ara. La base de dades creix contínuament.</div>
-  </div>
-  <div class="grafics-inner">
-    <div class="grafics-row">
-      <div>
-        <div class="grafic-subtitol">Per any</div>
-        <canvas id="chart-anys" height="100"></canvas>
-      </div>
-      <div>
-        <div class="grafic-subtitol">Per districte</div>
-        <canvas id="chart-districtes" height="260" width="260"></canvas>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULADORA -->
-<section class="calculadora-bloc">
-  <div class="calculadora-inner">
-    <div class="calculadora-kicker">Eina</div>
-    <div class="calculadora-title">És possible? Calcula-ho.</div>
-    <p class="calculadora-desc">Quant costaria treure un local del mercat i cedir-lo a preu de cost? Explora-ho amb un cas real de Gràcia.</p>
-    <a href="calculadora.html" class="calculadora-btn">Obrir la calculadora →</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui"></div>
-  <div class="footer-bottom">
-    <span>© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
-    <span>En fase de constitució · 2026</span>
-  </div>
-</footer>
-
 <script>
-// ── CONFIGURACIÓ AIRTABLE ──
-const AIRTABLE_TOKEN  = 'patnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1';
+// ── CONFIGURACIÓ AIRTABLE ─
+// ⚠️ CANVIA AQUEST TOKEN PER UN DE NOU AMB NOMÉS LECTURA
+const AIRTABLE_TOKEN  = 'EpatnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1EN_AQUI';
 const AIRTABLE_BASE   = 'appGuT1DQskra3f9p';
 const AIRTABLE_TABLE  = 'tblImxsEi3bEj3clb';
 
@@ -434,7 +347,6 @@ const labels  = { risc:'En risc', tancat:'Tancat',  recuperat:'Recuperat' };
 let punts   = [];
 let markers = [];
 let filtrActual = 'tot';
-let filtrAny = 'tot';
 let cercaActual = '';
 
 function extreurAny(desc) {
@@ -444,9 +356,8 @@ function extreurAny(desc) {
 
 function puntVisible(p) {
   const okEstat = filtrActual === 'tot' || p.cat === filtrActual;
-  const okAny = filtrAny === 'tot' || p.any === filtrAny;
   const okCerca = !cercaActual || p.nom.toLowerCase().includes(cercaActual.toLowerCase()) || p.addr.toLowerCase().includes(cercaActual.toLowerCase());
-  return okEstat && okAny && okCerca;
+  return okEstat && okCerca;
 }
 
 // Mapa
@@ -458,8 +369,8 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
 function makeIcon(color){
   return L.divIcon({
     className:'',
-    html:`<div style="width:14px;height:14px;background:${color};border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.25)"></div>`,
-    iconSize:[14,14], iconAnchor:[7,7]
+    html:`<div style="width:12px;height:12px;background:${color};border:2px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3)"></div>`,
+    iconSize:[12,12], iconAnchor:[6,6]
   });
 }
 
@@ -484,16 +395,18 @@ async function carregarDades() {
       cat:  (r.fields['Categoria'] || 'risc').toLowerCase(),
       desc: r.fields['Descripció'] || '',
       any:  r.fields['Any'] ? String(r.fields['Any']) : extreurAny(r.fields['Descripció'] || ''),
+      foto: r.fields['Foto'] || null,
+      categoria: r.fields['Tipus'] || 'Comerç',
+      barri: r.fields['Barri'] || ''
     })).filter(p => p.lat && p.lng && p.nom);
 
     pintarMarcadors();
-    actualitzarStats();
-    renderAnys();
     renderLlista();
     renderGrafic();
+    actualitzarComptador();
   } catch (err) {
     console.error('Error:', err);
-    document.getElementById('casos-list').innerHTML = '<div style="padding:28px;color:var(--red);">Error carregant dades</div>';
+    document.getElementById('casos-list').innerHTML = '<div style="padding:20px;color:var(--red);text-align:center;">Error carregant dades</div>';
   }
 }
 
@@ -508,45 +421,42 @@ function pintarMarcadors() {
   });
 }
 
-function actualitzarStats() {
-  document.getElementById('stat-risc').textContent = punts.filter(p => p.cat === 'risc').length;
-  document.getElementById('stat-tancat').textContent = punts.filter(p => p.cat === 'tancat').length;
-  document.getElementById('stat-recuperat').textContent = punts.filter(p => p.cat === 'recuperat').length;
-  document.getElementById('stat-total').textContent = punts.length;
-}
-
-function renderAnys() {
-  const anys = [...new Set(punts.map(p => p.any).filter(Boolean))].sort();
-  const wrap = document.getElementById('filtres-anys');
-  const totsBtn = wrap.querySelector('[data-any="tot"]');
-  wrap.innerHTML = '';
-  wrap.appendChild(totsBtn);
-  anys.forEach(any => {
-    const btn = document.createElement('button');
-    btn.className = 'any-btn';
-    btn.dataset.any = any;
-    btn.textContent = any;
-    btn.onclick = () => filtrarAny(btn, any);
-    wrap.appendChild(btn);
-  });
+function actualitzarComptador() {
+  const total = punts.length;
+  document.getElementById('comptador').textContent = `${total} comerç${total !== 1 ? 'os' : ''} documentat${total !== 1 ? 's' : ''}`;
 }
 
 function renderLlista() {
   const list = document.getElementById('casos-list');
   list.innerHTML = '';
-  const filtrats = punts.filter(puntVisible);
+  const filtrats = punts.filter(puntVisible).slice(0, 5); // Només 5 primers
+  
   if (filtrats.length === 0) {
-    list.innerHTML = '<div style="padding:28px;color:var(--muted);font-size:13px;">Cap resultat</div>';
+    list.innerHTML = '<div style="padding:20px;color:var(--muted);text-align:center;">Cap resultat</div>';
     return;
   }
+  
   filtrats.forEach(p => {
     const div = document.createElement('div');
     div.className = 'cas-item';
+    
+    // Foto per defecte si no en té
+    const fotoUrl = p.foto || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23f5efe6" width="80" height="80"/%3E%3Ctext fill="%23999" font-family="sans-serif" font-size="12" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ESin foto%3C/text%3E%3C/svg%3E';
+    
     div.innerHTML =
-      `<div class="cas-badge ${p.cat}">${labels[p.cat]}${p.any ? ' · ' + p.any : ''}</div>` +
-      `<div class="cas-nom">${p.nom}</div>` +
-      (p.addr ? `<div class="cas-desc">${p.addr}</div>` : '');
-    div.onclick = () => { map.setView([p.lat, p.lng], 16); obrirFitxa(p); };
+      `<img class="cas-img" src="${fotoUrl}" alt="${p.nom}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22%3E%3Crect fill=%22%23f5efe6%22 width=%2280%22 height=%2280%22/%3E%3C/svg%3E'">` +
+      `<div class="cas-info">` +
+        `<div class="cas-nom">${p.nom}</div>` +
+        (p.any ? `<div class="cas-any">${p.any}</div>` : '') +
+        `<div class="cas-categoria">${p.categoria}</div>` +
+        (p.barri ? `<div class="cas-barri">📍 ${p.barri}</div>` : '') +
+      `</div>` +
+      `<div class="cas-arrow">›</div>`;
+    
+    div.onclick = () => { 
+      map.setView([p.lat, p.lng], 16); 
+      markers.find(m => m.data.nom === p.nom)?.marker.openPopup();
+    };
     list.appendChild(div);
   });
 }
@@ -557,19 +467,11 @@ function aplicarFiltres() {
     else map.removeLayer(marker);
   });
   renderLlista();
+  actualitzarComptador();
 }
 
 function filtrar(btn, filtre) {
   filtrActual = filtre;
-  document.querySelectorAll('.filtre-btn').forEach(b => b.className = 'filtre-btn');
-  btn.classList.add(filtre === 'tot' ? 'active-all' : 'active-' + filtre);
-  aplicarFiltres();
-}
-
-function filtrarAny(btn, any) {
-  filtrAny = any;
-  document.querySelectorAll('.any-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
   aplicarFiltres();
 }
 
@@ -578,26 +480,15 @@ function cercar(val) {
   aplicarFiltres();
 }
 
-function obrirFitxa(p) {
-  document.getElementById('fitxa-badge').textContent = labels[p.cat];
-  document.getElementById('fitxa-badge').className = 'fitxa-badge ' + p.cat;
-  document.getElementById('fitxa-nom').textContent = p.nom;
-  document.getElementById('fitxa-adreca').textContent = p.addr || '';
-  document.getElementById('fitxa-desc').textContent = p.desc || '';
-  const meta = document.getElementById('fitxa-meta');
-  meta.innerHTML = '';
-  if (p.any) meta.innerHTML += `<div class="fitxa-meta-item"><span class="fitxa-meta-label">Any</span><span>${p.any}</span></div>`;
-  document.getElementById('fitxa').classList.add('open');
+function veureTots(e) {
+  e.preventDefault();
+  // Aquí pots redirigir a una pàgina amb tots els comerços
+  alert('Mostrant tots els comerços...');
 }
 
-function tancarFitxa() {
-  document.getElementById('fitxa').classList.remove('open');
-}
-
-// Gràfics
 function getDistricte(p) {
-  const a = (p.addr + ' ' + p.desc).toLowerCase();
-  if(a.includes('gràcia')) return 'Gràcia';
+  const a = (p.addr + ' ' + p.desc + ' ' + p.barri).toLowerCase();
+  if(a.includes('gràcia') || a.includes('gracia')) return 'Gràcia';
   if(a.includes('gòtic') || a.includes('raval') || a.includes('barceloneta')) return 'Ciutat Vella';
   if(a.includes('eixample')) return 'Eixample';
   if(a.includes('sants') || a.includes('corts')) return 'Sants-Montjuïc';
@@ -609,6 +500,7 @@ function getDistricte(p) {
 }
 
 function renderGrafic() {
+  // Gràfic per anys
   const anys = {};
   punts.forEach(p => {
     const any = p.any || (p.desc.match(/\b(202[0-9])\b/) || [])[1];
@@ -621,31 +513,68 @@ function renderGrafic() {
     type: 'bar',
     data: {
       labels: labelsAnys,
-      datasets: [{ data: labelsAnys.map(a => anys[a]), backgroundColor: '#C8392B', borderRadius: 4 }]
+      datasets: [{ 
+        data: labelsAnys.map(a => anys[a]), 
+        backgroundColor: '#C8392B',
+        borderRadius: 4
+      }]
     },
     options: {
-      responsive: true, plugins: { legend: { display: false } },
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
       scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 1, font: { family: 'Montserrat', size: 11 } }, grid: { color: '#E2E1DC' }, border: { display: false } },
-        x: { ticks: { font: { family: 'Montserrat', size: 12, weight: '600' } }, grid: { display: false }, border: { display: false } }
+        y: { 
+          beginAtZero: true, 
+          ticks: { stepSize: 10, font: { size: 10 } }, 
+          grid: { display: false } 
+        },
+        x: { 
+          ticks: { font: { size: 10 } }, 
+          grid: { display: false } 
+        }
       }
     }
   });
 
+  // Gràfic per districtes
   const districtes = {};
-  punts.forEach(p => { const d = getDistricte(p); districtes[d] = (districtes[d] || 0) + 1; });
+  punts.forEach(p => { 
+    const d = getDistricte(p); 
+    districtes[d] = (districtes[d] || 0) + 1; 
+  });
+  
   const labelsD = Object.keys(districtes).sort((a,b) => districtes[b] - districtes[a]);
   
   new Chart(document.getElementById('chart-districtes'), {
     type: 'doughnut',
     data: {
       labels: labelsD,
-      datasets: [{ data: labelsD.map(d => districtes[d]), backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A'], borderWidth: 2, borderColor: '#fff' }]
+      datasets: [{ 
+        data: labelsD.map(d => districtes[d]), 
+        backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A','#5A6B3A'],
+        borderWidth: 0
+      }]
     },
-    options: { responsive: true, maintainAspectRatio: true, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { font: { family: 'Montserrat', size: 11 }, padding: 12 } } } }
+    options: { 
+      responsive: true, 
+      maintainAspectRatio: true, 
+      cutout: '60%',
+      plugins: { 
+        legend: { 
+          position: 'right', 
+          labels: { 
+            font: { size: 10 }, 
+            padding: 8,
+            boxWidth: 10
+          } 
+        } 
+      } 
+    }
   });
+}
 
-
+// Iniciar
 carregarDades();
 </script>
 </body>
