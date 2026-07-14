@@ -231,28 +231,43 @@ section {
   padding: 80px 52px;
 }
 
-/* SECCIONS: Més baixes i amb la mateixa mida */
-section:nth-of-type(2),
-section:nth-of-type(3) {
-  padding: 48px 80px; /* Més compacte verticalment */
-  min-height: 520px;  /* Forza que les dues zones tinguin la mateixa alçada mínima */
+/* ══ NOVES SECCIONS BEIX I BLANCA ══ */
+.seccio {
+  padding: 80px 52px;
 }
-
-section:nth-of-type(2) {
+.seccio-beix {
   background: var(--beix);
 }
-
-section:nth-of-type(3) {
-  background: white;
+.seccio-blanca {
+  background: var(--white);
 }
 
-.section-header {
+.seccio-layout {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 48px;
   align-items: start;
-  margin-bottom: 32px;
 }
+
+.seccio-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .seccio {
+    padding: 48px 20px;
+  }
+  .seccio-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .seccio-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .section-kicker {
   font-size: 11px;
@@ -287,20 +302,7 @@ section:nth-of-type(3) {
   margin-bottom: 20px;
 }
 
-.projecte-wrapper {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 48px;
-  align-items: start;
-}
 
-.projecte-left {
-  flex: 0 0 auto;
-}
-
-.projecte-right {
-  flex: 1;
-}
 
 .section-desc {
   font-size: 14px;
@@ -322,11 +324,7 @@ section:nth-of-type(3) {
 
 /* ══ CARDS GRID ══ */
 /* ══ CARDS GRID ══ */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
+
 
 .card {
   background: var(--white);
@@ -687,106 +685,104 @@ footer {
 </section>
 
 <!-- PROJECTE SECTION -->
-<section>
-  <div class="projecte-wrapper">
-    <div class="projecte-left">
+<!-- ══ SECCIÓ BEIX (El Projecte) ══ -->
+<section class="seccio seccio-beix">
+  <div class="seccio-layout">
+    <div class="seccio-text">
       <div class="section-kicker">El projecte</div>
-      <h2 class="section-title-large">Per què importa el que està a punt de desaparèixer?</h2>
-      <p class="section-desc">Cada dia, negocis amb dècades d'història abaixan la persiana. Amb aquest projecte, volem preservar la seva memòria, denunciar els mecanismes que els expulsen i explorar models col·lectius que els protegeixin.</p>
+      <h2 class="section-title">Per què importa el que està a punt de desaparèixer?</h2>
+      <p class="section-desc">Cada dia, negocis amb dècades d'història abaixen la persiana. Amb aquest projecte, volem preservar la seva memòria, denunciar els mecanismes que els expulsen i explorar models col·lectius que els protegeixin.</p>
       <a href="projecte.html" class="section-link">Més sobre el projecte →</a>
     </div>
-    <div class="projecte-right">
-      <div class="cards-grid">
-    <a class="card" href="articles/ferreteria-camps.html">
-  <div class="card-photo">
-    <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
-  </div>
-  <div class="card-body">
-    <div class="card-kicker">Cas documentat</div>
-    <div class="card-date">Febrer 2026</div>
-    <h3 class="card-title">La Ferreteria Camps abaixa la persiana després de 90 anys</h3>
-    <p class="card-excerpt">Un lloguer de 15.000 € mensuals i la caiguda de clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia. La seva història ha impulsat la creació d'AQT.</p>
-    <div class="card-link">Llegir el cas complet →</div>
-  </div>
-</a>
-
-    <<a class="card" href="articles/jove-teatre-regina.html">
-  <div class="card-photo">
-    <img src="img/jove-teatre-regina.jpg" alt="Jove Teatre Regina">
-  </div>
-  <div class="card-body">
-    <div class="card-kicker">Cas documentat</div>
-    <div class="card-date">Juny 2026</div>
-    <h3 class="card-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h3>
-    <p class="card-excerpt">El Jove Teatre Regina tanca el 15 de juliol. No per fallida ni per manca de públic: l'edifici està en venda i no els renoven el lloguer. I la comunitat que ha omplert les butaques durant quatre dècades ni tan sols pot seure a la taula.</p>
-    <div class="card-link">Llegir el cas complet →</div>
-  </div>
-</a>
-
-    <a class="card" href="#">
-  <div class="card-photo">
-    <img src="" alt="">
-  </div>
-  <div class="card-body">
-    <div class="card-kicker">Pròximament</div>
-    <div class="card-date"></div>
-    <h3 class="card-title"></h3>
-    <p class="card-excerpt"></p>
-    <div class="card-link"></div>
-  </div>
-</a>
-      </div>
+    <div class="seccio-cards">
+      <a class="card" href="articles/ferreteria-camps.html">
+        <div class="card-photo">
+          <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Cas documentat</div>
+          <div class="card-date">Febrer 2026</div>
+          <h3 class="card-title">La Ferreteria Camps abaixa la persiana després de 90 anys</h3>
+          <p class="card-excerpt">Un lloguer de 15.000 € mensuals i la caiguda de clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia.</p>
+          <div class="card-link">Llegir el cas complet →</div>
+        </div>
+      </a>
+      <a class="card" href="articles/jove-teatre-regina.html">
+        <div class="card-photo">
+          <img src="img/jove-teatre-regina.jpg" alt="Jove Teatre Regina">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Cas documentat</div>
+          <div class="card-date">Juny 2026</div>
+          <h3 class="card-title">Trenta-vuit anys, dos milions d'espectadors, tres setmanes per marxar</h3>
+          <p class="card-excerpt">El Jove Teatre Regina tanca el 15 de juliol. No per fallida ni per manca de públic: l'edifici està en venda i no els renoven el lloguer.</p>
+          <div class="card-link">Llegir el cas complet →</div>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card-photo">
+          <img src="img/placeholder.jpg" alt="Pròxim cas">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Pròximament</div>
+          <div class="card-date">2026</div>
+          <h3 class="card-title">Un nou cas per documentar</h3>
+          <p class="card-excerpt">Estem treballant per documentar la propera història que necessites conèixer.</p>
+          <div class="card-link">Veure més →</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
+
 <!-- ACTUALITAT SECTION -->
-<section>
-  <div class="section-header">
-    <div>
+<section class="seccio seccio-blanca">
+  <div class="seccio-layout">
+    <div class="seccio-text">
       <div class="section-kicker">Actualitat</div>
       <h2 class="section-title">Notícies i reflexions sobre el comerç local</h2>
+      <p class="section-desc">Anàlisis, reportatges i opinions per entendre les forces que estan reconfigurant els nostres carrers i barris.</p>
+      <a href="actualitat.html" class="section-link">Veure tota l'actualitat →</a>
     </div>
-  </div>
-
-  <div class="cards-grid">
-    <a class="card" href="articles/dumping-comerc-local.html">
-  <div class="card-photo">
-    <img src="img/dumping-comerc.jpg" alt="Dumping i comerç local">
-  </div>
-  <div class="card-body">
-    <div class="card-kicker-analisi">Anàlisi</div>
-    <div class="card-date">Febrer 2026</div>
-    <h3 class="card-title">Què és el dumping i com afecta el comerç local?</h3>
-    <p class="card-excerpt">Darrere de molts tancaments hi ha una estratègia concreta i poc visible. Entendre-la és el primer pas per no normalitzar-la.</p>
-    <div class="card-link">Llegir l'article →</div>
-  </div>
-</a>
-    <a class="card" href="articles/lloguer-comercial-sense-regulacio.html">
-      <div class="card-photo">
-        <img src="img/lloguer-comercial.jpg" alt="Local comercial">
-      </div>
-      <div class="card-body">
-        <div class="card-kicker">Anàlisi</div>
-        <div class="card-date">Abril 2026</div>
-        <h3 class="card-title">El lloguer comercial no té límits. I és legal.</h3>
-        <p class="card-excerpt">L'habitatge té contenció de rendes. El comerç local no té res. La llei tracta la ferreteria igual que un local corporatiu.</p>
-        <div class="card-link">Llegir l'article →</div>
-      </div>
-    </a>
-
-   <a class="card" href="articles/cadenes-esborren-forns.html">
-  <div class="card-photo">
-    <img src="img/forns-cadenes.jpg" alt="Cadenes i forns artesans">
-  </div>
-  <div class="card-body">
-    <div class="card-kicker-analisi">Anàlisi</div>
-    <div class="card-date">Febrer 2026</div>
-    <h3 class="card-title">Cinc grans grups, 300 establiments: com les cadenes esborren els forns</h3>
-    <p class="card-excerpt">Un model de negoci que expulsa progressivament els forns artesans amb un buit legal que els afavoreix.</p>
-    <div class="card-link">Llegir l'article →</div>
-  </div>
-</a>
+    <div class="seccio-cards">
+      <a class="card" href="articles/dumping-comerc-local.html">
+        <div class="card-photo">
+          <img src="img/dumping-comerc.jpg" alt="Dumping i comerç local">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Anàlisi</div>
+          <div class="card-date">Febrer 2026</div>
+          <h3 class="card-title">Què és el dumping i com afecta el comerç local?</h3>
+          <p class="card-excerpt">Darrere de molts tancaments hi ha una estratègia concreta i poc visible. Entendre-la és el primer pas per no normalitzar-la.</p>
+          <div class="card-link">Llegir l'article →</div>
+        </div>
+      </a>
+      <a class="card" href="articles/lloguer-comercial-sense-regulacio.html">
+        <div class="card-photo">
+          <img src="img/lloguer-comercial.jpg" alt="Local comercial">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Anàlisi</div>
+          <div class="card-date">Abril 2026</div>
+          <h3 class="card-title">El lloguer comercial no té límits. I és legal.</h3>
+          <p class="card-excerpt">L'habitatge té contenció de rendes. El comerç local no té res. La llei tracta la ferreteria igual que un local corporatiu.</p>
+          <div class="card-link">Llegir l'article →</div>
+        </div>
+      </a>
+      <a class="card" href="articles/cadenes-esborren-forns.html">
+        <div class="card-photo">
+          <img src="img/forns-cadenes.jpg" alt="Cadenes i forns artesans">
+        </div>
+        <div class="card-body">
+          <div class="card-kicker">Anàlisi</div>
+          <div class="card-date">Febrer 2026</div>
+          <h3 class="card-title">Cinc grans grups, 300 establiments: com les cadenes esborren els forns</h3>
+          <p class="card-excerpt">Un model de negoci que expulsa progressivament els forns artesans amb un buit legal que els afavoreix.</p>
+          <div class="card-link">Llegir l'article →</div>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
