@@ -7,11 +7,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--beix:#DACDC5;--white:#FFFFFF;--ink:#1A1A18;--red:#C8392B;--paper:#F7F1EE;--gris:#F1EFEE;--gris-dk:#E6E3E1;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#C8392B;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#C8392B;--cta:#C8392B;--cta-lt:#A63120;--card2:#F7F1EE;}
+:root{--beix:#f5efe6;--beix-clar:#faf6f1;--white:#FFFFFF;--ink:#1A1A18;--red:#C8392B;--red-dark:#a63120;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--muted:rgba(26,26,24,0.50);}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Montserrat',system-ui,sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
@@ -231,7 +231,7 @@ nav {
   color: var(--ink); line-height: 1.2; letter-spacing: -0.02em;
   max-width: 600px; margin: 0 auto 32px;
 }
-.cta-headline{font-family:'Anton',sans-serifGeorgia,serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;max-width:900px;margin:0 auto 20px;}
+.cta-headline{font-family:'Anton',sans-serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;max-width:900px;margin:0 auto 20px;}
 .cta-headline em { font-style: normal; color: var(--ink); }
 .cta-final-sub{font-size:15px;color:var(--ink-muted);max-width:480px;margin:0 auto 32px;line-height:1.6;}
 .cta-final-sub{font-size:15px;color:var(--ink-muted);max-width:480px;margin:0 auto 32px;line-height:1.6;}
@@ -357,13 +357,20 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 .hero-sub,.page-header p{font-family:'Montserrat',sans-serif!important;font-size:16px!important;
   line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px!important;}
 @media(max-width:768px){.hero,.page-header{padding:44px 22px 40px!important;}}
+
+.filtres-bar{max-width:1180px;margin:0 auto;padding:0 52px 40px;display:flex;gap:10px;flex-wrap:wrap;}
+.filtre-pill{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:var(--ink-mid);
+  background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:9px 18px;
+  text-decoration:none;transition:all .15s;}
+.filtre-pill:hover,.filtre-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+@media(max-width:768px){.filtres-bar{padding:0 20px 28px;}}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
+  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
   <div class="nav-links">
     <a href="projecte.html">Projecte</a>
     <a href="descobreix.html">Descobreix</a>
@@ -390,6 +397,14 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
     <p class="page-intro">Guies pràctiques i llocs on pots anar a demanar ajuda. Perquè no hagis d'afrontar-ho sol quan el propietari truca a la porta.</p>
   </div>
 </header>
+
+<nav class="filtres-bar" aria-label="Categories de recursos">
+  <a class="filtre-pill" href="#guies">Guies pràctiques</a>
+  <a class="filtre-pill" href="#assessorament">Assessorament extern</a>
+  <a class="filtre-pill" href="#recerca">Recerca i documentació</a>
+  <a class="filtre-pill" href="contacte.html">No trobo el que busco →</a>
+</nav>
+
 
 <div class="page-wrap">
 
@@ -553,20 +568,20 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 <!-- INFORMES -->
 <section style="padding:64px 52px;background:#fff;border-top:1px solid var(--border);">
   <div style="margin-bottom:36px;">
-    <div style="font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(24px,2.8vw,36px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:4px;">Recerca i documentació</div>
+    <div id="recerca" style="font-family:'Anton',sans-serif;font-size:clamp(24px,2.8vw,36px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:4px;">Recerca i documentació</div>
     <div style="font-size:13px;color:var(--ink-muted);">Informes propis elaborats per AQT.</div>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
     <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 28px;display:flex;flex-direction:column;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Informe · Gener 2026</div>
-      <div style="font-family:'Anton',sans-serifGeorgia,serif;font-size:19px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;">L'Impacte de la Gentrificació i les Pressions Externes en els Petits Comerços</div>
+      <div style="font-family:'Anton',sans-serif;font-size:19px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;">L'Impacte de la Gentrificació i les Pressions Externes en els Petits Comerços</div>
       <div style="font-size:13.5px;line-height:1.7;color:var(--muted);flex:1;margin-bottom:20px;">Síntesi de recerques acadèmiques sobre gentrificació, turistificació i especulació immobiliària. Dades de Balears, Saragossa, Almeria, València, Barcelona i Madrid.</div>
       <div style="font-size:11.5px;color:var(--muted);margin-bottom:16px;">Abans Que Tanqui · PDF · 7 pàgines</div>
       <a style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;width:fit-content;" href="informes/Efectes-gentrificacio-petit-comerc.pdf" download>↓ Descarregar</a>
     </div>
     <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 28px;display:flex;flex-direction:column;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Informe · Gener 2026</div>
-      <div style="font-family:'Anton',sans-serifGeorgia,serif;font-size:19px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;">Impacte a Gràcia: El Forn Santa Clara i la Ferreteria Camps</div>
+      <div style="font-family:'Anton',sans-serif;font-size:19px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;">Impacte a Gràcia: El Forn Santa Clara i la Ferreteria Camps</div>
       <div style="font-size:13.5px;line-height:1.7;color:var(--muted);flex:1;margin-bottom:20px;">Anàlisi dels tancaments de dos comerços centenaris de la Vila de Gràcia (gener–febrer 2026). Lloguers doblats, canvi demogràfic i la paradoxa de Barcelona com a Capital Europea del Comerç Local.</div>
       <div style="font-size:11.5px;color:var(--muted);margin-bottom:16px;">Abans Que Tanqui · PDF · 7 pàgines</div>
       <a style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;width:fit-content;" href="informes/Impacte-comerc-Gracia-Forn-Santa-Clara-Ferreteria-Camps.pdf" download>↓ Descarregar</a>
