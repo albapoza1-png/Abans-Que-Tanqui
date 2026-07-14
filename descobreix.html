@@ -35,7 +35,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* NAV */
+/* ══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
 nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -53,11 +55,8 @@ nav {
   align-items: center; 
   gap: 8px; 
   text-decoration: none;
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--red);
 }
+.nav-logo img { height: 36px; width: auto; }
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
   font-size: 14px; font-weight: 500; color: var(--ink-muted);
@@ -65,7 +64,9 @@ nav {
 }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
-/* LAYOUT PRINCIPAL */
+/* ═══════════════════════════════════════════
+   LAYOUT PRINCIPAL (Sidebar + Mapa)
+═══════════════════════════════════════════ */
 .descobreix-layout {
   display: grid;
   grid-template-columns: 450px 1fr;
@@ -130,6 +131,7 @@ nav {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
+  white-space: nowrap;
 }
 .filtre-btn:hover { border-color: var(--ink); }
 
@@ -142,7 +144,7 @@ nav {
 }
 
 /* LLISTA COMERÇOS */
-.casos-list { margin-bottom: 32px; }
+.casos-list { margin-bottom: 24px; }
 .cas-item {
   display: flex;
   gap: 16px;
@@ -211,6 +213,7 @@ nav {
   cursor: pointer;
   transition: all 0.15s;
   text-decoration: none;
+  margin-bottom: 32px;
 }
 .veure-tots:hover {
   background: var(--beix-clar);
@@ -219,8 +222,7 @@ nav {
 
 /* ESTADÍSTIQUES */
 .estadistiques {
-  margin-top: 32px;
-  padding-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 .estadistiques-title {
@@ -233,7 +235,7 @@ nav {
 .grafics-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 .grafic-container {
   background: var(--beix-clar);
@@ -254,8 +256,126 @@ nav {
   min-height: calc(100vh - 64px);
 }
 
-/* RESPONSIVE */
+/* ═══════════════════════════════════════════
+   CALCULADORA (sota el mapa)
+═══════════════════════════════════════════ */
+.calculadora-bloc {
+  background: var(--beix);
+  border-top: 1px solid var(--border);
+  padding: 64px 40px;
+}
+.calculadora-inner {
+  max-width: 700px;
+}
+.calculadora-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.calculadora-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.calculadora-desc {
+  font-size: 15px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 600px;
+}
+.calculadora-btn {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.calculadora-btn:hover { background: var(--red-dark); }
+
+/* ══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: #111110;
+  padding: 40px 40px 20px;
+  color: rgba(255,255,255,0.6);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.footer-brand img {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+.footer-brand-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.4);
+  max-width: 280px;
+  margin-top: 12px;
+}
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 14px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  margin-bottom: 9px;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
 @media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  
   .descobreix-layout {
     grid-template-columns: 1fr;
     grid-template-rows: auto 400px;
@@ -264,20 +384,29 @@ nav {
     max-height: none;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    padding: 24px 20px;
   }
   #mapa-full {
     min-height: 400px;
   }
-  nav { padding: 0 20px; }
-  .sidebar { padding: 24px 20px; }
+  
+  .calculadora-bloc { padding: 48px 20px; }
+  
+  .footer-inner { flex-direction: column; gap: 24px; }
+  footer { padding: 32px 20px 16px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════ -->
 <nav>
-  <a class="nav-logo" href="index.html">AQT</a>
+  <a class="nav-logo" href="index.html">
+    <img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui">
+  </a>
   <div class="nav-links">
     <a href="index.html">Inici</a>
     <a href="descobreix.html" class="active">Descobreix</a>
@@ -286,7 +415,9 @@ nav {
   </div>
 </nav>
 
-<!-- LAYOUT PRINCIPAL -->
+<!-- ═══════════════════════════════════════════
+     LAYOUT PRINCIPAL (Sidebar + Mapa)
+═══════════════════════════════════════════ -->
 <div class="descobreix-layout">
   
   <!-- SIDEBAR ESQUERRA -->
@@ -309,9 +440,7 @@ nav {
 
     <div class="comptador" id="comptador">0 comerços documentats</div>
 
-    <div class="casos-list" id="casos-list">
-      <!-- Els comerços es carregaran aquí -->
-    </div>
+    <div class="casos-list" id="casos-list"></div>
 
     <a href="#" class="veure-tots" onclick="veureTots(event)">Veure tots els comerços →</a>
 
@@ -334,9 +463,60 @@ nav {
   <div id="mapa-full"></div>
 </div>
 
+<!-- ═══════════════════════════════════════════
+     CALCULADORA (sota el mapa)
+═══════════════════════════════════════════ -->
+<section class="calculadora-bloc">
+  <div class="calculadora-inner">
+    <div class="calculadora-kicker">Eina</div>
+    <div class="calculadora-title">És possible? Calcula-ho.</div>
+    <p class="calculadora-desc">
+      Quant costaria treure un local del mercat i cedir-lo a preu de cost? 
+      Explora-ho amb un cas real de Gràcia.
+    </p>
+    <a href="calculadora.html" class="calculadora-btn">Obrir la calculadora →</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="footer-brand" href="index.html">
+        <img src="img/logo-footer.png" alt="Abans Que Tanqui">
+        <span class="footer-brand-text">Abans Que Tanqui</span>
+      </a>
+      <p class="footer-desc">
+        Projecte per documentar i protegir els comerços històrics de Barcelona.
+      </p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navegació</div>
+      <a href="index.html">Inici</a>
+      <a href="descobreix.html">Descobreix</a>
+      <a href="projecte.html">El projecte</a>
+      <a href="actualitat.html">Notícies</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Recursos</div>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="recursos.html">Recursos</a>
+      <a href="contacte.html">Contacte</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
+    <span>En fase de constitució</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
 <script>
-// ── CONFIGURACIÓ AIRTABLE ─
-// ⚠️ CANVIA AQUEST TOKEN PER UN DE NOU AMB NOMÉS LECTURA
+// ── CONFIGURACIÓ AIRTABLE ──
 const AIRTABLE_TOKEN  = 'patnuSBb3PFtjOg6B.45b031e3b5da717b082606371329a107f2dbe5ef5cbe670027da112a4d8653a1';
 const AIRTABLE_BASE   = 'appGuT1DQskra3f9p';
 const AIRTABLE_TABLE  = 'tblImxsEi3bEj3clb';
@@ -350,7 +530,7 @@ let filtrActual = 'tot';
 let cercaActual = '';
 
 function extreurAny(desc) {
-  const m = desc.match(/\b(202[0-9])\b/);
+  const m = desc.match(/\b(20[0-9]{2})\b/);
   return m ? m[1] : null;
 }
 
@@ -379,9 +559,9 @@ async function carregarDades() {
     let tots = [];
     let offset = '';
     do {
-      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}` + `?filterByFormula={Actiu}=1` + (offset ? `&offset=${offset}` : '');
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE}/${AIRTABLE_TABLE}` + (offset ? `?offset=${offset}` : '');
       const res = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
-      if (!res.ok) throw new Error(`Error ${res.status}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       tots = tots.concat(data.records);
       offset = data.offset || '';
@@ -429,7 +609,7 @@ function actualitzarComptador() {
 function renderLlista() {
   const list = document.getElementById('casos-list');
   list.innerHTML = '';
-  const filtrats = punts.filter(puntVisible).slice(0, 5); // Només 5 primers
+  const filtrats = punts.filter(puntVisible).slice(0, 5);
   
   if (filtrats.length === 0) {
     list.innerHTML = '<div style="padding:20px;color:var(--muted);text-align:center;">Cap resultat</div>';
@@ -439,10 +619,7 @@ function renderLlista() {
   filtrats.forEach(p => {
     const div = document.createElement('div');
     div.className = 'cas-item';
-    
-    // Foto per defecte si no en té
-    const fotoUrl = p.foto || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23f5efe6" width="80" height="80"/%3E%3Ctext fill="%23999" font-family="sans-serif" font-size="12" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3ESin foto%3C/text%3E%3C/svg%3E';
-    
+    const fotoUrl = p.foto || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23f5efe6" width="80" height="80"/%3E%3C/svg%3E';
     div.innerHTML =
       `<img class="cas-img" src="${fotoUrl}" alt="${p.nom}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22%3E%3Crect fill=%22%23f5efe6%22 width=%2280%22 height=%2280%22/%3E%3C/svg%3E'">` +
       `<div class="cas-info">` +
@@ -452,11 +629,7 @@ function renderLlista() {
         (p.barri ? `<div class="cas-barri">📍 ${p.barri}</div>` : '') +
       `</div>` +
       `<div class="cas-arrow">›</div>`;
-    
-    div.onclick = () => { 
-      map.setView([p.lat, p.lng], 16); 
-      markers.find(m => m.data.nom === p.nom)?.marker.openPopup();
-    };
+    div.onclick = () => { map.setView([p.lat, p.lng], 16); };
     list.appendChild(div);
   });
 }
@@ -482,7 +655,6 @@ function cercar(val) {
 
 function veureTots(e) {
   e.preventDefault();
-  // Aquí pots redirigir a una pàgina amb tots els comerços
   alert('Mostrant tots els comerços...');
 }
 
@@ -500,10 +672,9 @@ function getDistricte(p) {
 }
 
 function renderGrafic() {
-  // Gràfic per anys
   const anys = {};
   punts.forEach(p => {
-    const any = p.any || (p.desc.match(/\b(202[0-9])\b/) || [])[1];
+    const any = p.any || (p.desc.match(/\b(20[0-9]{2})\b/) || [])[1];
     if(!any) return;
     anys[any] = (anys[any] || 0) + 1;
   });
@@ -513,68 +684,35 @@ function renderGrafic() {
     type: 'bar',
     data: {
       labels: labelsAnys,
-      datasets: [{ 
-        data: labelsAnys.map(a => anys[a]), 
-        backgroundColor: '#C8392B',
-        borderRadius: 4
-      }]
+      datasets: [{ data: labelsAnys.map(a => anys[a]), backgroundColor: '#C8392B', borderRadius: 4 }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: true,
+      responsive: true, maintainAspectRatio: true,
       plugins: { legend: { display: false } },
       scales: {
-        y: { 
-          beginAtZero: true, 
-          ticks: { stepSize: 10, font: { size: 10 } }, 
-          grid: { display: false } 
-        },
-        x: { 
-          ticks: { font: { size: 10 } }, 
-          grid: { display: false } 
-        }
+        y: { beginAtZero: true, ticks: { stepSize: 10, font: { size: 10 } }, grid: { display: false } },
+        x: { ticks: { font: { size: 10 } }, grid: { display: false } }
       }
     }
   });
 
-  // Gràfic per districtes
   const districtes = {};
-  punts.forEach(p => { 
-    const d = getDistricte(p); 
-    districtes[d] = (districtes[d] || 0) + 1; 
-  });
-  
+  punts.forEach(p => { const d = getDistricte(p); districtes[d] = (districtes[d] || 0) + 1; });
   const labelsD = Object.keys(districtes).sort((a,b) => districtes[b] - districtes[a]);
   
   new Chart(document.getElementById('chart-districtes'), {
     type: 'doughnut',
     data: {
       labels: labelsD,
-      datasets: [{ 
-        data: labelsD.map(d => districtes[d]), 
-        backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A','#5A6B3A'],
-        borderWidth: 0
-      }]
+      datasets: [{ data: labelsD.map(d => districtes[d]), backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A','#5A6B3A'], borderWidth: 0 }]
     },
     options: { 
-      responsive: true, 
-      maintainAspectRatio: true, 
-      cutout: '60%',
-      plugins: { 
-        legend: { 
-          position: 'right', 
-          labels: { 
-            font: { size: 10 }, 
-            padding: 8,
-            boxWidth: 10
-          } 
-        } 
-      } 
+      responsive: true, maintainAspectRatio: true, cutout: '60%',
+      plugins: { legend: { position: 'right', labels: { font: { size: 10 }, padding: 8, boxWidth: 10 } } }
     }
   });
 }
 
-// Iniciar
 carregarDades();
 </script>
 </body>
