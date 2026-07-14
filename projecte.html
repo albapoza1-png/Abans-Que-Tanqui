@@ -7,13 +7,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{--beix:#D8C1B7;--white:#FFFFFF;--ink:#1A1A18;--red:#CA3E27;--paper:#F7F1EE;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#CA3E27;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#CA3E27;--cta:#CA3E27;--cta-lt:#A63120;--card2:#F7F1EE;}
+:root{--beix:#D8C1B7;--white:#FFFFFF;--ink:#1A1A18;--red:#CA3E27;--paper:#F7F1EE;--gris:#F1EFEE;--gris-dk:#E6E3E1;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#CA3E27;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#CA3E27;--cta:#CA3E27;--cta-lt:#A63120;--card2:#F7F1EE;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
 
 nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo{font-family:'Anton',sans-serifGeorgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
 .nav-links{display:flex;gap:28px;align-items:center;}
 .nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;}
@@ -28,7 +28,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 /* HERO */
 .hero{background:var(--ink);padding:56px 52px;}
 .hero-kicker{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;}
-.hero h1{font-family:'Lora',Georgia,serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.03em;margin-bottom:12px;}
+.hero h1{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.03em;margin-bottom:12px;}
 .hero h1 em{font-style:italic;color:#F7F1EE;}
 .hero-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);max-width:560px;}
 
@@ -37,7 +37,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .seccio-inner{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
 .seccio-left{}
 .kicker{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
-.titol{font-family:'Lora',Georgia,serif;font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-0.02em;}
+.titol{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(18px,2.2vw,26px);font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-0.02em;}
 .titol em{font-style:italic;color:var(--red);}
 .seccio-right{}
 .text{font-size:15px;line-height:1.85;color:var(--ink-mid);}
@@ -47,7 +47,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .idea-central{padding:40px 52px;border-bottom:1px solid var(--border);background:var(--white);}
 .idea-inner{border-left:4px solid var(--red);padding-left:28px;max-width:760px;}
 .idea-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
-.idea-text{font-family:'Lora',Georgia,serif;font-size:clamp(16px,2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;letter-spacing:-0.01em;}
+.idea-text{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(16px,2vw,22px);font-weight:600;color:var(--ink);line-height:1.5;letter-spacing:-0.01em;}
 
 /* LLISTA TAULA */
 .taula{margin-top:20px;display:flex;flex-direction:column;border-top:1px solid var(--border);}
@@ -91,14 +91,14 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 
 /* CTA */
 .cta-final{background:var(--ink);padding:56px 52px;text-align:center;}
-.cta-final h2{font-family:'Lora',Georgia,serif;font-size:clamp(20px,3vw,32px);font-weight:700;color:#fff;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;}
+.cta-final h2{font-family:'Anton',sans-serifGeorgia,serif;font-size:clamp(20px,3vw,32px);font-weight:700;color:#fff;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;}
 .cta-final p{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:24px;max-width:380px;margin-left:auto;margin-right:auto;}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 .btn-p{background:var(--red);color:#fff;padding:11px 22px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;}
 .btn-s{background:transparent;color:rgba(255,255,255,0.55);padding:11px 22px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,0.15);}
 
 footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Lora',Georgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
+.footer-brand{font-family:'Anton',sans-serifGeorgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
 .footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
 
@@ -142,6 +142,25 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 .hero em,.hero i,.hero-title em{color:var(--red)!important;font-style:normal;}
 .seccio{background:var(--white);}
 .seccio-inner{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 34px;}
+
+/* ══ CORRECCIO: els titols son h1, no .hero-title ══ */
+.hero h1,.page-header h1,.hero-title,.titol-gran{
+  font-family:'Anton',sans-serif!important;font-weight:400!important;
+  font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
+  letter-spacing:0.005em!important;color:var(--ink)!important;}
+.hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
+.hero p,.page-header p,.hero-sub{font-family:'Montserrat',sans-serif!important;
+  font-size:16px!important;line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px;}
+.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;
+  font-weight:600!important;font-size:11px!important;letter-spacing:0.14em!important;
+  text-transform:uppercase!important;color:var(--red)!important;}
+.hero,.page-header{background:var(--white)!important;}
+
+/* ══ RITME: el gris calid separa seccions ══ */
+.eixos,.que-es,.mapa-bloc,.actualitat-bloc,.seccio:nth-of-type(even),
+.recursos-seccio:nth-of-type(even){background:var(--gris)!important;}
+.seccio-inner,.que-es-grid{background:var(--white);border:1px solid var(--border);
+  border-radius:6px;padding:32px 34px;}
 </style>
 </head>
 <body>
