@@ -79,6 +79,9 @@ nav {
   padding: 72px 52px 64px;
 }
 .page-header-inner { max-width: 760px; }
+.page-header{display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.page-header-ill{flex-shrink:0;display:none;}
+@media(min-width:900px){.page-header-ill{display:block;}}
 .page-kicker {
   font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--red); margin-bottom: 14px;
@@ -114,7 +117,7 @@ nav {
 }
 
 /* ─── GUIES ─── */
-.guies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.guies-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; }
 .guia-card {
   background: var(--white); border: 1px solid var(--border);
   border-radius: 4px; overflow: hidden;
@@ -364,6 +367,11 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
   text-decoration:none;transition:all .15s;}
 .filtre-pill:hover,.filtre-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
 @media(max-width:768px){.filtres-bar{padding:0 20px 28px;}}
+
+.guia-card-icon{width:36px;height:36px;border-radius:6px;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;position:absolute;top:16px;right:16px;}
+.guia-card-top{position:relative;}
+.guia-meta{font-size:11px;color:var(--ink-muted);font-weight:600;margin-top:2px;}
 </style>
 </head>
 <body>
@@ -396,6 +404,22 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
     <h1 class="page-title">Eines per defensar<br>el teu comerç.</h1>
     <p class="page-intro">Guies pràctiques i llocs on pots anar a demanar ajuda. Perquè no hagis d'afrontar-ho sol quan el propietari truca a la porta.</p>
   </div>
+<svg class="page-header-ill" width="220" height="170" viewBox="0 0 220 170" fill="none">
+  <rect x="30" y="70" width="160" height="90" rx="3" fill="#f5efe6" stroke="#1A1A18" stroke-width="2"/>
+  <path d="M30 70 L20 40 L200 40 L190 70 Z" fill="#C8392B" stroke="#1A1A18" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="20" y1="40" x2="200" y2="40" stroke="#1A1A18" stroke-width="2"/>
+  <line x1="30" y1="70" x2="40" y2="40" stroke="#1A1A18" stroke-width="1.5"/>
+  <line x1="70" y1="70" x2="76" y2="40" stroke="#1A1A18" stroke-width="1.5"/>
+  <line x1="110" y1="70" x2="112" y2="40" stroke="#1A1A18" stroke-width="1.5"/>
+  <line x1="150" y1="70" x2="148" y2="40" stroke="#1A1A18" stroke-width="1.5"/>
+  <line x1="190" y1="70" x2="184" y2="40" stroke="#1A1A18" stroke-width="1.5"/>
+  <rect x="90" y="105" width="40" height="55" fill="#fff" stroke="#1A1A18" stroke-width="2"/>
+  <circle cx="122" cy="132" r="2.4" fill="#1A1A18"/>
+  <rect x="45" y="95" width="28" height="30" rx="1.5" fill="#fff" stroke="#1A1A18" stroke-width="1.6"/>
+  <rect x="147" y="95" width="28" height="30" rx="1.5" fill="#fff" stroke="#1A1A18" stroke-width="1.6"/>
+  <circle cx="110" cy="18" r="9" fill="none" stroke="#C8392B" stroke-width="2"/>
+  <path d="M105 18h10M110 13v10" stroke="#C8392B" stroke-width="2" stroke-linecap="round"/>
+</svg>
 </header>
 
 <nav class="filtres-bar" aria-label="Categories de recursos">
@@ -422,8 +446,10 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 
       <a class="guia-card" href="guies/guia-pujada-lloguer.html">
         <div class="guia-card-top">
+          <div class="guia-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a1 1 0 01-1 1H4a1 1 0 01-1-1V9z"/><path d="M9 21V12h6v9"/></svg></div>
           <div class="guia-tag">Lloguers</div>
           <div class="guia-title">El propietari et vol pujar el lloguer. Què pots fer?</div>
+          <div class="guia-meta">~4 min de lectura</div>
         </div>
         <div class="guia-body">
           <p class="guia-desc">Rebre un avís de pujada no significa que hagis d'acceptar ni marxar. Tens drets — i alguns potser no coneixes. Guia pas a pas per saber com actuar.</p>
@@ -439,8 +465,10 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 
       <a class="guia-card" href="guies/guia-alternatives-tancament.html">
         <div class="guia-card-top">
+          <div class="guia-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
           <div class="guia-tag">Continuïtat</div>
           <div class="guia-title">Estàs pensant en tancar. Però hi ha alternatives.</div>
+          <div class="guia-meta">~3 min de lectura</div>
         </div>
         <div class="guia-body">
           <p class="guia-desc">Molts comerços tanquen sense saber que hi havia sortida. Traspàs, relleu generacional, model cooperatiu... Aquestes opcions existeixen i funcionen.</p>
@@ -571,7 +599,7 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
     <div id="recerca" style="font-family:'Anton',sans-serif;font-size:clamp(24px,2.8vw,36px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:4px;">Recerca i documentació</div>
     <div style="font-size:13px;color:var(--ink-muted);">Informes propis elaborats per AQT.</div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
     <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 28px;display:flex;flex-direction:column;">
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:12px;">Informe · Gener 2026</div>
       <div style="font-family:'Anton',sans-serif;font-size:19px;font-weight:700;color:var(--text);line-height:1.25;letter-spacing:-0.01em;margin-bottom:10px;">L'Impacte de la Gentrificació i les Pressions Externes en els Petits Comerços</div>
