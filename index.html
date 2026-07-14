@@ -233,6 +233,7 @@ section {
 
 section:nth-of-type(2) {
   background: var(--beix);
+  padding: 60px 80px;
 }
 
 section:nth-of-type(3) {
@@ -315,7 +316,9 @@ section:nth-of-type(3) {
 
 /* ══ CARDS GRID ══ */
 .cards-grid {
-  grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
 .card {
@@ -336,7 +339,7 @@ section:nth-of-type(3) {
 }
 
 .card-photo {
-  height: 180px;
+  height: 160px;
   overflow: hidden;
   position: relative;
   background: var(--beix);
