@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abans Que Tanqui · Comerç de proximitat</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-:root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--text:#1A1A18;--muted:#6B6B67;--border:#E2E1DC;--border-dk:#C8C7C0;--sage:#C8D5B9;--sage-dk:#3A5530;--amber:#C47A00;--cta:#2A7A4B;--cta-lt:#348A58;}
+:root{--beix:#D8C1B7;--white:#FFFFFF;--ink:#1A1A18;--red:#CA3E27;--paper:#F7F1EE;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.20);--red-dk:#A63120;--bg:#FFFFFF;--bg-warm:#F7F1EE;--bg-soft:#F7F1EE;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--red-lt:#CA3E27;--sage:#F7F1EE;--sage-dk:#1A1A18;--amber:#CA3E27;--cta:#CA3E27;--cta-lt:#A63120;--card2:#F7F1EE;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
@@ -40,7 +41,8 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .hero-sub{font-size:16px;color:rgba(255,255,255,0.75);margin-top:24px;letter-spacing:0.02em;}
 
 /* QUÈ ÉS AQT */
-.que-es{padding:64px 52px;border-bottom:1px solid var(--border);background:var(--white);}
+.que-es{padding:64px 52px;border-bottom:1px solid var(--border);background:var(--paper);}
+.que-es-grid{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:34px 36px;}
 .que-es-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
 .que-es-kicker{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
 .que-es-title{font-family:'Lora',Georgia,serif;font-size:clamp(24px,3.5vw,40px);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;margin-bottom:20px;}
@@ -72,9 +74,9 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .popup-cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-bottom:6px;}
 .popup-cat.risc{background:rgba(196,122,0,0.1);color:var(--amber);}
 .popup-cat.tancat{background:rgba(200,57,43,0.1);color:var(--red);}
-.popup-cat.recuperat{background:rgba(42,122,75,0.12);color:var(--cta);}
+.popup-cat.recuperat{background:rgba(202,62,39,0.10);color:var(--cta);}
 .popup-title{font-weight:700;color:#1A1A18;margin-bottom:4px;}
-.popup-text{color:#6B6B67;line-height:1.5;}
+.popup-text{color:rgba(26,26,24,0.50);line-height:1.5;}
 
 /* EIXOS */
 .eixos{padding:64px 52px;border-bottom:1px solid var(--border);background:var(--bg-warm);}
@@ -136,6 +138,33 @@ footer{background:#111110;padding:56px 52px 0;color:rgba(255,255,255,0.6);}
   .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
 }
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}.eixos-grid{grid-template-columns:1fr;}}
+
+/* ══ TIPOGRAFIA: Anton (titulars) + Montserrat (text) ══ */
+body{font-family:'Montserrat',system-ui,sans-serif;}
+.hero-title,.titol-gran{font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(34px,4.4vw,54px);line-height:1.05;letter-spacing:0.005em;color:var(--ink);}
+.seccio-title,.section-kicker,h2{font-family:'Anton',sans-serif;font-weight:400;
+  font-size:clamp(24px,2.8vw,36px);line-height:1.12;letter-spacing:0.005em;color:var(--ink);}
+.titol,.article-title,.guia-title,.assessorament-nom,.nivell-nom,h3{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);}
+.kicker,.hero-kicker,.eix-label,.seccio-kicker,.que-es-kicker,.article-tag,.guia-tag{
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--red);}
+.text,.hero-sub,.seccio-desc,.article-excerpt,.guia-desc,.assessorament-desc,
+.que-es-item-text,.eix-desc{font-family:'Montserrat',sans-serif;font-weight:400;
+  font-size:15px;line-height:1.7;color:var(--ink-mid);}
+.taula-val,.cicle-text,.nivell-item,.eco-text,.article-date{font-size:14px;line-height:1.65;color:var(--ink-mid);}
+.taula-label{font-size:14px;font-weight:700;color:var(--ink);}
+
+/* ══ EL BLANC MANA. El beix, nomes un respir ══ */
+.hero{background:var(--white)!important;padding:72px 52px 56px!important;
+  border-bottom:1px solid var(--border);}
+.hero-kicker{color:var(--red)!important;}
+.hero-title{color:var(--ink)!important;}
+.hero-sub{color:var(--ink-mid)!important;max-width:640px;}
+.hero em,.hero i,.hero-title em{color:var(--red)!important;font-style:normal;}
+.seccio{background:var(--white);}
+.seccio-inner{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:32px 34px;}
 </style>
 </head>
 <body>
@@ -329,7 +358,7 @@ mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burge
 const map=L.map('mapa-leaflet',{center:[41.4035,2.1544],zoom:14,zoomControl:true,scrollWheelZoom:false});
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; <a href="https://carto.com/">CARTO</a>',subdomains:'abcd',maxZoom:19}).addTo(map);
 function makeIcon(color){return L.divIcon({className:'',html:`<div style="width:14px;height:14px;background:${color};border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2)"></div>`,iconSize:[14,14],iconAnchor:[7,7],popupAnchor:[0,-10]});}
-const colors={risc:'#C47A00',tancat:'#C8392B',recuperat:'#2A7A4B'};
+const colors={risc:'#CA3E27',tancat:'#CA3E27',recuperat:'#CA3E27'};
 const labels={risc:'En risc',tancat:'Tancat',recuperat:'Recuperat'};
 
 fetch('https://api.airtable.com/v0/appGuT1DQskra3f9p/tblImxsEi3bEj3clb?filterByFormula={Actiu}=1',{
