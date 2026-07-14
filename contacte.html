@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contacte · Abans Que Tanqui</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--text:#1A1A18;--muted:#6B6B67;--border:#E2E1DC;--border-dk:#C8C7C0;--sage:#C8D5B9;--sage-dk:#3A5530;--amber:#C47A00;--cta:#2A7A4B;--cta-lt:#348A58;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
 
 nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
 .nav-links{display:flex;gap:28px;align-items:center;}
 .nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
@@ -31,7 +32,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 /* HERO */
 .hero{padding:72px 52px 64px;border-bottom:2px solid var(--ink);max-width:900px;}
 .hero-kicker{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
-.hero h1{font-family:'Lora',Georgia,serif;font-size:clamp(36px,5vw,58px);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;margin-bottom:16px;}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,58px);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;margin-bottom:16px;}
 .hero-sub{font-size:17px;line-height:1.8;color:var(--ink-mid);max-width:600px;}
 
 /* TIPUS */
@@ -49,7 +50,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 /* FORM */
 .form-wrap{padding:40px 52px 72px;}
 .form-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1000px;}
-.form-info h2{font-family:'Lora',Georgia,serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
+.form-info h2{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
 .form-info-text{font-size:15px;line-height:1.8;color:var(--ink-mid);}
 .context-items{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
 .context-item{border-left:3px solid var(--sage);padding-left:16px;}
@@ -58,7 +59,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .form-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:32px;}
 .field{margin-bottom:16px;}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--ink-mid);margin-bottom:6px;letter-spacing:0.02em;}
-.field input,.field select,.field textarea{width:100%;border:1px solid var(--border-dk);border-radius:4px;padding:10px 14px;font-size:14px;font-family:'DM Sans',system-ui,sans-serif;color:var(--text);background:var(--white);transition:border-color 0.15s;}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--border-dk);border-radius:4px;padding:10px 14px;font-size:14px;font-family:'Montserrat',system-ui,sans-serif;color:var(--text);background:var(--white);transition:border-color 0.15s;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cta);}
 .field textarea{min-height:100px;resize:vertical;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -72,16 +73,16 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .btn-submit:hover{background:var(--cta-lt);}
 .form-ok{display:none;text-align:center;padding:32px;background:var(--sage);border-radius:4px;margin-top:12px;}
 .form-ok-icon{font-size:28px;margin-bottom:10px;}
-.form-ok-title{font-family:'Lora',Georgia,serif;font-size:20px;font-weight:700;color:var(--sage-dk);margin-bottom:6px;}
+.form-ok-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:var(--sage-dk);margin-bottom:6px;}
 .form-ok-text{font-size:14px;color:var(--sage-dk);line-height:1.6;}
 .form-privacy{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.5;}
 
 footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Lora',Georgia,serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
+.footer-brand{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
 .footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
 .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;}
-.footer-brand{font-family:'Lora',Georgia,serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:12px;}
+.footer-brand{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:12px;}
 .footer-brand-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
 .footer-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.35);max-width:240px;margin-bottom:18px;}
 .footer-social{display:flex;gap:8px;}
