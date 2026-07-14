@@ -231,13 +231,19 @@ section {
   padding: 80px 52px;
 }
 
+/* SECCIONS: Més baixes i amb la mateixa mida */
+section:nth-of-type(2),
+section:nth-of-type(3) {
+  padding: 48px 80px; /* Més compacte verticalment */
+  min-height: 520px;  /* Forza que les dues zones tinguin la mateixa alçada mínima */
+}
+
 section:nth-of-type(2) {
   background: var(--beix);
-  padding: 60px 80px;
 }
 
 section:nth-of-type(3) {
-  background: var(--white);
+  background: white;
 }
 
 .section-header {
@@ -594,19 +600,23 @@ footer {
     gap: 32px;
   }
 
-  .projecte-wrapper {
-  grid-template-columns: 1fr;
-  gap: 32px;
+.projecte-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Text = 1 part, Targetes = 2 parts */
+  gap: 48px;
+  align-items: start;
 }
+
   .hero-content {
     margin-left: 20px;
     padding: 40px;
   }
 
   .cards-grid {
-  grid-template-columns: 1fr;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 targetes en fila */
+  gap: 16px;
 }
-
   .eixos-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -684,7 +694,7 @@ footer {
     </div>
     <div class="projecte-right">
       <div class="cards-grid">
-    <<a class="card" href="articles/ferreteria-camps.html">
+    <a class="card" href="articles/ferreteria-camps.html">
   <div class="card-photo">
     <img src="img/ferreteria-camps.jpg" alt="Ferreteria Camps">
   </div>
