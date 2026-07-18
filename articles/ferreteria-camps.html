@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Ferreteria Camps · AQT</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
 <style>
 :root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--border:#E2E1DC;--border-dk:#C8C7C0;--cta:#2A7A4B;--cta-lt:#348A58;--muted:#6B6B67;--amber:#C47A00;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:"DM Sans",system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{font-family: "Lora", Georgia, serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
 .breadcrumb{background:var(--bg-warm);border-bottom:1px solid var(--border);padding:0 52px;height:44px;display:flex;align-items:center;gap:8px;}
 .breadcrumb a{font-size:12px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
 .breadcrumb a:hover{color:var(--ink);}
@@ -21,19 +21,19 @@ body{font-family:"DM Sans",system-ui,sans-serif;background:var(--white);color:va
 .article-cat{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:4px 10px;border-radius:2px;}
 .article-date{font-size:12px;color:rgba(255,255,255,0.4);font-weight:500;}
 .article-read-time{font-size:12px;color:rgba(255,255,255,0.4);}
-h1.article-title{font-family:"Lora",Georgia,serif;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;color:#fff;margin-bottom:16px;}
+h1.article-title{font-family: "Montserrat", system-ui, sans-serif;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;color:#fff;margin-bottom:16px;}
 .article-subtitle{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.55);max-width:620px;}
 .article-body{max-width:720px;margin:0 auto;padding:56px 24px 80px;}
 .article-body p{font-size:16px;line-height:1.85;color:var(--ink-mid);margin-bottom:20px;}
 .article-body p strong{color:var(--ink);font-weight:600;}
-.article-body h2{font-family:"Lora",Georgia,serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;margin:48px 0 16px;}
+.article-body h2{font-family: "Montserrat", system-ui, sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;margin:48px 0 16px;}
 .article-body h3{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;margin:28px 0 10px;}
 .article-body h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
 .article-body ul{margin:16px 0 20px 20px;display:flex;flex-direction:column;gap:8px;}
 .article-body ul li{font-size:15px;line-height:1.7;color:var(--ink-mid);}
 .article-body ul li strong{color:var(--ink);}
 .pull-quote{border-left:3px solid var(--border-dk);padding:16px 24px;margin:32px 0;background:var(--bg-warm);border-radius:0 4px 4px 0;}
-.pull-quote p{font-family:"Lora",Georgia,serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
+.pull-quote p{font-family: "Lora", Georgia, serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
 .pull-quote cite{font-size:12px;color:var(--muted);font-style:normal;font-weight:500;}
 .info-box{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin:28px 0;}
 .info-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
@@ -41,7 +41,7 @@ h1.article-title{font-family:"Lora",Georgia,serif;font-size:clamp(28px,4vw,46px)
 .info-box p:last-child{margin-bottom:0!important;}
 .info-box strong{color:var(--ink);font-weight:600;}
 .stat-block{background:var(--ink);border-radius:6px;padding:32px 36px;margin:32px 0;}
-.stat-num{font-family:"Lora",Georgia,serif;font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;display:block;margin-bottom:12px;}
+.stat-num{font-family: "Montserrat", system-ui, sans-serif;font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;display:block;margin-bottom:12px;}
 .stat-desc{font-size:14px;line-height:1.65;color:rgba(255,255,255,0.5);}
 .stat-source{font-size:11px;color:rgba(255,255,255,0.25);margin-top:8px;display:block;}
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
@@ -60,21 +60,21 @@ h1.article-title{font-family:"Lora",Georgia,serif;font-size:clamp(28px,4vw,46px)
 .compare-col.positiu ul li{color:var(--ink-mid);}
 .dumping-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .dumping-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
-.dumping-card h3{font-family:"Lora",Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.dumping-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .dumping-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .model-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .model-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
-.model-card h3{font-family:"Lora",Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.model-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .model-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .tipus-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .tipus-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
 .tipus-card-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
-.tipus-card h3{font-family:"Lora",Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.tipus-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .tipus-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .passos{display:flex;flex-direction:column;margin:24px 0;}
 .pas-item{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);}
 .pas-item:first-child{border-top:1px solid var(--border);}
-.pas-num{font-family:"Lora",Georgia,serif;font-size:26px;font-weight:700;color:var(--border-dk);line-height:1;padding-top:2px;}
+.pas-num{font-family: "Montserrat", system-ui, sans-serif;font-size:26px;font-weight:700;color:var(--border-dk);line-height:1;padding-top:2px;}
 .pas-content h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
 .pas-content p{font-size:14px;line-height:1.65;color:var(--muted);margin:0!important;}
 .timeline{display:flex;flex-direction:column;margin:24px 0;}
@@ -96,7 +96,7 @@ table.table-compare tbody td{padding:12px 16px;border-bottom:1px solid var(--bor
 table.table-compare tbody tr:nth-child(even){background:var(--bg-warm);}
 table.table-compare tbody td strong{color:var(--ink);}
 .cta-box{background:var(--ink);border-radius:6px;padding:36px;margin-top:48px;}
-.cta-box-text{font-family:"Lora",Georgia,serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
+.cta-box-text{font-family: "Lora", Georgia, serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .cta-btn{display:inline-block;padding:12px 24px;border-radius:4px;font-size:13.5px;font-weight:600;text-decoration:none;transition:background 0.15s;}
 .cta-btn-primary{background:var(--cta);color:#fff;}
@@ -108,10 +108,10 @@ table.table-compare tbody td strong{color:var(--ink);}
 .article-tag{font-size:11px;font-weight:600;color:var(--ink-muted);background:var(--bg-warm);border:1px solid var(--border);padding:4px 10px;border-radius:20px;}
 .back-link{font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;}
 .back-link:hover{color:var(--cta-lt);}
-@media(max-width:768px){.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}table.table-compare{font-size:12px;}}
+@media (max-width:768px){.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}table.table-compare{font-size:12px;}}
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <meta name="description" content="Un lloguer de 15.000 € mensuals i la caiguda de la clientela tradicional acaben amb un dels comerços més emblemàtics de Gràcia. La seva història va impulsar …">
 <link rel="canonical" href="https://abansquetanqui.cat/articles/ferreteria-camps.html">
 <link rel="icon" type="image/png" href="../img/logo-simbol.png">
@@ -124,6 +124,9 @@ table.table-compare tbody td strong{color:var(--ink);}
 <meta property="og:locale" content="ca_ES">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="site-nav"></div>
