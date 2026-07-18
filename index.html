@@ -219,7 +219,6 @@ section {
   text-decoration: none;
   color: inherit;
   transition: all 0.2s;
-  aspect-ratio: 1 / 1; /* Això fa que siguin quadrats perfectes */
 }
 
 .card:hover {
@@ -228,7 +227,7 @@ section {
 }
 
 .card-photo {
-  height: 50%; /* La imatge ocupa la meitat del quadrat */
+  height: 190px;
   overflow: hidden;
   position: relative;
   background: var(--beix);
@@ -246,7 +245,6 @@ section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Si el text no cap, es talla sense deformar el quadrat */
 }
 
 .card-kicker {
