@@ -9,24 +9,7 @@
 :root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--border:#E2E1DC;--border-dk:#C8C7C0;--cta:#2A7A4B;--cta-lt:#348A58;--muted:#6B6B67;--amber:#C47A00;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:22px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
-.nav-links a:hover,.nav-links a.active{color:var(--ink);}
-.nav-cta{background:var(--cta)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-cta:hover{background:var(--cta-lt)!important;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1100;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;transition:all 0.25s;}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--ink-muted);text-decoration:none;padding:12px 24px;}
-.nav-mobile .nav-cta{margin:8px 24px 0;background:var(--cta);color:#fff!important;padding:12px 20px;border-radius:4px;text-align:center;}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
 .breadcrumb{background:var(--bg-warm);border-bottom:1px solid var(--border);padding:0 52px;height:44px;display:flex;align-items:center;gap:8px;}
 .breadcrumb a{font-size:12px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
 .breadcrumb a:hover{color:var(--ink);}
@@ -38,19 +21,19 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .article-cat{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:4px 10px;border-radius:2px;}
 .article-date{font-size:12px;color:rgba(255,255,255,0.4);font-weight:500;}
 .article-read-time{font-size:12px;color:rgba(255,255,255,0.4);}
-h1.article-title{font-family:'Lora',Georgia,serif;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;color:#fff;margin-bottom:16px;}
+h1.article-title{font-family:"Lora",Georgia,serif;font-size:clamp(28px,4vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.025em;color:#fff;margin-bottom:16px;}
 .article-subtitle{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.55);max-width:620px;}
 .article-body{max-width:720px;margin:0 auto;padding:56px 24px 80px;}
 .article-body p{font-size:16px;line-height:1.85;color:var(--ink-mid);margin-bottom:20px;}
 .article-body p strong{color:var(--ink);font-weight:600;}
-.article-body h2{font-family:'Lora',Georgia,serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;margin:48px 0 16px;}
+.article-body h2{font-family:"Lora",Georgia,serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;margin:48px 0 16px;}
 .article-body h3{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;margin:28px 0 10px;}
 .article-body h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
 .article-body ul{margin:16px 0 20px 20px;display:flex;flex-direction:column;gap:8px;}
 .article-body ul li{font-size:15px;line-height:1.7;color:var(--ink-mid);}
 .article-body ul li strong{color:var(--ink);}
 .pull-quote{border-left:3px solid var(--border-dk);padding:16px 24px;margin:32px 0;background:var(--bg-warm);border-radius:0 4px 4px 0;}
-.pull-quote p{font-family:'Lora',Georgia,serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
+.pull-quote p{font-family:"Lora",Georgia,serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
 .pull-quote cite{font-size:12px;color:var(--muted);font-style:normal;font-weight:500;}
 .info-box{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin:28px 0;}
 .info-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
@@ -58,7 +41,7 @@ h1.article-title{font-family:'Lora',Georgia,serif;font-size:clamp(28px,4vw,46px)
 .info-box p:last-child{margin-bottom:0!important;}
 .info-box strong{color:var(--ink);font-weight:600;}
 .stat-block{background:var(--ink);border-radius:6px;padding:32px 36px;margin:32px 0;}
-.stat-num{font-family:'Lora',Georgia,serif;font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;display:block;margin-bottom:12px;}
+.stat-num{font-family:"Lora",Georgia,serif;font-size:52px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;display:block;margin-bottom:12px;}
 .stat-desc{font-size:14px;line-height:1.65;color:rgba(255,255,255,0.5);}
 .stat-source{font-size:11px;color:rgba(255,255,255,0.25);margin-top:8px;display:block;}
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
@@ -66,7 +49,7 @@ h1.article-title{font-family:'Lora',Georgia,serif;font-size:clamp(28px,4vw,46px)
 .compare-col h3{font-size:13px;font-weight:700;margin-bottom:14px;letter-spacing:0.02em;text-transform:uppercase;}
 .compare-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;}
 .compare-col ul li{font-size:13px;line-height:1.6;padding-left:16px;position:relative;}
-.compare-col ul li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;}
+.compare-col ul li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;}
 .compare-col.negatiu{background:rgba(200,57,43,0.05);border:1px solid rgba(200,57,43,0.15);}
 .compare-col.negatiu h3{color:var(--red);}
 .compare-col.negatiu ul li::before{background:var(--red);}
@@ -77,21 +60,21 @@ h1.article-title{font-family:'Lora',Georgia,serif;font-size:clamp(28px,4vw,46px)
 .compare-col.positiu ul li{color:var(--ink-mid);}
 .dumping-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .dumping-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
-.dumping-card h3{font-family:'Lora',Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.dumping-card h3{font-family:"Lora",Georgia,serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .dumping-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .model-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .model-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
-.model-card h3{font-family:'Lora',Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.model-card h3{font-family:"Lora",Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .model-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .tipus-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
 .tipus-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
 .tipus-card-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
-.tipus-card h3{font-family:'Lora',Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.tipus-card h3{font-family:"Lora",Georgia,serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .tipus-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
 .passos{display:flex;flex-direction:column;margin:24px 0;}
 .pas-item{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);}
 .pas-item:first-child{border-top:1px solid var(--border);}
-.pas-num{font-family:'Lora',Georgia,serif;font-size:26px;font-weight:700;color:var(--border-dk);line-height:1;padding-top:2px;}
+.pas-num{font-family:"Lora",Georgia,serif;font-size:26px;font-weight:700;color:var(--border-dk);line-height:1;padding-top:2px;}
 .pas-content h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
 .pas-content p{font-size:14px;line-height:1.65;color:var(--muted);margin:0!important;}
 .timeline{display:flex;flex-direction:column;margin:24px 0;}
@@ -113,7 +96,7 @@ table.table-compare tbody td{padding:12px 16px;border-bottom:1px solid var(--bor
 table.table-compare tbody tr:nth-child(even){background:var(--bg-warm);}
 table.table-compare tbody td strong{color:var(--ink);}
 .cta-box{background:var(--ink);border-radius:6px;padding:36px;margin-top:48px;}
-.cta-box-text{font-family:'Lora',Georgia,serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
+.cta-box-text{font-family:"Lora",Georgia,serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .cta-btn{display:inline-block;padding:12px 24px;border-radius:4px;font-size:13.5px;font-weight:600;text-decoration:none;transition:background 0.15s;}
 .cta-btn-primary{background:var(--cta);color:#fff;}
@@ -125,46 +108,25 @@ table.table-compare tbody td strong{color:var(--ink);}
 .article-tag{font-size:11px;font-weight:600;color:var(--ink-muted);background:var(--bg-warm);border:1px solid var(--border);padding:4px 10px;border-radius:20px;}
 .back-link{font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;}
 .back-link:hover{color:var(--cta-lt);}
-footer{background:#111110;padding:48px 52px 0;color:rgba(255,255,255,0.6);}
-.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;}
-.footer-brand{font-family:'Lora',Georgia,serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:12px;}
-.footer-brand-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:20px;}
-.footer-social{display:flex;gap:10px;}
-.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;}
-.footer-col-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:9px;transition:color 0.15s;}
-.footer-col a:hover{color:rgba(255,255,255,0.9);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding:18px 0;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,0.25);}
-.footer-entity{font-size:11.5px;color:rgba(157,207,180,0.5);font-weight:500;}
-@media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}.nav-burger{display:flex;}.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}footer{padding:40px 20px 0;}.footer-bottom{flex-direction:column;gap:6px;text-align:center;}table.table-compare{font-size:12px;}}
+@media(max-width:768px){.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}table.table-compare{font-size:12px;}}
 </style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="description" content="A Liverpool, una cooperativa comunitària porta més d'una dècada demostrant que un forn pot ser propietat del barri i continuar funcionant. Aquí expliquem com…">
+<link rel="canonical" href="https://abansquetanqui.cat/articles/hombacked.html">
+<link rel="icon" type="image/png" href="../img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="El model Homebaked · AQT">
+<meta property="og:description" content="A Liverpool, una cooperativa comunitària porta més d'una dècada demostrant que un forn pot ser propietat del barri i continuar funcionant. Aquí expliquem com…">
+<meta property="og:image" content="https://abansquetanqui.cat/img/logo-aqt.png">
+<meta property="og:url" content="https://abansquetanqui.cat/articles/hombacked.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="../index.html"><div class="nav-logo-dot"></div>Abans Que Tanqui</a>
-  <div class="nav-links">
-    
-    <a href="../projecte.html">Projecte</a>
-    <a href="../mapa.html">Mapa</a>
-    <a href="../actualitat.html" class="active">Actualitat</a>
-    <a href="../recursos.html">Recursos</a>
-    <a href="../contacte.html">Contacte</a>
-    <a class="nav-cta" href="../contacte.html">Tens un comerç?</a>
-  </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  
-  <a href="../projecte.html">Projecte</a>
-  <a href="../mapa.html">Mapa</a>
-  <a href="../actualitat.html">Actualitat</a>
-  <a href="../recursos.html">Recursos</a>
-  <a href="../contacte.html">Contacte</a>
-  <a class="nav-cta" href="../contacte.html">Tens un comerç?</a>
-</div>
+<div id="site-nav"></div>
 
 <div class="breadcrumb">
   
@@ -333,44 +295,7 @@ footer{background:#111110;padding:48px 52px 0;color:rgba(255,255,255,0.6);}
   <a class="back-link" href="../actualitat.html">← Tornar a l'actualitat</a>
 </div>
 
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand"><div class="footer-brand-dot"></div>Abans Que Tanqui</div>
-      <div class="footer-desc">Iniciativa per a la preservació del comerç local de proximitat. En construcció a Catalunya.</div>
-      <div class="footer-social">
-        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
-        <a href="../contacte.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Projecte</div>
-      <a href="../projecte.html">El projecte</a>
-      <a href="../index.html#que-fem">Com funciona</a>
-      <a href="../mapa.html">Mapa de casos</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Contingut</div>
-      <a href="../actualitat.html">Actualitat</a>
-      <a href="../recursos.html">Recursos</a>
-      <a href="../recursos.html#guies">Guies pràctiques</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Contacte</div>
-      <a href="../contacte.html">Escriu-nos</a>
-      <a href="../contacte.html">Tens un comerç?</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Abans Que Tanqui · Iniciativa social per al comerç local de Catalunya</span>
-    <span class="footer-entity">Projecte en fase de constitució · 2026</span>
-  </div>
-</footer>
-
-<script>
-const burger=document.getElementById('nav-burger'),mobileNav=document.getElementById('nav-mobile');
-burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');}));
-</script>
+<div id="site-footer"></div>
+<script src="../assets/site.js" defer></script>
 </body>
 </html>

@@ -10,29 +10,12 @@
 :root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--text:#1A1A18;--muted:#6B6B67;--border:#E2E1DC;--border-dk:#C8C7C0;--sage:#C8D5B9;--sage-dk:#3A5530;--amber:#C47A00;--cta:#2A7A4B;--cta-lt:#348A58;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Montserrat',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
-
-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
-.nav-links a:hover,.nav-links a.active{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:1100;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;transition:all 0.25s;}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;box-shadow:0 8px 32px rgba(0,0,0,0.1);}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--ink-muted);text-decoration:none;padding:12px 24px;}
-.nav-mobile .nav-cta{margin:8px 24px 0;background:var(--cta);color:#fff!important;padding:12px 20px;border-radius:4px;text-align:center;}
+body{font-family:"Montserrat",system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
 
 /* HERO */
 .hero{padding:72px 52px 64px;border-bottom:2px solid var(--ink);max-width:900px;}
 .hero-kicker{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
-.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,58px);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;margin-bottom:16px;}
+.hero h1{font-family:"Montserrat",sans-serif;font-size:clamp(36px,5vw,58px);font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;margin-bottom:16px;}
 .hero-sub{font-size:17px;line-height:1.8;color:var(--ink-mid);max-width:600px;}
 
 /* TIPUS */
@@ -50,7 +33,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 /* FORM */
 .form-wrap{padding:40px 52px 72px;}
 .form-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1000px;}
-.form-info h2{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
+.form-info h2{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
 .form-info-text{font-size:15px;line-height:1.8;color:var(--ink-mid);}
 .context-items{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
 .context-item{border-left:3px solid var(--sage);padding-left:16px;}
@@ -59,7 +42,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .form-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:32px;}
 .field{margin-bottom:16px;}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--ink-mid);margin-bottom:6px;letter-spacing:0.02em;}
-.field input,.field select,.field textarea{width:100%;border:1px solid var(--border-dk);border-radius:4px;padding:10px 14px;font-size:14px;font-family:'Montserrat',system-ui,sans-serif;color:var(--text);background:var(--white);transition:border-color 0.15s;}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--border-dk);border-radius:4px;padding:10px 14px;font-size:14px;font-family:"Montserrat",system-ui,sans-serif;color:var(--text);background:var(--white);transition:border-color 0.15s;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cta);}
 .field textarea{min-height:100px;resize:vertical;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -73,64 +56,35 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 52px
 .btn-submit:hover{background:var(--cta-lt);}
 .form-ok{display:none;text-align:center;padding:32px;background:var(--sage);border-radius:4px;margin-top:12px;}
 .form-ok-icon{font-size:28px;margin-bottom:10px;}
-.form-ok-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700;color:var(--sage-dk);margin-bottom:6px;}
+.form-ok-title{font-family:"Montserrat",sans-serif;font-size:20px;font-weight:700;color:var(--sage-dk);margin-bottom:6px;}
 .form-ok-text{font-size:14px;color:var(--sage-dk);line-height:1.6;}
 .form-privacy{font-size:11.5px;color:var(--muted);margin-top:14px;line-height:1.5;}
 
-footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.6);}
-.footer-brand{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px;}
-.footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,0.2);}
-.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;}
-.footer-brand{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:9px;margin-bottom:12px;}
-.footer-brand-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,0.35);max-width:240px;margin-bottom:18px;}
-.footer-social{display:flex;gap:8px;}
-.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.06);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;}
-.footer-col-title{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px;}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:9px;transition:color 0.15s;}
-.footer-col a:hover{color:rgba(255,255,255,0.9);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:16px 0;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,0.2);}
-.footer-entity{font-size:11.5px;color:rgba(255,255,255,0.35);font-weight:500;}
-
 @media(max-width:960px){
-  nav{padding:0 20px;}.nav-links{display:none;}.nav-burger{display:flex;}
   .hero,.tipus-wrap,.form-wrap{padding-left:20px;padding-right:20px;}
   .tipus-grid{grid-template-columns:1fr 1fr;}
   .form-inner{grid-template-columns:1fr;gap:32px;}
   .field-row{grid-template-columns:1fr;}
-  footer{padding:44px 20px 0;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
 }
 @media(max-width:480px){
   .tipus-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;}
 }
 </style>
+<meta name="description" content="Contacta amb Abans Que Tanqui o suma't al projecte per protegir el comerç de proximitat.">
+<link rel="canonical" href="https://abansquetanqui.cat/contacte.html">
+<link rel="icon" type="image/png" href="img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contacte · Abans Que Tanqui">
+<meta property="og:description" content="Contacta amb Abans Que Tanqui o suma't al projecte per protegir el comerç de proximitat.">
+<meta property="og:image" content="https://abansquetanqui.cat/img/logo-aqt.png">
+<meta property="og:url" content="https://abansquetanqui.cat/contacte.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt-nav.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
-  <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
-    <a href="descobreix.html">Descobreix</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html">Recursos</a>
-    <a href="contacte.html" class="active">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Suma't</a>
-  </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
-
+<div id="site-nav"></div>
 
 <!-- HERO -->
 <div class="hero">
@@ -235,119 +189,7 @@ footer{background:#111110;padding:28px 52px;display:flex;justify-content:space-b
   </div>
 </div>
 
-<footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Barcelona</div>
-</footer>
-
-<script>
-const burger=document.getElementById('nav-burger'),mobileNav=document.getElementById('nav-mobile');
-burger.addEventListener('click',()=>{burger.classList.toggle('open');mobileNav.classList.toggle('open');});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mobileNav.classList.remove('open');}));
-
-const infos={
-  comerc:{
-    title:'El teu local està en risc. No estàs sol.',
-    desc:'AQT no som advocats ni tenim diners per comprar el teu local. Però sí que podem ajudar-te a no sentir-te invisible.',
-    items:[
-      {title:'Visibilitat',text:'Posem el teu cas al mapa i el donem a conèixer al barri. Que la gent sàpiga que existeixes i que estàs en perill.'},
-      {title:'Orientació',text:'T\'ajudem a trobar recursos, entitats i alternatives. On demanar ajuda, com negociar, quines opcions tens.'},
-      {title:'Sense compromisos',text:'Explicar-nos la situació no implica cap acord. La informació és confidencial i no surt d\'AQT sense el teu consentiment.'}
-    ]
-  },
-  socio:{
-    title:'Benvinguda a la comunitat AQT.',
-    desc:'Cada persona que s\'apunta envia un senyal clar que el model val la pena.',
-    items:[
-      {title:'Sense compromisos econòmics ara',text:'Apuntar-se no implica cap aportació. Decideixes quan tinguis tota la informació.'},
-      {title:'T\'anirem informant',text:'Rebràs actualitzacions del projecte, els casos documentats i l\'evolució del model.'},
-      {title:'Totes les aportacions compten',text:'Temps, coneixement, xarxa o capital — el projecte necessita perfils molt diversos.'}
-    ]
-  },
-  professional:{
-    title:'El teu coneixement pot marcar la diferència.',
-    desc:'Busquem professionals compromesos amb el projecte, no necessàriament a temps complet.',
-    items:[
-      {title:'Flexibilitat',text:'La col·laboració s\'adapta a la teva disponibilitat i forma de treballar.'},
-      {title:'Impacte real',text:'El teu coneixement anirà directament a protegir comerços i persones reals.'},
-      {title:'Economia social',text:'Connectaràs amb un ecosistema d\'economia social i finances ètiques de referència a Catalunya.'}
-    ]
-  },
-  altre:{
-    title:'Escriu-nos.',
-    desc:'Per a qualsevol altra consulta, col·laboració o informació sobre el projecte.',
-    items:[
-      {title:'Premsa i mitjans',text:'Per entrevistes, declaracions o material informatiu sobre AQT.'},
-      {title:'Institucions i entitats',text:'Per col·laboracions, aliances o projectes conjunts.'}
-    ]
-  }
-};
-
-function seleccionarTipus(tipus){
-  document.querySelectorAll('.tipus-btn').forEach(b=>b.classList.remove('actiu'));
-  document.getElementById('btn-'+tipus).classList.add('actiu');
-  document.querySelectorAll('.extra-field').forEach(f=>f.classList.remove('visible'));
-  if(tipus!=='altre') document.getElementById('camp-'+tipus)?.classList.add('visible');
-  const info=infos[tipus];
-  document.getElementById('form-title').textContent=info.title;
-  document.getElementById('form-desc').textContent=info.desc;
-  const cont=document.getElementById('context-items');
-  cont.innerHTML=info.items.map(i=>`<div class="context-item"><div class="context-title">${i.title}</div><div class="context-text">${i.text}</div></div>`).join('');
-}
-
-// Activar tipus via URL (?tipus=comerc, etc.)
-const params=new URLSearchParams(window.location.search);
-const tipusParam=params.get('tipus');
-if(tipusParam && ['comerc','socio','professional','altre'].includes(tipusParam)){
-  seleccionarTipus(tipusParam);
-  document.getElementById('form-title')?.scrollIntoView({behavior:'smooth',block:'center'});
-}
-
-function enviarForm(){
-  const nom=document.getElementById('nom').value.trim();
-  const email=document.getElementById('email').value.trim();
-  const missatge=document.getElementById('missatge').value.trim();
-  if(!nom||!email){alert('Cal omplir el nom i el correu.');return;}
-
-  // Recollir tots els camps visibles
-  const tipusActiu=document.querySelector('.tipus-btn.actiu')?.id?.replace('btn-','') || 'altre';
-  const nomComerc=document.querySelector('#camp-comerc input')?.value||'';
-  const problema=document.querySelector('#camp-comerc select')?.value||'';
-  const ambit=document.querySelector('#camp-professional select')?.value||'';
-  const checkboxes=[...document.querySelectorAll('#camp-socio input[type=checkbox]:checked')].map(c=>c.nextElementSibling.textContent).join(', ');
-
-  const btn=document.querySelector('.btn-submit');
-  btn.disabled=true;
-  btn.textContent='Enviant...';
-
-  fetch('https://formspree.io/f/xreregyp',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      nom, email, missatge,
-      tipus: tipusActiu,
-      nom_comerc: nomComerc||undefined,
-      problema: problema||undefined,
-      ambit_professional: ambit||undefined,
-      com_participar: checkboxes||undefined,
-    })
-  })
-  .then(r=>{
-    if(r.ok){
-      document.getElementById('form-ok').style.display='block';
-      btn.style.display='none';
-    } else {
-      alert('Hi ha hagut un error. Prova de nou o escriu directament a hola@abansquetanqui.cat');
-      btn.disabled=false;
-      btn.textContent='Enviar →';
-    }
-  })
-  .catch(()=>{
-    alert('Hi ha hagut un error de xarxa. Prova de nou o escriu directament a hola@abansquetanqui.cat');
-    btn.disabled=false;
-    btn.textContent='Enviar →';
-  });
-}
-</script>
+<div id="site-footer"></div>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

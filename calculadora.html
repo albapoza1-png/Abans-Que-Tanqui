@@ -9,30 +9,18 @@
 <style>
 :root{--ink:#1A1A18;--ink-mid:#3A3A37;--muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--green:#1B3327;--border:#E2E1DC;--border-dk:#C8C7C0;--amber:#C47A00;--cta:#2A7A4B;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;}
-.nav-logo{font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;}
-.nav-links{display:flex;gap:22px;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;}
-.nav-links a:hover{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:#fff!important;padding:8px 16px;border-radius:3px;font-size:13px;font-weight:600;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
-.nav-burger span{display:block;width:22px;height:2px;background:var(--ink-mid);border-radius:2px;}
-.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;background:var(--white);border-top:1px solid var(--border);z-index:999;flex-direction:column;padding:16px 0 24px;}
-.nav-mobile.open{display:flex;}
-.nav-mobile a{font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;padding:12px 24px;}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
 .wrap{max-width:980px;margin:0 auto;padding:48px 24px 64px;}
 .page-kicker{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
-.page-title{font-family:'Lora',serif;font-size:clamp(28px,4vw,46px);font-weight:700;color:var(--ink);line-height:1.06;letter-spacing:-0.03em;margin-bottom:14px;}
+.page-title{font-family:"Lora",serif;font-size:clamp(28px,4vw,46px);font-weight:700;color:var(--ink);line-height:1.06;letter-spacing:-0.03em;margin-bottom:14px;}
 .page-sub{font-size:16px;color:var(--muted);max-width:620px;margin-bottom:40px;}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
 @media(max-width:820px){.grid{grid-template-columns:1fr;}}
 .card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:26px;}
-.card-title{font-family:'Lora',serif;font-size:18px;font-weight:700;margin-bottom:20px;letter-spacing:-0.01em;}
+.card-title{font-family:"Lora",serif;font-size:18px;font-weight:700;margin-bottom:20px;letter-spacing:-0.01em;}
 .field{margin-bottom:22px;}
 .field-label{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:600;color:var(--ink-mid);margin-bottom:9px;}
-.field-val{font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--red);}
+.field-val{font-family:"Lora",serif;font-size:17px;font-weight:700;color:var(--red);}
 input[type=range]{width:100%;height:5px;border-radius:3px;background:var(--border-dk);outline:none;-webkit-appearance:none;appearance:none;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:19px;height:19px;border-radius:50%;background:var(--red);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);}
 input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;background:var(--red);cursor:pointer;border:3px solid #fff;}
@@ -42,7 +30,7 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 .preset.on{background:var(--green);border-color:var(--green);}
 .preset.on .preset-n,.preset.on .preset-p{color:#fff;}
 .preset-n{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-.preset-p{display:block;font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--ink);margin-top:2px;}
+.preset-p{display:block;font-family:"Lora",serif;font-size:15px;font-weight:700;color:var(--ink);margin-top:2px;}
 .adv-toggle{font-size:13px;font-weight:600;color:var(--cta);cursor:pointer;user-select:none;padding:6px 0;display:inline-block;}
 .adv{display:none;margin-top:10px;padding-top:18px;border-top:1px solid var(--border);}
 .adv.open{display:block;}
@@ -53,19 +41,19 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 .res-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.13);}
 .res-row:last-of-type{border-bottom:none;}
 .res-lbl{font-size:13px;color:rgba(255,255,255,.72);max-width:60%;}
-.res-num{font-family:'Lora',serif;font-size:26px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;}
+.res-num{font-family:"Lora",serif;font-size:26px;font-weight:700;letter-spacing:-.02em;white-space:nowrap;}
 .res-num small{font-size:14px;font-weight:400;color:rgba(255,255,255,.6);}
 .dif{background:var(--red);border-radius:6px;padding:16px 18px;margin-top:18px;text-align:center;}
-.dif-num{font-family:'Lora',serif;font-size:30px;font-weight:700;color:#fff;line-height:1;}
+.dif-num{font-family:"Lora",serif;font-size:30px;font-weight:700;color:#fff;line-height:1;}
 .dif-txt{font-size:13px;color:#fff;margin-top:5px;font-weight:500;}
 .socies{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-top:24px;display:flex;align-items:center;gap:18px;}
-.socies-num{font-family:'Lora',serif;font-size:42px;font-weight:700;color:var(--red);line-height:1;flex-shrink:0;}
+.socies-num{font-family:"Lora",serif;font-size:42px;font-weight:700;color:var(--red);line-height:1;flex-shrink:0;}
 .socies-txt{font-size:14px;color:var(--ink-mid);}
 .warn{background:#FBF3E0;border:1px solid var(--amber);color:#7a5400;border-radius:6px;padding:13px 16px;margin-top:16px;font-size:13px;display:none;}
 .warn.show{display:block;}
 /* I DESPRÉS */
 .despres{margin-top:48px;}
-.despres-title{font-family:'Lora',serif;font-size:22px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em;}
+.despres-title{font-family:"Lora",serif;font-size:22px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em;}
 .despres-sub{font-size:14px;color:var(--muted);margin-bottom:24px;}
 .despres-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 @media(max-width:820px){.despres-grid{grid-template-columns:1fr;}}
@@ -77,34 +65,24 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 .cta-final a{display:inline-block;margin:0 6px;padding:12px 24px;border-radius:4px;font-size:14px;font-weight:600;text-decoration:none;}
 .btn-p{background:var(--red);color:#fff;}
 .btn-s{background:var(--white);color:var(--ink);border:1px solid var(--border-dk);}
-footer{background:var(--green);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:24px 32px;}
-.footer-brand{font-family:'Lora',serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;}
-.footer-dot{width:7px;height:7px;background:var(--red);border-radius:50%;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,.3);}
-@media(max-width:720px){.nav-links{display:none;}.nav-burger{display:flex;}footer{flex-direction:column;gap:10px;text-align:center;}}
 </style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="description" content="Calculadora de viabilitat del model de cessió d'ús: compara el cost d'un local cooperatiu amb el lloguer de mercat.">
+<link rel="canonical" href="https://abansquetanqui.cat/calculadora.html">
+<link rel="icon" type="image/png" href="img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculadora de viabilitat · Abans Que Tanqui">
+<meta property="og:description" content="Calculadora de viabilitat del model de cessió d'ús: compara el cost d'un local cooperatiu amb el lloguer de mercat.">
+<meta property="og:image" content="https://abansquetanqui.cat/img/logo-aqt.png">
+<meta property="og:url" content="https://abansquetanqui.cat/calculadora.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="index.html"><div class="nav-logo-dot"></div>Abans Que Tanqui</a>
-  <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
-    <a href="mapa.html">Mapa</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html">Recursos</a>
-    <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Suma't</a>
-  </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="mapa.html">Mapa</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
+<div id="site-nav"></div>
 
 <div class="wrap">
   <div class="page-kicker">Eina interactiva</div>
@@ -235,92 +213,7 @@ footer{background:var(--green);color:#fff;display:flex;justify-content:space-bet
   </div>
 </div>
 
-<footer>
-  <div class="footer-brand"><div class="footer-dot"></div>Abans Que Tanqui</div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Gràcia, Barcelona</div>
-</footer>
-
-<script>
-const $ = id => document.getElementById(id);
-const eur = n => Math.round(n).toLocaleString('ca-ES');
-
-function update(){
-  const preu = +$('sl-preu').value;
-  const m = +$('sl-m').value;
-  const reforma = +$('sl-reforma').value;
-  const veinat = +$('sl-veinat').value;
-  const entitats = +$('sl-entitats').value;
-  const comerc = +$('sl-comerc').value;
-  const interes = +$('sl-int').value;
-  const anys = +$('sl-anys').value;
-  const mitjana = +$('sl-mitjana').value;
-
-  // etiquetes
-  $('v-preu').textContent = eur(preu)+' €';
-  $('v-m').textContent = m+' m²';
-  $('v-reforma').textContent = eur(reforma)+' €';
-  $('v-veinat').textContent = eur(veinat)+' €';
-  $('v-entitats').textContent = eur(entitats)+' €';
-  $('v-comerc').textContent = eur(comerc)+' €';
-  $('v-int').textContent = interes.toFixed(2).replace('.',',')+' %';
-  $('v-anys').textContent = anys+' anys';
-  $('v-mitjana').textContent = eur(mitjana)+' €';
-
-  const costTotal = preu + reforma;
-  const aportacions = veinat + entitats + comerc;
-  const prestec = Math.max(0, costTotal - aportacions);
-
-  // quota préstec (amortització francesa)
-  const i = interes/100/12;
-  const n = anys*12;
-  let quotaPrestec = i>0 ? prestec * i / (1 - Math.pow(1+i,-n)) : prestec/n;
-  // custòdia: estimació orientativa ~1,5% del valor /any
-  const custodia = costTotal * 0.015 / 12;
-  const quota = quotaPrestec + custodia;
-
-  const mercat = m * 16.85;
-  const estalvi = mercat>0 ? Math.round((1 - quota/mercat)*100) : 0;
-
-  $('r-prestec').innerHTML = eur(prestec)+'<small> €</small>';
-  $('r-quota').innerHTML = eur(quota)+'<small> €/mes</small>';
-  $('r-mercat').innerHTML = eur(mercat)+'<small> €/mes</small>';
-
-  if(estalvi>0){ $('r-estalvi').textContent = estalvi+'% més barat'; $('.dif'); }
-  else { $('r-estalvi').textContent = Math.abs(estalvi)+'% més car'; }
-
-  // sòcies per cobrir la part del veïnat
-  const socies = mitjana>0 ? Math.ceil(veinat/mitjana) : 0;
-  $('r-socies').textContent = socies;
-  $('r-mitjana-txt').textContent = eur(mitjana);
-
-  // avís 20%
-  const minim = costTotal*0.20;
-  $('warn').classList.toggle('show', aportacions < minim);
-}
-
-// presets
-document.querySelectorAll('.preset').forEach(p=>{
-  p.addEventListener('click',()=>{
-    document.querySelectorAll('.preset').forEach(x=>x.classList.remove('on'));
-    p.classList.add('on');
-    $('sl-preu').value = p.dataset.preu;
-    $('sl-m').value = p.dataset.m;
-    var nota=$('cas-real-nota');
-    if(nota) nota.style.display = (p.dataset.preu==='185000') ? 'block' : 'none';
-    update();
-  });
-});
-// quan es mou el preu manualment, treu el preset actiu
-$('sl-preu').addEventListener('input',()=>{document.querySelectorAll('.preset').forEach(x=>x.classList.remove('on'));});
-
-['sl-preu','sl-m','sl-reforma','sl-veinat','sl-entitats','sl-comerc','sl-int','sl-anys','sl-mitjana']
-  .forEach(id=>$(id).addEventListener('input',update));
-
-$('adv-toggle').addEventListener('click',()=>{ $('adv').classList.toggle('open'); });
-
-$('nav-burger').addEventListener('click',function(){ $('nav-mobile').classList.toggle('open'); });
-
-update();
-</script>
+<div id="site-footer"></div>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

@@ -11,65 +11,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Montserrat',system-ui,sans-serif;
+  font-family: "Montserrat",system-ui,sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ─── NAV ─── */
-nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 52px;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px; position: sticky; top: 0; z-index: 1000;
-}
-.nav-logo {
-  font-family: 'Montserrat',sans-serif; font-size: 17px; font-weight: 700;
-  color: var(--ink); letter-spacing: -0.01em;
-  display: flex; align-items: center; gap: 10px; text-decoration: none;
-}
-.nav-logo-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
-.nav-links { display: flex; gap: 28px; align-items: center; }
-.nav-links a {
-  font-size: 13px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; transition: color 0.15s; letter-spacing: 0.01em;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
-.nav-cta {
-  background: var(--ink) !important; color: var(--white) !important;
-  padding: 8px 18px; border-radius: 3px; font-size: 13px; font-weight: 600;
-  transition: background 0.15s !important;
-}
-.nav-cta:hover{background:var(--cta-lt)!important;}
-.nav-burger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; background: none; border: none; padding: 8px;
-}
-.nav-burger span {
-  display: block; width: 22px; height: 2px;
-  background: var(--ink-mid); border-radius: 2px; transition: all 0.25s;
-}
-.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-burger.open span:nth-child(2) { opacity: 0; }
-.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.nav-mobile {
-  display: none; position: fixed; top: 64px; left: 0; right: 0;
-  background: var(--white); border-top: 1px solid var(--border);
-  z-index: 999; flex-direction: column; padding: 16px 0 24px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-.nav-mobile.open { display: flex; }
-.nav-mobile a {
-  font-size: 15px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; padding: 12px 24px; transition: color 0.15s, background 0.15s;
-}
-.nav-mobile a:hover { color: var(--ink); background: var(--bg-warm); }
-.nav-mobile .nav-cta {
-  margin: 8px 24px 0; background: var(--ink); color: #fff !important;
-  padding: 12px 20px; border-radius: 4px; text-align: center; font-weight: 600;
 }
 
 /* ─── HERO CAPÇALERA ─── */
@@ -87,7 +33,7 @@ nav {
   text-transform: uppercase; color: var(--red); margin-bottom: 14px;
 }
 .page-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: clamp(40px, 5vw, 64px);
   font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
   color: var(--ink); margin-bottom: 18px;
@@ -106,7 +52,7 @@ nav {
   padding-bottom: 20px; border-bottom: 2px solid var(--border); margin-bottom: 36px;
 }
 .seccio-kicker {
-  font-family: 'Montserrat',sans-serif; font-size: clamp(22px, 2.5vw, 32px);
+  font-family: "Montserrat",sans-serif; font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 4px;
 }
 .seccio-title {
@@ -131,7 +77,7 @@ nav {
   position: relative; overflow: hidden;
 }
 .guia-card-top::after {
-  content: '';
+  content: "";
   position: absolute; inset: 0;
   background-image: repeating-linear-gradient(
     -45deg, transparent, transparent 24px,
@@ -145,7 +91,7 @@ nav {
   background: var(--red); color: #fff; position: relative; z-index: 1;
 }
 .guia-title {
-  font-family: 'Montserrat',sans-serif; font-size: 22px; font-weight: 700;
+  font-family: "Montserrat",sans-serif; font-size: 22px; font-weight: 700;
   color: #fff; line-height: 1.2; letter-spacing: -0.01em;
   position: relative; z-index: 1;
 }
@@ -230,11 +176,11 @@ nav {
   background: #F7F1EE; padding: 64px 52px; text-align: center; margin-top: 80px;
 }
 .cta-final-text {
-  font-family: 'Montserrat',sans-serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700;
+  font-family: "Montserrat",sans-serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700;
   color: var(--ink); line-height: 1.2; letter-spacing: -0.02em;
   max-width: 600px; margin: 0 auto 32px;
 }
-.cta-headline{font-family:'Montserrat',sans-serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;max-width:900px;margin:0 auto 20px;}
+.cta-headline{font-family:"Montserrat",sans-serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1.05;letter-spacing:-0.03em;max-width:900px;margin:0 auto 20px;}
 .cta-headline em { font-style: normal; color: var(--ink); }
 .cta-final-sub{font-size:15px;color:var(--ink-muted);max-width:480px;margin:0 auto 32px;line-height:1.6;}
 .cta-final-sub{font-size:15px;color:var(--ink-muted);max-width:480px;margin:0 auto 32px;line-height:1.6;}
@@ -253,67 +199,33 @@ nav {
 }
 .cta-btn-outline:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
 
-/* ─── FOOTER ─── */
-footer { background: #111110; padding: 60px 52px 0; color: rgba(255,255,255,0.6); }
-.footer-grid {
-  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 52px;
-}
-.footer-brand {
-  font-family: 'Montserrat',sans-serif; font-size: 16px; font-weight: 700; color: #fff;
-  display: flex; align-items: center; gap: 9px; margin-bottom: 14px;
-}
-.footer-brand-dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; }
-.footer-desc { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.35); max-width: 260px; margin-bottom: 20px; }
-.footer-social { display: flex; gap: 10px; }
-.footer-social a {
-  width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; transition: background 0.15s;
-}
-.footer-social a:hover { background: rgba(255,255,255,0.12); }
-.footer-col-title {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4); margin-bottom: 14px;
-}
-.footer-col a {
-  display: block; font-size: 13px; color: rgba(255,255,255,0.45);
-  text-decoration: none; margin-bottom: 9px; transition: color 0.15s;
-}
-.footer-col a:hover { color: rgba(255,255,255,0.9); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06); padding: 18px 0;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.2); }
-.footer-entity { font-size: 11.5px; color: rgba(255,255,255,0.35); font-weight: 500; }
-
 /* ─── RESPONSIVE ─── */
 @media (max-width: 960px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .nav-burger { display: flex; }
+  
+  
+  
   .page-header { padding: 40px 20px 36px; }
   .page-wrap { padding: 0 20px 64px; }
   .guies-grid { grid-template-columns: 1fr; }
   .assessorament-grid { grid-template-columns: 1fr; }
   .cta-final { padding: 52px 20px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+  
+  
 }
 
 /* Montserrat unificat, igual que Projecte */
-body{font-family:'Montserrat',system-ui,sans-serif;}
-.hero-title,.titol-gran{font-family:'Montserrat',sans-serif;font-weight:400;
+body{font-family:"Montserrat",system-ui,sans-serif;}
+.hero-title,.titol-gran{font-family:"Montserrat",sans-serif;font-weight:400;
   font-size:clamp(34px,4.4vw,54px);line-height:1.05;letter-spacing:0.005em;color:var(--ink);}
-.seccio-title,.section-kicker,h2{font-family:'Montserrat',sans-serif;font-weight:400;
+.seccio-title,.section-kicker,h2{font-family:"Montserrat",sans-serif;font-weight:400;
   font-size:clamp(24px,2.8vw,36px);line-height:1.12;letter-spacing:0.005em;color:var(--ink);}
 .titol,.article-title,.guia-title,.assessorament-nom,.nivell-nom,h3{
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);}
+  font-family:"Montserrat",sans-serif;font-weight:700;font-size:16px;line-height:1.35;color:var(--ink);}
 .kicker,.hero-kicker,.eix-label,.seccio-kicker,.que-es-kicker,.article-tag,.guia-tag{
-  font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.14em;
+  font-family:"Montserrat",sans-serif;font-weight:600;font-size:11px;letter-spacing:0.14em;
   text-transform:uppercase;color:var(--red);}
 .text,.hero-sub,.seccio-desc,.article-excerpt,.guia-desc,.assessorament-desc,
-.que-es-item-text,.eix-desc{font-family:'Montserrat',sans-serif;font-weight:400;
+.que-es-item-text,.eix-desc{font-family:"Montserrat",sans-serif;font-weight:400;
   font-size:15px;line-height:1.7;color:var(--ink-mid);}
 .taula-val,.cicle-text,.nivell-item,.eco-text,.article-date{font-size:14px;line-height:1.65;color:var(--ink-mid);}
 .taula-label{font-size:14px;font-weight:700;color:var(--ink);}
@@ -330,13 +242,13 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 
 /* ══ CORRECCIO: els titols son h1, no .hero-title ══ */
 .hero h1,.page-header h1,.hero-title,.titol-gran{
-  font-family:'Montserrat',sans-serif!important;font-weight:400!important;
+  font-family:"Montserrat",sans-serif!important;font-weight:400!important;
   font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
   letter-spacing:0.005em!important;color:var(--ink)!important;}
 .hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero p,.page-header p,.hero-sub{font-family:'Montserrat',sans-serif!important;
+.hero p,.page-header p,.hero-sub{font-family:"Montserrat",sans-serif!important;
   font-size:16px!important;line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;
+.hero-kicker,.page-header-kicker{font-family:"Montserrat",sans-serif!important;
   font-weight:600!important;font-size:11px!important;letter-spacing:0.14em!important;
   text-transform:uppercase!important;color:var(--red)!important;}
 .hero,.page-header{background:var(--white)!important;}
@@ -350,19 +262,19 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 /* ══ CAPCALERA INTERIOR UNIFICADA ══ */
 .hero,.page-header{background:var(--white)!important;padding:72px 52px 64px!important;
   border-bottom:2px solid var(--ink)!important;min-height:auto!important;}
-.hero h1,.page-header h1{font-family:'Montserrat',sans-serif!important;font-weight:400!important;
+.hero h1,.page-header h1{font-family:"Montserrat",sans-serif!important;font-weight:400!important;
   font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;
   color:var(--ink)!important;margin-bottom:18px!important;}
 .hero h1 em,.page-header h1 em{color:var(--red)!important;font-style:normal!important;}
-.hero-kicker,.page-header-kicker{font-family:'Montserrat',sans-serif!important;font-weight:600!important;
+.hero-kicker,.page-header-kicker{font-family:"Montserrat",sans-serif!important;font-weight:600!important;
   font-size:11px!important;letter-spacing:0.14em!important;text-transform:uppercase!important;
   color:var(--red)!important;margin-bottom:14px!important;}
-.hero-sub,.page-header p{font-family:'Montserrat',sans-serif!important;font-size:16px!important;
+.hero-sub,.page-header p{font-family:"Montserrat",sans-serif!important;font-size:16px!important;
   line-height:1.7!important;color:var(--ink-mid)!important;max-width:620px!important;}
 @media(max-width:768px){.hero,.page-header{padding:44px 22px 40px!important;}}
 
 .filtres-bar{max-width:1180px;margin:0 auto;padding:0 52px 40px;display:flex;gap:10px;flex-wrap:wrap;}
-.filtre-pill{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:var(--ink-mid);
+.filtre-pill{font-family:"Montserrat",sans-serif;font-size:13px;font-weight:600;color:var(--ink-mid);
   background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:9px 18px;
   text-decoration:none;transition:all .15s;}
 .filtre-pill:hover,.filtre-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
@@ -373,30 +285,23 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 .guia-card-top{position:relative;}
 .guia-meta{font-size:11px;color:var(--ink-muted);font-weight:600;margin-top:2px;}
 </style>
+<meta name="description" content="Recursos pràctics per a comerciants: què fer davant una pujada de lloguer o un possible tancament del teu local.">
+<link rel="canonical" href="https://abansquetanqui.cat/recursos.html">
+<link rel="icon" type="image/png" href="img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Recursos per a comerciants · Abans Que Tanqui">
+<meta property="og:description" content="Recursos pràctics per a comerciants: què fer davant una pujada de lloguer o un possible tancament del teu local.">
+<meta property="og:image" content="https://abansquetanqui.cat/img/logo-aqt.png">
+<meta property="og:url" content="https://abansquetanqui.cat/recursos.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div id="site-nav"></div>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui" style="height:32px;width:auto;"></a>
-  <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
-    <a href="descobreix.html">Descobreix</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html" class="active">Recursos</a>
-    <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Suma't</a>
-  </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
-
 <!-- CAPÇALERA -->
 <header class="page-header">
   <div class="page-header-inner">
@@ -629,25 +534,7 @@ body{font-family:'Montserrat',system-ui,sans-serif;}
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui" style="height:48px;width:auto;filter:brightness(0) invert(1);"></div>
-  <div class="footer-copy">© 2026 Abans Que Tanqui · En construcció · Barcelona</div>
-</footer>
-
-<script>
-const burger = document.getElementById('nav-burger');
-const mobileNav = document.getElementById('nav-mobile');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-mobileNav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
-</script>
-
+<div id="site-footer"></div>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

@@ -31,128 +31,11 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   background: var(--white);
   color: var(--ink);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ══ NAVIGATION ══ */
-nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.nav-logo img {
-  height: 40px;
-  width: auto;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-
-.nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.nav-links a:hover {
-  color: var(--ink);
-}
-
-.nav-cta {
-  background: var(--red) !important;
-  color: #fff !important;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.nav-cta:hover {
-  background: #a63120 !important;
-}
-
-.nav-burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
-  z-index: 1100;
-}
-
-.nav-burger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--ink-mid);
-  border-radius: 2px;
-  transition: all 0.25s;
-}
-
-.nav-burger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.nav-burger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.nav-burger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-.nav-mobile {
-  display: none;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  z-index: 999;
-  flex-direction: column;
-  padding: 16px 0 24px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-}
-
-.nav-mobile.open {
-  display: flex;
-}
-
-.nav-mobile a {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink-muted);
-  text-decoration: none;
-  padding: 12px 24px;
 }
 
 /* ══ HERO ══ */
@@ -279,7 +162,7 @@ section {
 }
 
 .section-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   color: var(--ink);
@@ -293,7 +176,7 @@ section {
 }
 
 .section-title-large {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 700;
   color: var(--ink);
@@ -385,7 +268,7 @@ section {
 }
 
 .card-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
@@ -417,10 +300,6 @@ section {
   z-index: 1;
   border-radius: 8px;
   margin-bottom: 24px;
-}
-
-.mapa-footer {
-  text-align: right;
 }
 
 .mapa-link {
@@ -464,7 +343,7 @@ section {
 }
 
 .eix-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: var(--ink);
@@ -477,120 +356,13 @@ section {
   line-height: 1.6;
 }
 
-/* ══ FOOTER ══ */
-footer {
-  background: #111110;
-  padding: 56px 52px 0;
-  color: rgba(255,255,255,0.6);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 48px;
-}
-
-.footer-brand {
-  font-family: 'Montserrat',sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 12px;
-}
-
-.footer-brand img {
-  height: 44px;
-  width: auto;
-  filter: brightness(0) invert(1); /* Això el torna blanc */
-}
-
-.footer-desc {
-  font-size: 13px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.35);
-  max-width: 240px;
-  margin-bottom: 18px;
-}
-
-.footer-social {
-  display: flex;
-  gap: 8px;
-}
-
-.footer-social a {
-  width: 34px;
-  height: 34px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: background 0.15s;
-}
-
-.footer-social a:hover {
-  background: rgba(255,255,255,0.12);
-}
-
-.footer-col-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 14px;
-}
-
-.footer-col a {
-  display: block;
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
-  text-decoration: none;
-  margin-bottom: 9px;
-  transition: color 0.15s;
-}
-
-.footer-col a:hover {
-  color: rgba(255,255,255,0.9);
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 16px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy {
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.2);
-}
-
-.footer-entity {
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.35);
-  font-weight: 500;
-}
-
 /* ══ RESPONSIVE ══ */
 @media (max-width: 960px) {
-  nav {
-    padding: 0 20px;
-  }
+  
 
-  .nav-links {
-    display: none;
-  }
+  
 
-  .nav-burger {
-    display: flex;
-  }
+  
 
   section {
     padding: 48px 20px;
@@ -622,16 +394,10 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
+  
 }
 
 @media (max-width: 480px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
 
   .eixos-grid {
     grid-template-columns: 1fr;
@@ -647,31 +413,23 @@ footer {
   }
 }
 </style>
+<meta name="description" content="Abans Que Tanqui documenta el tancament del comerç de proximitat a Barcelona i explora models cooperatius de cessió d'ús per protegir-lo.">
+<link rel="canonical" href="https://abansquetanqui.cat/index.html">
+<link rel="icon" type="image/png" href="img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abans Que Tanqui · Comerç de proximitat">
+<meta property="og:description" content="Abans Que Tanqui documenta el tancament del comerç de proximitat a Barcelona i explora models cooperatius de cessió d'ús per protegir-lo.">
+<meta property="og:image" content="https://abansquetanqui.cat/img/hero-carrer.jpg">
+<meta property="og:url" content="https://abansquetanqui.cat/index.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div id="site-nav"></div>
 
 <!-- NAVIGATION -->
-<nav>
-  <a class="nav-logo" href="index.html"><img src="img/logo-aqt.png" alt="Abans Que Tanqui"></a>
-  <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
-    <a href="descobreix.html">Descobreix</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html">Recursos</a>
-    <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Participa</a>
-  </div>
-  <button class="nav-burger" id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-</nav>
-
-<div class="nav-mobile" id="nav-mobile">
-  <a href="projecte.html">Projecte</a>
-  <a href="descobreix.html">Descobreix</a>
-  <a href="actualitat.html">Actualitat</a>
-  <a href="recursos.html">Recursos</a>
-  <a href="contacte.html">Contacte</a>
-</div>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-img">
@@ -721,7 +479,7 @@ footer {
       </a>
       <a class="card" href="#">
         <div class="card-photo">
-          <img src="img/placeholder.jpg" alt="Pròxim cas">
+          <img src="img/gracia-placa.jpg" alt="Pròxim cas">
         </div>
         <div class="card-body">
           <div class="card-kicker">Pròximament</div>
@@ -770,7 +528,7 @@ footer {
           <div class="card-link">Llegir l'article →</div>
         </div>
       </a>
-      <a class="card" href="articles/cadenes-esborren-forns.html">
+      <a class="card" href="articles/forns-cadenes.html">
         <div class="card-photo">
           <img src="img/forns-cadenes.jpg" alt="Cadenes i forns artesans">
         </div>
@@ -787,57 +545,7 @@ footer {
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand"><img src="img/logo-footer.png" alt="Abans Que Tanqui"></div>
-      <div class="footer-desc">Projecte de recerca i exploració sobre la transformació del comerç de proximitat. En construcció a Catalunya.</div>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/abansquetanqui/" target="_blank" rel="noopener" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
-        <a href="contacte.html" title="Correu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Projecte</div>
-      <a href="projecte.html">Projecte</a>
-      <a href="projecte.html">Com funciona</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Participa</div>
-      <a href="contacte.html">Suma't</a>
-      <a href="contacte.html">Tens un comerç?</a>
-      <a href="contacte.html">Contacte</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Més</div>
-      <a href="descobreix.html">Mapa de casos</a>
-      <a href="actualitat.html">Actualitat</a>
-      <a href="recursos.html">Recursos</a>
-      <a href="descobreix.html">Descobreix</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
-    <span class="footer-entity">En fase de constitució · 2026</span>
-  </div>
-</footer>
-
-<script>
-const burger = document.getElementById('nav-burger');
-const mobileNav = document.getElementById('nav-mobile');
-
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-
-mobileNav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
-</script>
-
+<div id="site-footer"></div>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

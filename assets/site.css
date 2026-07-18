@@ -1,0 +1,128 @@
+/* ══════════════════════════════════════════════════════════════
+   Abans Que Tanqui · Estils compartits (nav + footer + tokens)
+   Font única de veritat per al "chrome" del web.
+   Editar aquí = canvia a TOTES les pàgines.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Tokens canònics (fallback per a totes les pàgines) ── */
+:root {
+  --beix:      #f5efe6;
+  --beix-clar: #faf6f1;
+  --white:     #ffffff;
+  --ink:       #1a1a18;
+  --ink-mid:   rgba(26,26,24,0.72);
+  --ink-muted: rgba(26,26,24,0.50);
+  --border:    rgba(26,26,24,0.12);
+  --red:       #c8392b;
+  --red-dark:  #a63120;
+  --amber:     #c47a00;
+  --green:     #2a7a4b;
+}
+
+/* ══ NAVIGATION (colors literals: independent dels tokens de pàgina) ══ */
+nav.aqt-nav {
+  background: #fff;
+  border-bottom: 1px solid rgba(26,26,24,0.12);
+  padding: 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+.aqt-nav .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.aqt-nav .nav-logo img { height: 40px; width: auto; }
+.aqt-nav .nav-links { display: flex; gap: 28px; align-items: center; }
+.aqt-nav .nav-links a {
+  font-size: 13px; font-weight: 500; color: rgba(26,26,24,0.50);
+  text-decoration: none; transition: color 0.15s;
+}
+.aqt-nav .nav-links a:hover { color: #1a1a18; }
+.aqt-nav .nav-links a.actiu { color: #1a1a18; font-weight: 600; }
+.aqt-nav .nav-cta {
+  background: #c8392b !important; color: #fff !important;
+  padding: 10px 20px; border-radius: 4px; font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: background 0.2s;
+}
+.aqt-nav .nav-cta:hover { background: #a63120 !important; }
+.aqt-nav .nav-cta.actiu { color: #fff !important; }
+.aqt-nav .nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 8px; z-index: 1100;
+}
+.aqt-nav .nav-burger span {
+  display: block; width: 22px; height: 2px; background: rgba(26,26,24,0.72);
+  border-radius: 2px; transition: all 0.25s;
+}
+.aqt-nav .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.aqt-nav .nav-burger.open span:nth-child(2) { opacity: 0; }
+.aqt-nav .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.aqt-nav-mobile {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: #fff; border-top: 1px solid rgba(26,26,24,0.12);
+  z-index: 999; flex-direction: column; padding: 16px 0 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+.aqt-nav-mobile.open { display: flex; }
+.aqt-nav-mobile a {
+  font-size: 15px; font-weight: 500; color: rgba(26,26,24,0.50);
+  text-decoration: none; padding: 12px 24px;
+}
+.aqt-nav-mobile a.actiu { color: #1a1a18; font-weight: 600; }
+
+/* ══ FOOTER ══ */
+footer.aqt-footer {
+  background: #111110; padding: 56px 52px 0; color: rgba(255,255,255,0.6);
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+.aqt-footer .footer-grid {
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px;
+}
+.aqt-footer .footer-brand {
+  font-size: 16px; font-weight: 700; color: #fff;
+  display: flex; align-items: center; gap: 9px; margin-bottom: 12px;
+}
+.aqt-footer .footer-brand img { height: 44px; width: auto; filter: brightness(0) invert(1); }
+.aqt-footer .footer-desc {
+  font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.35);
+  max-width: 240px; margin-bottom: 18px;
+}
+.aqt-footer .footer-social { display: flex; gap: 8px; }
+.aqt-footer .footer-social a {
+  width: 34px; height: 34px; background: rgba(255,255,255,0.06); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+  transition: background 0.15s;
+}
+.aqt-footer .footer-social a:hover { background: rgba(255,255,255,0.12); }
+.aqt-footer .footer-col-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 14px;
+}
+.aqt-footer .footer-col a {
+  display: block; font-size: 13px; color: rgba(255,255,255,0.45);
+  text-decoration: none; margin-bottom: 9px; transition: color 0.15s;
+}
+.aqt-footer .footer-col a:hover { color: rgba(255,255,255,0.9); }
+.aqt-footer .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06); padding: 16px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.aqt-footer .footer-copy { font-size: 11.5px; color: rgba(255,255,255,0.2); }
+.aqt-footer .footer-entity { font-size: 11.5px; color: rgba(255,255,255,0.35); font-weight: 500; }
+
+@media (max-width: 860px) {
+  .aqt-nav { padding: 0 20px; }
+  .aqt-nav .nav-links { display: none; }
+  .aqt-nav .nav-burger { display: flex; }
+  footer.aqt-footer { padding: 48px 20px 0; }
+  .aqt-footer .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .aqt-footer .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .aqt-footer .footer-grid { grid-template-columns: 1fr; }
+}

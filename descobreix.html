@@ -28,54 +28,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Montserrat',system-ui,sans-serif;
+  font-family: "Montserrat",system-ui,sans-serif;
   background: var(--white);
   color: var(--ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-}
-
-/* ══════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════ */
-nav {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-.nav-logo { 
-  display: flex; 
-  align-items: center; 
-  gap: 8px; 
-  text-decoration: none;
-}
-.nav-logo img { height: 36px; width: auto; }
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a {
-  font-size: 14px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; transition: color 0.15s;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--ink); }
-
-.nav-cta {
-  background: var(--red) !important;
-  color: #fff !important;
-  padding: 10px 22px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.nav-cta:hover {
-  background: var(--red-dark) !important;
 }
 /* ═══════════════════════════════════════════
    LAYOUT PRINCIPAL (Sidebar + Mapa)
@@ -97,7 +54,7 @@ nav {
 
 .sidebar-header { margin-bottom: 24px; }
 .sidebar-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: 32px; font-weight: 700; color: var(--ink);
   margin-bottom: 8px;
 }
@@ -183,7 +140,7 @@ nav {
 }
 .cas-info { flex: 1; min-width: 0; }
 .cas-nom {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: 16px; 
   font-weight: 600; 
   color: var(--ink); 
@@ -239,7 +196,7 @@ nav {
   border-top: 1px solid var(--border);
 }
 .estadistiques-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: var(--ink);
@@ -289,7 +246,7 @@ nav {
   margin-bottom: 10px;
 }
 .calculadora-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat",sans-serif;
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 700;
   color: var(--ink);
@@ -316,87 +273,15 @@ nav {
 }
 .calculadora-btn:hover { background: var(--red-dark); }
 
-/* ══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
-footer {
-  background: #111110;
-  padding: 40px 40px 20px;
-  color: rgba(255,255,255,0.6);
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 32px;
-}
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.footer-brand img {
-  height: 40px;
-  width: auto;
-  filter: brightness(0) invert(1);
-}
-.footer-brand-text {
-  font-family: 'Montserrat',sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-.footer-desc {
-  font-size: 13px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.4);
-  max-width: 280px;
-  margin-top: 12px;
-}
-.footer-col-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 14px;
-}
-.footer-col a {
-  display: block;
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  margin-bottom: 9px;
-  transition: color 0.15s;
-}
-.footer-col a:hover { color: rgba(255,255,255,0.9); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.07);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11.5px;
-  color: rgba(255,255,255,0.25);
-}
-
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
 @media (max-width: 960px) {
-  nav { padding: 0 20px; }
-  #nav-burger { display: flex !important; }
-  .nav-links {
-    display: none;
-    position: fixed; top: 64px; left: 0; right: 0;
-    background: var(--white); flex-direction: column;
-    padding: 8px 0 20px; border-top: 1px solid var(--border);
-    box-shadow: 0 8px 24px rgba(26,26,24,0.10); z-index: 999;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links a { padding: 14px 24px; font-size: 15px; }
+  
+  
+  
+  
+  
   
   .descobreix-layout {
     grid-template-columns: 1fr;
@@ -414,9 +299,9 @@ footer {
   
   .calculadora-bloc { padding: 48px 20px; }
   
-  .footer-inner { flex-direction: column; gap: 24px; }
-  footer { padding: 32px 20px 16px; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  
+  
+  
 
   /* GRAFICS: apilats en comptes d'esprémuts a 2 columnes */
   .grafics-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -488,37 +373,26 @@ footer {
   .fitxa-img-wrap{height:200px;}
   .fitxa-body{padding:22px 20px 32px;}
 }
-
-#nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;
-  background:none;border:none;padding:8px;z-index:1100;}
-#nav-burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;
-  transition:all .25s;}
-#nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-#nav-burger.open span:nth-child(2){opacity:0;}
-#nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media(max-width:768px){#nav-burger{display:flex!important;}}
 </style>
+<meta name="description" content="Mapa dels comerços de proximitat de Gràcia en risc, tancats o recuperats. Les històries darrere de cada persiana abaixada.">
+<link rel="canonical" href="https://abansquetanqui.cat/descobreix.html">
+<link rel="icon" type="image/png" href="img/logo-simbol.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Descobreix · Abans Que Tanqui">
+<meta property="og:description" content="Mapa dels comerços de proximitat de Gràcia en risc, tancats o recuperats. Les històries darrere de cada persiana abaixada.">
+<meta property="og:image" content="https://abansquetanqui.cat/img/logo-aqt.png">
+<meta property="og:url" content="https://abansquetanqui.cat/descobreix.html">
+<meta property="og:site_name" content="Abans Que Tanqui">
+<meta property="og:locale" content="ca_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div id="site-nav"></div>
 
 <!-- ═══════════════════════════════════════════
      NAV
 ═══════════════════════════════════════════ -->
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="img/logo-aqt.png" alt="Abans Que Tanqui">
-  </a>
-  <button id="nav-burger" aria-label="Menú"><span></span><span></span><span></span></button>
-  <div class="nav-links">
-    <a href="projecte.html">Projecte</a>
-    <a href="descobreix.html" class="active">Descobreix</a>
-    <a href="actualitat.html">Actualitat</a>
-    <a href="recursos.html">Recursos</a>
-    <a href="contacte.html">Contacte</a>
-    <a class="nav-cta" href="contacte.html">Participa</a>
-  </div>
-</nav>
-
 <!-- ═══════════════════════════════════════════
      LAYOUT PRINCIPAL (Sidebar + Mapa)
 ═══════════════════════════════════════════ -->
@@ -590,37 +464,6 @@ footer {
 <!-- ═══════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════ -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <a class="footer-brand" href="index.html">
-        <img src="img/logo-footer.png" alt="Abans Que Tanqui">
-        <span class="footer-brand-text">Abans Que Tanqui</span>
-      </a>
-      <p class="footer-desc">
-        Projecte per documentar i protegir els comerços històrics de Barcelona.
-      </p>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Navegació</div>
-      <a href="index.html">Inici</a>
-      <a href="descobreix.html">Descobreix</a>
-      <a href="projecte.html">El projecte</a>
-      <a href="actualitat.html">Notícies</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Recursos</div>
-      <a href="calculadora.html">Calculadora</a>
-      <a href="recursos.html">Recursos</a>
-      <a href="contacte.html">Contacte</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Abans Que Tanqui · Projecte en construcció · Barcelona</span>
-    <span>En fase de constitució</span>
-  </div>
-</footer>
-
 <!-- ═══════════════════════════════════════════
      JAVASCRIPT
 ═══════════════════════════════════════════ -->
@@ -946,17 +789,7 @@ carregarDades();
   </div>
 </aside>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var burger = document.getElementById('nav-burger');
-  var links  = document.querySelector('.nav-links');
-  if (burger && links) {
-    burger.addEventListener('click', function(){
-      links.classList.toggle('open');
-      burger.classList.toggle('open');
-    });
-  }
-});
-</script>
+<div id="site-footer"></div>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
