@@ -6,7 +6,7 @@
 <title>El model Homebaked · AQT</title>
 
 <style>
-:root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--border:#E2E1DC;--border-dk:#C8C7C0;--cta:#2A7A4B;--cta-lt:#348A58;--muted:#6B6B67;--amber:#C47A00;}
+:root{--ink:#1A1A18;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--bg:#FFFFFF;--bg-warm:#faf6f1;--beix:#f5efe6;--white:#FFFFFF;--red:#C8392B;--red-lt:#a63120;--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.30);--cta:#2A7A4B;--cta-lt:#348A58;--muted:rgba(26,26,24,0.50);--amber:#C47A00;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family: "Lora", Georgia, serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
@@ -32,7 +32,7 @@ h1.article-title{font-family: "Montserrat", system-ui, sans-serif;font-size:clam
 .article-body ul{margin:16px 0 20px 20px;display:flex;flex-direction:column;gap:8px;}
 .article-body ul li{font-size:15px;line-height:1.7;color:var(--ink-mid);}
 .article-body ul li strong{color:var(--ink);}
-.pull-quote{border-left:3px solid var(--border-dk);padding:16px 24px;margin:32px 0;background:var(--bg-warm);border-radius:0 4px 4px 0;}
+.pull-quote{border-left:3px solid var(--red);padding:16px 24px;margin:32px 0;background:var(--bg-warm);border-radius:0 4px 4px 0;}
 .pull-quote p{font-family: "Lora", Georgia, serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
 .pull-quote cite{font-size:12px;color:var(--muted);font-style:normal;font-weight:500;}
 .info-box{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin:28px 0;}
@@ -99,15 +99,15 @@ table.table-compare tbody td strong{color:var(--ink);}
 .cta-box-text{font-family: "Lora", Georgia, serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .cta-btn{display:inline-block;padding:12px 24px;border-radius:4px;font-size:13.5px;font-weight:600;text-decoration:none;transition:background 0.15s;}
-.cta-btn-primary{background:var(--cta);color:#fff;}
-.cta-btn-primary:hover{background:var(--cta-lt);}
+.cta-btn-primary{background:var(--red);color:#fff;}
+.cta-btn-primary:hover{background:var(--red-lt);}
 .cta-btn-secondary{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);}
 .cta-btn-secondary:hover{background:rgba(255,255,255,0.18);}
 .article-foot{max-width:720px;margin:0 auto;padding:0 24px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--border);padding-top:28px;}
 .article-tags{display:flex;gap:8px;flex-wrap:wrap;}
 .article-tag{font-size:11px;font-weight:600;color:var(--ink-muted);background:var(--bg-warm);border:1px solid var(--border);padding:4px 10px;border-radius:20px;}
-.back-link{font-size:13px;font-weight:600;color:var(--cta);text-decoration:none;border-bottom:1.5px solid var(--cta);padding-bottom:1px;}
-.back-link:hover{color:var(--cta-lt);}
+.back-link{font-size:13px;font-weight:600;color:var(--red);text-decoration:none;border-bottom:1.5px solid var(--red);padding-bottom:1px;}
+.back-link:hover{color:var(--red-lt);}
 @media (max-width:768px){.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}table.table-compare{font-size:12px;}}
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -233,7 +233,7 @@ table.table-compare tbody td strong{color:var(--ink);}
       <div class="timeline-left"><div class="timeline-marker ok"></div><div class="timeline-line"></div></div>
       <div class="timeline-content">
         <h4>2016–2020 — Consolidació i ampliació</h4>
-        <p>El projecte s'estabilitza financerament. S'inicien les obres de rehabilitació dels pisos superiors per destinar-los a habitatge assequible. El model comença a ser estudiat per universitats i referenciats per organitzacions internacionals.</p>
+        <p>El projecte s'estabilitza financerament. S'inicien les obres de rehabilitació dels pisos superiors per destinar-los a habitatge assequible. El model comença a ser estudiat per universitats i referenciat per organitzacions internacionals.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -272,7 +272,7 @@ table.table-compare tbody td strong{color:var(--ink);}
 
   <h2>Aplicabilitat al context català</h2>
 
-  <p>El model Homebaked no és directament trasllatable a Catalunya sense adaptació: el marc jurídic és diferent, la cultura cooperativa té una tradició pròpia i les condicions del mercat immobiliari no són exactament les mateixes. Però els principis bàsics sí que son exportables.</p>
+  <p>El model Homebaked no és directament trasllatable a Catalunya sense adaptació: el marc jurídic és diferent, la cultura cooperativa té una tradició pròpia i les condicions del mercat immobiliari no són exactament les mateixes. Però els principis bàsics sí que són exportables.</p>
 
   <p>A Catalunya existeix una llarga tradició cooperativista i instruments com les cooperatives de treball associat, les fundacions comunitàries o els patrimonis de sòl municipals que podrien funcionar de manera anàloga al CLT britànic. El que manca no és tant el marc legal com la voluntat política i l'organització comunitària.</p>
 

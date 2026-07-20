@@ -6,12 +6,12 @@
 <title>El lloguer comercial: la llei que protegeix el propietari · AQT</title>
 
 <style>
-:root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--border:#E2E1DC;--border-dk:#C8C7C0;--cta:#2A7A4B;--cta-lt:#348A58;--muted:#6B6B67;--amber:#C47A00;}
+:root{--ink:#1A1A18;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--bg:#FFFFFF;--bg-warm:#faf6f1;--beix:#f5efe6;--white:#FFFFFF;--red:#C8392B;--red-lt:#a63120;--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.30);--cta:#2A7A4B;--cta-lt:#348A58;--muted:rgba(26,26,24,0.50);--amber:#C47A00;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family: "Lora", Georgia, serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;}
 .breadcrumb{background:var(--bg-warm);border-bottom:1px solid var(--border);padding:0 52px;height:44px;display:flex;align-items:center;gap:8px;}
-.breadcrumb a{font-size:12px;font-weight:500;color:var(--ink-muted);text-decoration:none;}
+.breadcrumb a{font-size:12px;font-weight:500;color:var(--ink-muted);text-decoration:none;transition:color 0.15s;}
 .breadcrumb a:hover{color:var(--ink);}
 .breadcrumb-sep{font-size:12px;color:var(--border-dk);}
 .breadcrumb-current{font-size:12px;color:var(--ink);font-weight:500;}
@@ -28,6 +28,10 @@ h1.article-title{font-family: "Montserrat", system-ui, sans-serif;font-size:clam
 .article-body p strong{color:var(--ink);font-weight:600;}
 .article-body h2{font-family: "Montserrat", system-ui, sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1.2;margin:48px 0 16px;}
 .article-body h3{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;margin:28px 0 10px;}
+.article-body h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.article-body ul{margin:16px 0 20px 20px;display:flex;flex-direction:column;gap:8px;}
+.article-body ul li{font-size:15px;line-height:1.7;color:var(--ink-mid);}
+.article-body ul li strong{color:var(--ink);}
 .pull-quote{border-left:3px solid var(--red);padding:16px 24px;margin:32px 0;background:var(--bg-warm);border-radius:0 4px 4px 0;}
 .pull-quote p{font-family: "Lora", Georgia, serif;font-size:17px;font-style:italic;line-height:1.65;color:var(--ink);margin:0 0 8px!important;}
 .pull-quote cite{font-size:12px;color:var(--muted);font-style:normal;font-weight:500;}
@@ -54,6 +58,38 @@ h1.article-title{font-family: "Montserrat", system-ui, sans-serif;font-size:clam
 .compare-col.positiu h3{color:var(--cta);}
 .compare-col.positiu ul li::before{background:var(--cta);}
 .compare-col.positiu ul li{color:var(--ink-mid);}
+.dumping-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.dumping-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
+.dumping-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.dumping-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.model-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
+.model-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.model-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
+.tipus-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.tipus-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:4px;padding:22px 24px;}
+.tipus-card-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+.tipus-card h3{font-family: "Montserrat", system-ui, sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.tipus-card p{font-size:14px;line-height:1.65;color:var(--ink-mid);margin:0!important;}
+.passos{display:flex;flex-direction:column;margin:24px 0;}
+.pas-item{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--border);}
+.pas-item:first-child{border-top:1px solid var(--border);}
+.pas-num{font-family: "Montserrat", system-ui, sans-serif;font-size:26px;font-weight:700;color:var(--border-dk);line-height:1;padding-top:2px;}
+.pas-content h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px;}
+.pas-content p{font-size:14px;line-height:1.65;color:var(--muted);margin:0!important;}
+.timeline{display:flex;flex-direction:column;margin:24px 0;}
+.timeline-item{display:grid;grid-template-columns:32px 1fr;gap:16px;}
+.timeline-left{display:flex;flex-direction:column;align-items:center;}
+.timeline-marker{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.timeline-marker.ok{background:var(--cta);}
+.timeline-marker.neutral{background:var(--border-dk);}
+.timeline-marker.risc{background:var(--amber);}
+.timeline-marker.final{background:var(--red);}
+.timeline-marker.inici{background:var(--ink-muted);}
+.timeline-line{width:2px;background:var(--border);flex:1;margin:4px 0;}
+.timeline-content{padding-bottom:24px;}
+.timeline-content h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.timeline-content p{font-size:14px;line-height:1.65;color:var(--muted);margin:0!important;}
 table.table-compare{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;}
 table.table-compare thead th{background:var(--ink);color:#fff;padding:12px 16px;text-align:left;font-size:12px;font-weight:600;letter-spacing:0.04em;}
 table.table-compare tbody td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--ink-mid);vertical-align:top;}
@@ -63,14 +99,16 @@ table.table-compare tbody td strong{color:var(--ink);}
 .cta-box-text{font-family: "Lora", Georgia, serif;font-size:19px;font-style:italic;line-height:1.5;color:#fff;margin-bottom:24px;}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .cta-btn{display:inline-block;padding:12px 24px;border-radius:4px;font-size:13.5px;font-weight:600;text-decoration:none;transition:background 0.15s;}
-.cta-btn-primary{background:var(--cta);color:#fff;}
-.cta-btn-primary:hover{background:var(--cta-lt);}
-@media (max-width:960px){
-  .breadcrumb{padding:0 20px;}
-  .article-hero{padding:40px 24px 36px;}
-  .article-body{padding:40px 20px 60px;}
-  .compare-grid{grid-template-columns:1fr;}
-}
+.cta-btn-primary{background:var(--red);color:#fff;}
+.cta-btn-primary:hover{background:var(--red-lt);}
+.cta-btn-secondary{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);}
+.cta-btn-secondary:hover{background:rgba(255,255,255,0.18);}
+.article-foot{max-width:720px;margin:0 auto;padding:0 24px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--border);padding-top:28px;}
+.article-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.article-tag{font-size:11px;font-weight:600;color:var(--ink-muted);background:var(--bg-warm);border:1px solid var(--border);padding:4px 10px;border-radius:20px;}
+.back-link{font-size:13px;font-weight:600;color:var(--red);text-decoration:none;border-bottom:1.5px solid var(--red);padding-bottom:1px;}
+.back-link:hover{color:var(--red-lt);}
+@media (max-width:768px){.breadcrumb{padding:0 20px;}.article-hero{padding:36px 20px 32px;}.article-body{padding:40px 20px 56px;}.compare-grid,.dumping-grid,.model-grid,.tipus-grid{grid-template-columns:1fr;}.pas-item{grid-template-columns:1fr;gap:4px;}.cta-actions{flex-direction:column;}.article-foot{flex-direction:column;align-items:flex-start;}table.table-compare{font-size:12px;}}
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -145,7 +183,7 @@ table.table-compare tbody td strong{color:var(--ink);}
 
   <p>La disparitat entre la regulació de l'habitatge i la del comerç no sempre ha estat tan pronunciada. Fins als anys noranta, la LAU de 1964 oferia als locals comercials un cert grau de protecció: els arrendataris podien subarrendar, cedir el local i fins i tot tenien dret a mantenir el contracte per a hereus que continuessin l'activitat. Era imperfecte, però existia un reconeixement que el local comercial no és un bé qualsevol.</p>
 
-  <p>La reforma del 1994 ho va canviar. Va establir el principi de llibertat de pacte per als locals i va eliminar la majoria de proteccions. El raonament era liberal: el mercat s'autoreguala. El problema és que el mercat de l'habitatge va rebre protecció addicional progressiva —especialment accelerada des del 2022— mentre que el mercat comercial va quedar estancat en el paradigma del 1994.</p>
+  <p>La reforma del 1994 ho va canviar. Va establir el principi de llibertat de pacte per als locals i va eliminar la majoria de proteccions. El raonament era liberal: el mercat s'autoregula. El problema és que el mercat de l'habitatge va rebre protecció addicional progressiva —especialment accelerada des del 2022— mentre que el mercat comercial va quedar estancat en el paradigma del 1994.</p>
 
   <div class="compare-grid">
     <div class="compare-col negatiu">
@@ -209,7 +247,7 @@ table.table-compare tbody td strong{color:var(--ink);}
 
   <p>El comerç local és un bé comú urbà. Genera cohesió social, manté l'activitat a peu de carrer, preserva la memòria del barri i sosté l'economia de proximitat. Però el mercat no valora els béns comuns: valora la rendibilitat. I la rendibilitat d'un local en un barri central d'una gran ciutat és, en el model actual, incompatible amb la supervivència d'un comerç de proximitat.</p>
 
-  <p>L'argument que el mercat s'autoreguala i que la competència entre propietaris fixarà preus raonables no ha funcionat en tres dècades. Al contrari: la concentració de la propietat immobiliària comercial, la financerització del sector i l'expansió de les cadenes han creat un mercat on el comerç local té cada vegada menys marge.</p>
+  <p>L'argument que el mercat s'autoregula i que la competència entre propietaris fixarà preus raonables no ha funcionat en tres dècades. Al contrari: la concentració de la propietat immobiliària comercial, la financerització del sector i l'expansió de les cadenes han creat un mercat on el comerç local té cada vegada menys marge.</p>
 
   <div class="pull-quote">
     <p>La manca de regulació actual en l'arrendament dels locals de negoci fa que no es pugui garantir l'estabilitat dels projectes comercials que depenen d'una ubicació concreta.</p>

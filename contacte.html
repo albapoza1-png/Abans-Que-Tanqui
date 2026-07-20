@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <style>
-:root{--ink:#1A1A18;--ink-mid:#3A3A37;--ink-muted:#6B6B67;--bg:#F7F7F7;--bg-warm:#EFEFEF;--white:#FFFFFF;--red:#C8392B;--red-lt:#E04030;--text:#1A1A18;--muted:#6B6B67;--border:#E2E1DC;--border-dk:#C8C7C0;--sage:#C8D5B9;--sage-dk:#3A5530;--amber:#C47A00;--cta:#2A7A4B;--cta-lt:#348A58;}
+:root{--ink:#1A1A18;--ink-mid:rgba(26,26,24,0.72);--ink-muted:rgba(26,26,24,0.50);--bg:#FFFFFF;--bg-warm:#faf6f1;--beix:#f5efe6;--white:#FFFFFF;--red:#C8392B;--red-lt:#a63120;--text:#1A1A18;--muted:rgba(26,26,24,0.50);--border:rgba(26,26,24,0.12);--border-dk:rgba(26,26,24,0.30);--sage:#DDEAD9;--sage-dk:#2A5530;--amber:#C47A00;--cta:#C8392B;--cta-lt:#a63120;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family: "Montserrat", system-ui, sans-serif;background:var(--white);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
@@ -24,7 +24,7 @@ body{font-family: "Montserrat", system-ui, sans-serif;background:var(--white);co
 .tipus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .tipus-btn{padding:18px 16px;border:1.5px solid var(--border);border-radius:6px;cursor:pointer;background:var(--white);text-align:left;transition:border-color 0.15s,background 0.15s;}
 .tipus-btn:hover{border-color:var(--border-dk);}
-.tipus-btn.actiu{border-color:var(--cta);background:rgba(42,122,75,0.05);}
+.tipus-btn.actiu{border-color:var(--red);background:rgba(200,57,43,0.05);}
 .tipus-btn.actiu .tipus-icon{color:var(--cta);}
 .tipus-icon{font-size:20px;display:block;margin-bottom:8px;}
 .tipus-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.3;}
@@ -36,7 +36,7 @@ body{font-family: "Montserrat", system-ui, sans-serif;background:var(--white);co
 .form-info h2{font-family: "Montserrat", system-ui, sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
 .form-info-text{font-size:15px;line-height:1.8;color:var(--ink-mid);}
 .context-items{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
-.context-item{border-left:3px solid var(--sage);padding-left:16px;}
+.context-item{border-left:3px solid var(--red);padding-left:16px;}
 .context-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;}
 .context-text{font-size:13px;color:var(--muted);line-height:1.5;}
 .form-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:32px;}
@@ -193,6 +193,92 @@ body{font-family: "Montserrat", system-ui, sans-serif;background:var(--white);co
 </div>
 
 <div id="site-footer"></div>
+<script>
+/* ── Lògica del formulari (abans inexistent: els botons no feien res) ── */
+/* Per activar l'enviament real: compte gratuït a formspree.io i posar l'ID aquí. */
+var FORMSPREE_ID = "";  // p. ex. "xwkgzqbe" — si és buit, s'obre el correu com a alternativa
+
+var TIPUS_INFO = {
+  comerc: {
+    titol: "Explica'ns el teu cas.",
+    desc: "Conversa confidencial i sense compromís. T'ajudem a entendre les teves opcions abans que sigui tard.",
+    items: [
+      ["Confidencial", "No publiquem res del teu cas sense el teu consentiment explícit."],
+      ["Sense compromís", "Escoltar-te no t'obliga a res. T'expliquem opcions; tu decideixes."],
+      ["Com més aviat, millor", "Amb 12-18 mesos de marge hi ha opcions; amb tres setmanes, gairebé cap."]
+    ]
+  },
+  socio: {
+    titol: "Suma't al projecte.",
+    desc: "La tardor de 2026 constituïm l'associació. Les primeres persones sòcies decidiran estatuts, criteris i governança.",
+    items: [
+      ["Co-decisió real", "Qui entra ara no assumeix un risc: assumeix la co-decisió."],
+      ["Aportacions reemborsables", "Quan toqui posar-hi diners, si marxes, te'ls tornem."]
+    ]
+  },
+  professional: {
+    titol: "Posa el teu coneixement a treballar pel barri.",
+    desc: "Dret, finances, comunicació, arquitectura, gestió cooperativa: tot suma en un projecte en construcció.",
+    items: [
+      ["Col·laboració flexible", "Des d'una consulta puntual fins a implicació continuada."],
+      ["Impacte directe", "El que aportis es tradueix en comerços orientats i casos documentats."]
+    ]
+  },
+  altre: {
+    titol: "Explica'ns què necessites.",
+    desc: "Premsa, entitats, administracions, curiositat: t'escoltem i et responem en 48 hores.",
+    items: []
+  }
+};
+
+function seleccionarTipus(t) {
+  ["comerc","socio","professional","altre"].forEach(function (k) {
+    var btn = document.getElementById("btn-" + k);
+    var camp = document.getElementById("camp-" + k);
+    if (btn) btn.classList.toggle("actiu", k === t);
+    if (camp) camp.classList.toggle("visible", k === t);
+  });
+  var info = TIPUS_INFO[t];
+  document.getElementById("form-title").textContent = info.titol;
+  document.getElementById("form-desc").textContent = info.desc;
+  var cont = document.getElementById("context-items");
+  cont.innerHTML = info.items.map(function (i) {
+    return '<div class="context-item"><div class="context-title">' + i[0] + '</div><div class="context-text">' + i[1] + "</div></div>";
+  }).join("");
+  window.__tipusActiu = t;
+}
+
+function enviarForm() {
+  var nom = document.getElementById("nom").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var missatge = document.getElementById("missatge").value.trim();
+  if (!nom || !email) { alert("Si us plau, indica com a mínim el teu nom i el teu correu."); return; }
+  var tipus = window.__tipusActiu || "consulta";
+  var dades = { nom: nom, email: email, tipus: tipus, missatge: missatge };
+  document.querySelectorAll(".extra-field.visible input, .extra-field.visible select").forEach(function (el, i) {
+    if (el.type === "checkbox") { if (el.checked) dades["opcio_" + i] = el.closest("label").textContent.trim(); }
+    else if (el.value) dades["camp_" + i] = el.value;
+  });
+  function ok() {
+    document.getElementById("form-ok").style.display = "block";
+    document.querySelector(".btn-submit").style.display = "none";
+  }
+  if (FORMSPREE_ID) {
+    fetch("https://formspree.io/f/" + FORMSPREE_ID, {
+      method: "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(dades)
+    }).then(function (r) {
+      if (r.ok) ok();
+      else alert("Hi ha hagut un problema en enviar el missatge. Torna-ho a provar o escriu-nos directament.");
+    }).catch(function () { alert("Sense connexió. Torna-ho a provar."); });
+  } else {
+    var cos = "Nom: " + nom + "%0D%0ATipus: " + tipus + "%0D%0A%0D%0A" + encodeURIComponent(missatge);
+    window.location.href = "mailto:abansquetanqui@gmail.com?subject=" + encodeURIComponent("[Web] Contacte — " + tipus) + "&body=" + cos;
+    ok();
+  }
+}
+</script>
 <script src="assets/site.js" defer></script>
 </body>
 </html>

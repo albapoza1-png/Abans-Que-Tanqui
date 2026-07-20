@@ -1,10 +1,12 @@
 /* ══════════════════════════════════════════════════════════════
-   Abans Que Tanqui · site.js
-   Injecta el nav i el footer a totes les pàgines (font única).
-   Gestiona el menú mòbil i marca l'enllaç actiu automàticament.
+   Abans Que Tanqui · site.js — VERSIÓ ACTUALITZADA
+   Substitueix assets/site.js del repositori per aquest fitxer
+   (reanomenant-lo site.js). Canvis marcats amb [NOU]:
+   - Nav: enllaç «FAQ»
+   - Footer «Participa»: enllaç al formulari de detecció
+   - Footer «Més»: FAQ i Guia de drets
    ══════════════════════════════════════════════════════════════ */
 (function () {
-  // Prefix relatiu segons la profunditat de la pàgina (arrel vs /articles/, /guies/)
   var dir = location.pathname.replace(/\/[^\/]*$/, '');
   var depth = dir.split('/').filter(Boolean).length;
   var base = depth > 0 ? '../'.repeat(depth) : '';
@@ -16,6 +18,7 @@
     { href: 'descobreix.html', text: 'Descobreix' },
     { href: 'actualitat.html', text: 'Actualitat' },
     { href: 'recursos.html',   text: 'Recursos' },
+    { href: 'faq.html',        text: 'FAQ' },        /* [NOU] */
     { href: 'contacte.html',   text: 'Contacte' }
   ];
 
@@ -60,7 +63,8 @@
         '<div class="footer-col">' +
           '<div class="footer-col-title">Participa</div>' +
           '<a href="' + base + 'contacte.html">Suma&#39;t</a>' +
-          '<a href="' + base + 'contacte.html">Tens un comerç?</a>' +
+          '<a href="' + base + 'coneixes-un-comerc.html">Coneixes un comerç en risc?</a>' + /* [NOU] */
+          '<a href="' + base + 'guia-drets.html">Tens un comerç?</a>' +                    /* [NOU: abans apuntava a contacte] */
           '<a href="' + base + 'contacte.html">Contacte</a>' +
         '</div>' +
         '<div class="footer-col">' +
@@ -69,6 +73,8 @@
           '<a href="' + base + 'actualitat.html">Actualitat</a>' +
           '<a href="' + base + 'recursos.html">Recursos</a>' +
           '<a href="' + base + 'calculadora.html">Calculadora</a>' +
+          '<a href="' + base + 'faq.html">Preguntes freqüents</a>' +   /* [NOU] */
+          '<a href="' + base + 'guia-drets.html">Guia de drets</a>' +  /* [NOU] */
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +
