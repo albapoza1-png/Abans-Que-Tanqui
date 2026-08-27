@@ -65,6 +65,22 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 .cta-final a{display:inline-block;margin:0 6px;padding:12px 24px;border-radius:4px;font-size:14px;font-weight:600;text-decoration:none;}
 .btn-p{background:var(--red);color:#fff;}
 .btn-s{background:var(--white);color:var(--ink);border:1px solid var(--border-dk);}
+
+.res-break{border-bottom:1px solid rgba(255,255,255,.13);padding-bottom:14px;margin-bottom:6px;}
+.res-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px;}
+.fase{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.13);}
+.fase:last-child{border-bottom:none;}
+.fase-l{min-width:0;}
+.fase-t{font-size:13px;font-weight:600;color:#fff;}
+.fase-y{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:2px;}
+.fase-r{text-align:right;white-space:nowrap;}
+.fase-q{font-family:"Montserrat",system-ui,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.02em;}
+.fase-q small{font-size:12px;font-weight:400;color:rgba(255,255,255,.6);}
+.fase-e{font-size:11.5px;font-weight:600;color:#F0B8B0;margin-top:1px;}
+.fase-perm .fase-e{color:#9FE1CB;}
+.fases-h{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:20px 0 2px;}
+.aprox{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:10px;}
+.garantia{background:var(--bg-warm);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-top:16px;font-size:12.5px;color:var(--ink-mid);line-height:1.55;}
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -100,10 +116,10 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
       <div class="field">
         <div class="field-label"><span>Preu del local</span><span class="field-val" id="v-preu">180.000 €</span></div>
         <div class="presets" id="presets">
-          <div class="preset" data-preu="90000" data-m="60"><span class="preset-n">Petit</span><span class="preset-p">90.000 €</span></div>
-          <div class="preset on" data-preu="180000" data-m="120"><span class="preset-n">Mitjà</span><span class="preset-p">180.000 €</span></div>
-          <div class="preset" data-preu="290000" data-m="180"><span class="preset-n">Gran</span><span class="preset-p">290.000 €</span></div>
-          <div class="preset" data-preu="185000" data-m="120"><span class="preset-n">Cas real ★</span><span class="preset-p">185.000 €</span></div>
+          <div class="preset" data-preu="90000" role="button" tabindex="0" aria-pressed="false" data-m="60"><span class="preset-n">Petit</span><span class="preset-p">90.000 €</span></div>
+          <div class="preset on" data-preu="180000" role="button" tabindex="0" aria-pressed="false" data-m="120"><span class="preset-n">Mitjà</span><span class="preset-p">180.000 €</span></div>
+          <div class="preset" data-preu="290000" role="button" tabindex="0" aria-pressed="false" data-m="180"><span class="preset-n">Gran</span><span class="preset-p">290.000 €</span></div>
+          <div class="preset" data-preu="185000" data-m="120" data-casreal="1" role="button" tabindex="0" aria-pressed="false"><span class="preset-n">Cas real ★</span><span class="preset-p">185.000 €</span></div>
         </div>
         <div class="src" id="cas-real-nota" style="display:none;">★ Cas real: local de 120 m² en venda al carrer Salinas (Vila de Gràcia), 185.000 €. Abans hi havia un comerç de barri. Anunci verificat a idealista (juny 2026).</div>
         <input type="range" id="sl-preu" min="45000" max="400000" step="5000" value="180000">
@@ -120,21 +136,22 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
         <input type="range" id="sl-reforma" min="0" max="60000" step="2500" value="20000">
       </div>
 
-      <div class="card-title" style="margin-top:8px;">Qui posa l'entrada</div>
-      <p style="font-size:12.5px;color:var(--muted);margin-bottom:18px;margin-top:-12px;">El finançament ètic cobreix fins al 80%. El 20% restant és el capital propi, que surt de tres fonts:</p>
+      <div class="card-title" style="margin-top:8px;">Qui hi posa el capital</div>
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:18px;margin-top:-12px;">El finançament ètic cobreix com a màxim el 80% de l'operació. La resta ha de sortir de capital que no s'ha de tornar: el veïnat i les entitats.</p>
 
       <div class="field">
         <div class="field-label"><span>Aportació del veïnat (sòcies)</span><span class="field-val" id="v-veinat">30.000 €</span></div>
-        <input type="range" id="sl-veinat" min="0" max="120000" step="1000" value="30000">
+        <input type="range" id="sl-veinat" min="0" max="150000" step="1000" value="30000">
       </div>
       <div class="field">
-        <div class="field-label"><span>Aportació d'entitats aliades</span><span class="field-val" id="v-entitats">0 €</span></div>
-        <input type="range" id="sl-entitats" min="0" max="120000" step="1000" value="0">
+        <div class="field-label"><span>Subvencions, entitats i micromecenatge</span><span class="field-val" id="v-entitats">45.000 €</span></div>
+        <input type="range" id="sl-entitats" min="0" max="150000" step="1000" value="45000">
+        <div class="src">ComunarESS, línies municipals de comerç de proximitat i campanyes ciutadanes.</div>
       </div>
       <div class="field">
         <div class="field-label"><span>Aportació retornable del comerç</span><span class="field-val" id="v-comerc">10.000 €</span></div>
         <input type="range" id="sl-comerc" min="0" max="60000" step="1000" value="10000">
-        <div class="src">El comerç la recupera quan deixa el local. No és una compra: és pell al projecte, i ha de ser assumible per a un negoci petit.</div>
+        <div class="src">No compta com a entrada: el comerç la recupera quan deixa el local, així que no es pot gastar en la compra. Es guarda com a fons de garantia.</div>
       </div>
 
       <span class="adv-toggle" id="adv-toggle">⚙ Ajusta el finançament ▾</span>
@@ -149,6 +166,11 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
           <input type="range" id="sl-anys" min="10" max="25" step="1" value="25">
         </div>
         <div class="field">
+          <div class="field-label"><span>Anys de carència</span><span class="field-val" id="v-carencia">2 anys</span></div>
+          <input type="range" id="sl-carencia" min="0" max="5" step="1" value="2">
+          <div class="src">Període inicial en què només es paguen interessos i encara no s'amortitza capital. Condicions estàndard de Coop57.</div>
+        </div>
+        <div class="field">
           <div class="field-label"><span>Aportació mitjana per sòcia</span><span class="field-val" id="v-mitjana">200 €</span></div>
           <input type="range" id="sl-mitjana" min="50" max="2000" step="50" value="200">
           <div class="src">És una mitjana: a la pràctica hi hauria trams, des d'aportacions petites i accessibles fins a més grans per a qui pugui.</div>
@@ -160,31 +182,53 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
     <div>
       <div class="res-card">
         <div class="card-title">Què sortiria</div>
-        <div class="res-row">
-          <span class="res-lbl">Capital a finançar amb préstec ètic</span>
-          <span class="res-num" id="r-prestec">160.000<small> €</small></span>
+
+        <div class="res-row res-break">
+          <span class="res-lbl">Cost total de l'operació<span class="res-sub">Preu + ITP (<span id="r-itp">18.000</span> €) + notaria + reforma</span></span>
+          <span class="res-num" id="r-total">221.000<small> €</small></span>
         </div>
         <div class="res-row">
-          <span class="res-lbl">Quota de cessió d'ús del comerç</span>
-          <span class="res-num" id="r-quota">1.035<small> €/mes</small></span>
+          <span class="res-lbl">Capital propi (veïnat i entitats)</span>
+          <span class="res-num" id="r-propi">75.000<small> €</small></span>
         </div>
         <div class="res-row">
-          <span class="res-lbl">Lloguer de mercat del mateix local</span>
-          <span class="res-num" id="r-mercat">2.022<small> €/mes</small></span>
+          <span class="res-lbl">Préstec ètic · <span id="r-ltv">66%</span> de l'operació</span>
+          <span class="res-num" id="r-prestec">146.000<small> €</small></span>
         </div>
+
+        <div class="fases-h">Quota del comerç, fase a fase</div>
+
+        <div class="fase fase-carencia">
+          <span class="fase-l"><span class="fase-t">Carència</span><span class="fase-y" id="r-fase1-anys">Anys 1–2</span></span>
+          <span class="fase-r"><span class="fase-q" id="r-f1">633</span><small> €/mes</small><span class="fase-e"><span id="r-e1">69%</span> més barat</span></span>
+        </div>
+        <div class="fase">
+          <span class="fase-l"><span class="fase-t">Amortització</span><span class="fase-y" id="r-fase2-anys">Anys 3–25</span></span>
+          <span class="fase-r"><span class="fase-q" id="r-f2">984</span><small> €/mes</small><span class="fase-e"><span id="r-e2">51%</span> més barat</span></span>
+        </div>
+        <div class="fase fase-perm">
+          <span class="fase-l"><span class="fase-t">Préstec liquidat</span><span class="fase-y" id="r-fase3-anys">Any 26 endavant</span></span>
+          <span class="fase-r"><span class="fase-q" id="r-f3">225</span><small> €/mes</small><span class="fase-e"><span id="r-e3">89%</span> més barat</span></span>
+        </div>
+
         <div class="dif">
-          <div class="dif-num" id="r-estalvi">49% més barat</div>
-          <div class="dif-txt">que llogar el mateix local. I no puja mai més.</div>
+          <div class="dif-num"><span id="r-mercat">2.022</span> €/mes</div>
+          <div class="dif-txt">és el que costaria llogar el mateix local al mercat. I puja cada any.</div>
         </div>
-        <p style="font-size:12px;color:rgba(255,255,255,.6);margin-top:14px;line-height:1.5;">La comparació és amb <strong style="color:#fff;">llogar</strong>, que és el que faria la majoria del comerç de barri — no amb comprar. I a diferència de comprar, el local queda fora del mercat per sempre: protegit per al següent comerç i el següent.</p>
+
+        <p style="font-size:12px;color:rgba(255,255,255,.6);margin-top:14px;line-height:1.5;">La comparació és amb <strong style="color:#fff;">llogar</strong>, que és el que faria la majoria del comerç de barri — no amb comprar. Els anys d'amortització són els durs i els ensenyem tal com són. El que cap lloguer no ofereix mai és l'última fila: passat el préstec, el local queda fora del mercat <strong style="color:#fff;">per sempre</strong>, a preu de cost, per a aquest comerç i per als que vinguin.</p>
       </div>
 
       <div class="socies">
-        <div class="socies-num" id="r-socies">50</div>
+        <div class="socies-num" id="r-socies">150</div>
         <div class="socies-txt">veïnes aportant <span id="r-mitjana-txt">200</span> € cada una per cobrir la part del veïnat. <strong>Aquí es decideix si el model és viable: no és un problema de banca, és de barri.</strong></div>
       </div>
 
-      <div class="warn" id="warn">⚠ L'entrada no arriba al 20% mínim que demana el finançament ètic. Cal més capital propi (veïnat, entitats o comerç).</div>
+      <div class="garantia">Els <strong id="r-comerc-txt">10.000</strong> € del comerç no compten com a entrada: són reemborsables i es guarden com a fons de garantia. El comerç els recupera íntegrament quan deixa el local.</div>
+
+      <div class="warn" id="warn">⚠ El préstec supera el 80% de l'operació, que és el màxim que cobreix el finançament ètic. Cal més capital propi: veïnat, subvencions o entitats aliades.</div>
+
+      <p class="aprox">* Totes les xifres són aproximades i orientatives.</p>
     </div>
   </div>
 
@@ -208,7 +252,7 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
     </div>
   </div>
 
-  <p class="fineprint">Estimació orientativa per entendre el model, no una oferta ni una previsió financera tancada. Es basa en condicions de finançament ètic per a cessió d'ús adaptades del model d'habitatge (finançament fins al 80%, fons propis mínims del 20%, fins a 25 anys) i en el preu mitjà del lloguer comercial a Barcelona (16,85 €/m²/mes, Observatori AMB, 2025). Preus de locals: idealista i habitaclia (Gràcia, juny 2026). El model financer definitiu d'AQT es validarà amb entitats de finances ètiques.</p>
+  <p class="fineprint">* Totes les dades són aproximades. Estimació orientativa per entendre el model, no una oferta ni una previsió financera tancada. Es basa en condicions de finançament ètic per a cessió d'ús adaptades del model d'habitatge (finançament fins al 80%, fons propis mínims del 20%, fins a 25 anys) i en el preu mitjà del lloguer comercial a Barcelona (16,85 €/m²/mes, Observatori AMB, 2025). Inclou l'ITP (10% del preu de compra) i les despeses de notaria i registre (3.000 €). Els costos de custòdia —manteniment, subministraments, assegurances, IBI, gestió i administració— s'estimen en un 1,5% anual del valor de l'immoble, segons el pla financer del projecte. Preus de locals: idealista i habitaclia (Gràcia, juny 2026). El model financer definitiu d'AQT es validarà amb entitats de finances ètiques.</p>
 
   <div class="cta-final">
     <a class="btn-p" href="contacte.html">Suma't al projecte</a>
@@ -218,5 +262,6 @@ input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;bac
 
 <div id="site-footer"></div>
 <script src="assets/site.js" defer></script>
+<script src="assets/calculadora.js" defer></script>
 </body>
 </html>

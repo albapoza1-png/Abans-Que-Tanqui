@@ -17,9 +17,9 @@
     { href: 'projecte.html',   text: 'Projecte' },
     { href: 'descobreix.html', text: 'Descobreix' },
     { href: 'actualitat.html', text: 'Actualitat' },
+    { href: 'calculadora.html', text: 'Calculadora' },
     { href: 'recursos.html',   text: 'Recursos' },
-    { href: 'faq.html',        text: 'FAQ' },        /* [NOU] */
-    { href: 'contacte.html',   text: 'Contacte' }
+    { href: 'faq.html',        text: 'FAQ' }
   ];
 
   function actiu(href) { return href === pagina ? ' actiu' : ''; }
