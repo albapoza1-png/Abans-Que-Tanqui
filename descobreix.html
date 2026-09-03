@@ -546,8 +546,12 @@ function puntVisible(p) {
 
 // Mapa (el centre/zoom inicials es calculen amb fitBounds un cop arriben les dades)
 const map = L.map('mapa-full', { center:[41.3874,2.1686], zoom:13, scrollWheelZoom:true });
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-  attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19
+// Tessel·les d'OpenStreetMap estàndard: gratuïtes i sense clau d'API.
+// (Fins ara fèiem servir CARTO, que des del 26-28/08/2026 exigeix una clau
+// per a peticions anònimes i marca els mapes amb la filigrana "API KEY REQUIRED".)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  subdomains:'abc', maxZoom:19
 }).addTo(map);
 
 function makeIcon(color){
