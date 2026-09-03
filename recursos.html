@@ -281,6 +281,12 @@ body{font-family: "Montserrat", system-ui, sans-serif;}
   display:flex;align-items:center;justify-content:center;position:absolute;top:16px;right:16px;}
 .guia-card-top{position:relative;}
 .guia-meta{font-size:11px;color:var(--ink-muted);font-weight:600;margin-top:2px;}
+
+/* FIX: dins la targeta negra (guia-card-top) el titol i la meta han de ser blancs,
+   no negres com marca l'estil global de tipografia unificada.
+   (Les targetes "Pròximament" tenen fons clar i ja funcionen bé, per això s'excloem.) */
+.guia-card:not(.proxim) .guia-title{color:#fff!important;}
+.guia-card:not(.proxim) .guia-meta{color:rgba(255,255,255,0.65)!important;}
 </style>
 <meta name="description" content="Recursos pràctics per a comerciants: què fer davant una pujada de lloguer o un possible tancament del teu local.">
 <link rel="canonical" href="https://abansquetanqui.cat/recursos.html">
