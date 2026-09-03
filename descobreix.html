@@ -428,7 +428,7 @@ body {
 
     <div class="casos-list" id="casos-list"></div>
 
-    <<a href="#" class="veure-tots" onclick="mostrarTotsComercos(event)">Veure tots els comerços →</a>
+    <a href="#" class="veure-tots" onclick="mostrarTotsComercos(event)">Veure tots els comerços →</a>
 
     <div class="estadistiques">
       <h3 class="estadistiques-title">Estadístiques</h3>
@@ -659,33 +659,37 @@ function centrarAlComerc(event) {
   }
 }
 
-// ... codi anterior ...
-
 function mostrarTotsComercos(e) {
   e.preventDefault();
   const list = document.getElementById('casos-list');
   list.innerHTML = '';
-  const tots = punts.filter(puntVisible); 
-  
+  const tots = punts.filter(puntVisible);
+
   if (tots.length === 0) {
     list.innerHTML = '<div style="padding:20px;color:var(--muted);text-align:center;">Cap resultat</div>';
     return;
   }
-  
+
   tots.forEach(p => {
     const div = document.createElement('div');
     div.className = 'cas-item';
-    const fotoUrl = p.foto || 'data:image/svg+xml,...'; // (deixa el teu codi de la imatge)
-    
-    div.innerHTML = `... (el teu codi HTML del cas-item) ...`;
+    const fotoUrl = p.foto || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect fill="%23f5efe6" width="80" height="80"/%3E%3C/svg%3E';
+    div.innerHTML =
+      `<img class="cas-img" src="${fotoUrl}" alt="${p.nom}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22%3E%3Crect fill=%22%23f5efe6%22 width=%2280%22 height=%2280%22/%3E%3C/svg%3E'">` +
+      `<div class="cas-info">` +
+        `<div class="cas-nom">${p.nom}</div>` +
+        (p.any ? `<div class="cas-any">${p.any}</div>` : '') +
+        `<div class="cas-categoria">${p.categoria}</div>` +
+        (p.barri ? `<div class="cas-barri">📍 ${p.barri}</div>` : '') +
+      `</div>` +
+      `<div class="cas-arrow">›</div>`;
     div.onclick = () => { map.setView([p.lat, p.lng], 16); obrirFitxa(p); };
     list.appendChild(div);
   });
-  
+
   list.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ... codi posterior ...
 function aplicarFiltres() {
   markers.forEach(({ marker, data }) => {
     if (puntVisible(data)) marker.addTo(map);
@@ -695,19 +699,9 @@ function aplicarFiltres() {
   actualitzarComptador();
 }
 
-function filtrar(btn, filtre) {
-  filtrActual = filtre;
-  aplicarFiltres();
-}
-
 function cercar(val) {
   cercaActual = val;
   aplicarFiltres();
-}
-
-function veureTots(e) {
-  e.preventDefault();
-  alert('Mostrant tots els comerços...');
 }
 
 function getDistricte(p) {
