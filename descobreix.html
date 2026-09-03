@@ -190,35 +190,6 @@ body {
   border-color: var(--ink);
 }
 
-/* ESTADÍSTIQUES */
-.estadistiques {
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
-}
-.estadistiques-title {
-  font-family: "Montserrat", system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 20px;
-}
-.grafics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.grafic-container {
-  background: var(--beix-clar);
-  padding: 12px;  /* Reduït de 16px */
-  border-radius: 8px;
-  min-height: 200px;  /* Alçada mínima fixa */
-}
-.grafic-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
 /* MAPA */
 #mapa-full { 
   background: var(--beix-clar);
@@ -262,17 +233,18 @@ body {
 .aqt-marker:hover { transform: scale(1.35); }
 
 /* ═══════════════════════════════════════════
-   CALCULADORA (sota el mapa)
+   ESTADÍSTIQUES (sota el mapa, amplada completa)
 ═══════════════════════════════════════════ */
-.calculadora-bloc {
+.estadistiques-bloc {
   background: var(--beix);
   border-top: 1px solid var(--border);
-  padding: 64px 40px;
+  padding: 56px 40px;
 }
-.calculadora-inner {
-  max-width: 700px;
+.estadistiques-inner {
+  max-width: 1120px;
+  margin: 0 auto;
 }
-.calculadora-kicker {
+.estadistiques-kicker {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -280,33 +252,39 @@ body {
   color: var(--red);
   margin-bottom: 10px;
 }
-.calculadora-title {
+.estadistiques-title {
   font-family: "Montserrat", system-ui, sans-serif;
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin-bottom: 28px;
   letter-spacing: -0.02em;
 }
-.calculadora-desc {
-  font-size: 15px;
-  color: var(--ink-mid);
-  line-height: 1.7;
-  margin-bottom: 28px;
-  max-width: 600px;
+.grafics-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
 }
-.calculadora-btn {
-  display: inline-block;
-  background: var(--red);
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 4px;
+.grafic-container {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.grafic-label {
   font-size: 13px;
   font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s;
+  color: var(--ink);
+  margin-bottom: 20px;
 }
-.calculadora-btn:hover { background: var(--red-dark); }
+.grafic-canvas-wrap {
+  position: relative;
+  flex: 1;
+  height: 340px;
+}
 
 /* ═══════════════════════════════════════════
    RESPONSIVE
@@ -326,16 +304,12 @@ body {
     min-height: 70vh;
   }
 
-  .calculadora-bloc { padding: 48px 20px; }
-  
-  
-  
-  
+  .estadistiques-bloc { padding: 40px 20px; }
 
-  /* GRAFICS: apilats en comptes d'esprémuts a 2 columnes */
+  /* GRAFICS: apilats en comptes de costat a costat */
   .grafics-grid { grid-template-columns: 1fr; gap: 20px; }
-  .grafic-container { min-height: 220px; padding: 14px; }
-  #chart-districtes { max-height: 220px; }
+  .grafic-container { padding: 18px; }
+  .grafic-canvas-wrap { height: 280px; }
 }
 
 /* ══════════════════════════════════════════
@@ -459,20 +433,6 @@ body {
     <div class="casos-list" id="casos-list"></div>
 
     <a href="#" class="veure-tots" onclick="mostrarTotsComercos(event)">Veure tots els comerços →</a>
-
-    <div class="estadistiques">
-      <h3 class="estadistiques-title">Estadístiques</h3>
-      <div class="grafics-grid">
-        <div class="grafic-container">
-          <div class="grafic-label">Per any de tancament</div>
-          <canvas id="chart-anys" height="120"></canvas>
-        </div>
-        <div class="grafic-container">
-          <div class="grafic-label">Per districte</div>
-          <canvas id="chart-districtes" height="180"></canvas>  <!-- El doughnut necessita més alçada -->
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- MAPA A LA DRETA -->
@@ -487,17 +447,22 @@ body {
 </div>
 
 <!-- ═══════════════════════════════════════════
-     CALCULADORA (sota el mapa)
+     ESTADÍSTIQUES (sota el mapa)
 ═══════════════════════════════════════════ -->
-<section class="calculadora-bloc">
-  <div class="calculadora-inner">
-    <div class="calculadora-kicker">Eina</div>
-    <div class="calculadora-title">És possible? Calcula-ho.</div>
-    <p class="calculadora-desc">
-      Quant costaria treure un local del mercat i cedir-lo a preu de cost? 
-      Explora-ho amb un cas real de Gràcia.
-    </p>
-    <a href="calculadora.html" class="calculadora-btn">Obrir la calculadora →</a>
+<section class="estadistiques-bloc">
+  <div class="estadistiques-inner">
+    <div class="estadistiques-kicker">Dades</div>
+    <div class="estadistiques-title">Estadístiques</div>
+    <div class="grafics-grid">
+      <div class="grafic-container">
+        <div class="grafic-label">Per any de tancament</div>
+        <div class="grafic-canvas-wrap"><canvas id="chart-anys"></canvas></div>
+      </div>
+      <div class="grafic-container">
+        <div class="grafic-label">Per districte</div>
+        <div class="grafic-canvas-wrap"><canvas id="chart-districtes"></canvas></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -744,11 +709,11 @@ function renderGrafic() {
       datasets: [{ data: labelsAnys.map(a => anys[a]), backgroundColor: '#C8392B', borderRadius: 4 }]
     },
     options: {
-      responsive: true, maintainAspectRatio: true,
+      responsive: true, maintainAspectRatio: false,
       plugins: { legend: { display: false } },
       scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 10, font: { size: 10 } }, grid: { display: false } },
-        x: { ticks: { font: { size: 10 } }, grid: { display: false } }
+        y: { beginAtZero: true, ticks: { stepSize: 5, font: { size: 12 } }, grid: { color: 'rgba(26,26,24,0.06)' } },
+        x: { ticks: { font: { size: 12 } }, grid: { display: false } }
       }
     }
   });
@@ -764,8 +729,8 @@ function renderGrafic() {
       datasets: [{ data: labelsD.map(d => districtes[d]), backgroundColor: ['#C8392B','#C47A00','#2A7A4B','#1A5A8A','#6B3A7A','#5A6B3A'], borderWidth: 0 }]
     },
     options: { 
-      responsive: true, maintainAspectRatio: true, cutout: '60%',
-      plugins: { legend: { position: 'right', labels: { font: { size: 10 }, padding: 8, boxWidth: 10 } } }
+      responsive: true, maintainAspectRatio: false, cutout: '62%',
+      plugins: { legend: { position: 'right', labels: { font: { size: 12 }, padding: 12, boxWidth: 12 } } }
     }
   });
 }
