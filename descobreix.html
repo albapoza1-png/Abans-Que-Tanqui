@@ -365,6 +365,7 @@ body {
 
 .fitxa-img-wrap{width:100%;height:240px;background:var(--beix-clar);overflow:hidden;position:relative;}
 .fitxa-img-wrap img{width:100%;height:100%;object-fit:cover;display:none;}
+.fitxa-foto-credit{position:absolute;bottom:4px;right:8px;font-size:10px;color:rgba(255,255,255,0.85);text-shadow:0 1px 2px rgba(0,0,0,0.6);display:none;}
 
 .fitxa-badge{
   position:absolute;bottom:16px;left:20px;display:inline-block;
@@ -577,6 +578,7 @@ async function carregarDades() {
       desc: r.descripcio || '',
       any:  r.any || null,
       foto: r.foto || null,
+      fotoCredit: r.foto_credit || null,
       categoria: labels[(r.categoria || '').toLowerCase()] || 'Comerç',
       barri: r.districte || ''
     })).filter(p => p.lat && p.lng && p.nom);
@@ -659,11 +661,15 @@ function obrirFitxa(p) {
   document.getElementById('fitxa-desc').textContent = p.desc || 'Sense descripció disponible';
   
   const imgEl = document.getElementById('fitxa-img');
+  const creditEl = document.getElementById('fitxa-foto-credit');
   if (p.foto) {
     imgEl.src = p.foto;
     imgEl.style.display = 'block';
+    creditEl.textContent = p.fotoCredit || '';
+    creditEl.style.display = p.fotoCredit ? 'block' : 'none';
   } else {
     imgEl.style.display = 'none';
+    creditEl.style.display = 'none';
   }
   
   const badge = document.getElementById('fitxa-badge');
@@ -776,7 +782,7 @@ window.addEventListener('resize', () => map.invalidateSize());
   <button class="fitxa-close" onclick="tancarFitxa(event)">&times;</button>
   <div class="fitxa-img-wrap">
     <img id="fitxa-img" src="" alt="">
-    <span class="fitxa-badge" id="fitxa-badge"></span>
+    <span class="fitxa-foto-credit" id="fitxa-foto-credit"></span>    <span class="fitxa-badge" id="fitxa-badge"></span>
   </div>
   <div class="fitxa-body">
     <div class="fitxa-categoria" id="fitxa-categoria"></div>
