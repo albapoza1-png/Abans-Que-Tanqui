@@ -106,7 +106,7 @@
     "categoria": "tancat",
     "descripcio": "Considerat el primer restaurant italià de Barcelona, obert el 1980 per la família Lombardo prop de la plaça Francesc Macià. Referent de la gastronomia italiana a la ciutat durant 45 anys. Va tancar el 31 de desembre de 2025 arran de la mort dels dos germans fundadors (Franco i Giuliano) en pocs mesos de diferència el 2025. Sense relleu generacional familiar, la filla Ana va prendre la difícil decisió de tancar.",
     "any": "2025",
-    "districte": "Eixample",
+    "districte": "Les Corts",
     "foto": null
   },
   {
@@ -122,7 +122,7 @@
   },
   {
     "nom": "Bar Versalles",
-    "adreca": "Gran de Sant Andreu, 45",
+    "adreca": "Gran de Sant Andreu, 255 (cantonada Plaça del Comerç)",
     "lat": 41.4367,
     "lng": 2.1891,
     "categoria": "tancat",
@@ -243,13 +243,13 @@
   },
   {
     "nom": "La Bul",
-    "adreca": "Avinguda Diagonal, 391",
-    "lat": 41.3941,
-    "lng": 2.1537,
+    "adreca": "Avinguda Diagonal, 594, Barcelona",
+    "lat": 41.3883,
+    "lng": 2.1289,
     "categoria": "tancat",
     "descripcio": "Botiga de moda oberta el 1974 a l'avinguda Diagonal. Gairebé 50 anys al barri. Va tancar l'agost de 2024 per jubilació de la propietària sense relleu.",
     "any": "2024",
-    "districte": "Eixample",
+    "districte": "Les Corts",
     "foto": null
   },
   {
